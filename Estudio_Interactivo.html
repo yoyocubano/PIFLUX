@@ -1,0 +1,267 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudio Interactivo - Modo Libro</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Merriweather', serif;
+                background-color: #f9f7f1; /* Cream / Paper color */
+                color: #2d3748;
+            }
+            .sans { font-family: 'Inter', sans-serif; }
+            .book-container {
+                max-width: 900px;
+                margin: 0 auto;
+                background: #fff;
+                padding: 3rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                min-height: 100vh;
+                border-left: 1px solid #e2e8f0;
+            }
+            /* Slider Styling */
+            .slider-container {
+                position: relative;
+                width: 100%;
+                height: 600px;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                background: #000;
+                margin-bottom: 2rem;
+            }
+            .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .slide.active { opacity: 1; }
+            .slide img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+            .slider-nav {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 10px;
+                z-index: 10;
+            }
+            .nav-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.5);
+                cursor: pointer;
+            }
+            .nav-dot.active { background: white; }
+            
+            /* Table Styling */
+            .fixed-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+                font-size: 0.95rem;
+            }
+            .fixed-table th, .fixed-table td {
+                border: 1px solid #cbd5e0;
+                padding: 12px;
+                text-align: left;
+            }
+            .fixed-table th {
+                background-color: #edf2f7;
+                font-weight: 700;
+                color: #2d3748;
+            }
+            .fixed-table tr:nth-child(even) { background-color: #f7fafc; }
+            
+            /* Input Styling */
+            input, select {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="book-container">
+            <header class="mb-10 text-center border-b pb-6 border-gray-200">
+                <a href="index.html" class="inline-block mb-4 text-sm text-gray-500 hover:text-gray-800 sans">← Volver al Hub</a>
+                <h1 class="text-4xl font-bold mb-2">Compendio de Estudio Técnico</h1>
+                <p class="text-gray-600 italic">Visualización de fórmulas, cálculo y referencia.</p>
+            </header>
+
+            <!-- SLIDER SECTION -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 border-l-4 border-blue-500 pl-4">Galería de Fórmulas y Notas</h2>
+                <div class="slider-container" id="mainSlider">
+                    <!-- Slides injected here -->
+                    <div class="slide active"><img src="assets/extracted_notes/C_digo_de_indentificacion_de_fusible__Imagen.png" alt="Slide 0"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.02.56 a.m..png" alt="Slide 1"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.26.36 a.m..png" alt="Slide 2"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.28.33 a.m..png" alt="Slide 3"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.29.55 a.m..png" alt="Slide 4"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.31.29 a.m..png" alt="Slide 5"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.33.43 a.m..png" alt="Slide 6"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.36.19 a.m..png" alt="Slide 7"></div><div class="slide "><img src="assets/extracted_notes/Calcula_capacitancia_e_inductancia_el_ctrica_Captura de pantalla 2025-06-04 a la(s) 8.36.58 a.m..png" alt="Slide 8"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.07.37 a.m..png" alt="Slide 9"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.08.02 a.m..png" alt="Slide 10"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.08.25 a.m..png" alt="Slide 11"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.09.07 a.m..png" alt="Slide 12"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.09.26 a.m..png" alt="Slide 13"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.09.49 a.m..png" alt="Slide 14"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.10.08 a.m..png" alt="Slide 15"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.10.42 a.m..png" alt="Slide 16"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.11.42 a.m..png" alt="Slide 17"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.12.13 a.m..png" alt="Slide 18"></div><div class="slide "><img src="assets/extracted_notes/Calcula_resistividad_de_conducteur_el_ctrico_Captura de pantalla 2025-06-04 a la(s) 11.12.41 a.m..png" alt="Slide 19"></div><div class="slide "><img src="assets/extracted_notes/Como_funciona_un_luxometro__Imagen.png" alt="Slide 20"></div><div class="slide "><img src="assets/extracted_notes/Conceptos_voltaje__corriente_y_resistencia__Imagen.png" alt="Slide 21"></div><div class="slide "><img src="assets/extracted_notes/Explicaci_n_de_las_curvas_de_disparo_del_MCB__Imagen.png" alt="Slide 22"></div><div class="slide "><img src="assets/extracted_notes/Frecuencia_El_ctrica__Imagen.png" alt="Slide 23"></div><div class="slide "><img src="assets/extracted_notes/Informaci_n__sobre_las_letras_de_los_interruptores_C_B_D_y_el_significado__Imagen.png" alt="Slide 24"></div><div class="slide "><img src="assets/extracted_notes/Malla_de_tierra__Imagen.png" alt="Slide 25"></div><div class="slide "><img src="assets/extracted_notes/Motores_Pasted Graphic 3.png" alt="Slide 26"></div><div class="slide "><img src="assets/extracted_notes/Motores_Pasted Graphic 4.png" alt="Slide 27"></div><div class="slide "><img src="assets/extracted_notes/Motores_Pasted Graphic 5.png" alt="Slide 28"></div><div class="slide "><img src="assets/extracted_notes/Motores_Pasted Graphic 6.png" alt="Slide 29"></div><div class="slide "><img src="assets/extracted_notes/Motores_Pasted Graphic 7.png" alt="Slide 30"></div><div class="slide "><img src="assets/extracted_notes/Motores__Imagen.png" alt="Slide 31"></div><div class="slide "><img src="assets/extracted_notes/Para_leer_un_capacitor__se_puede_considerar_lo_siguiente__Imagen.png" alt="Slide 32"></div><div class="slide "><img src="assets/extracted_notes/Partes_de_un_relevador_t_rmico__Imagen.png" alt="Slide 33"></div><div class="slide "><img src="assets/extracted_notes/Pasted_Graphic_1_png_Pasted Graphic 1.png" alt="Slide 34"></div><div class="slide "><img src="assets/extracted_notes/Pasted_Graphic_1_png_Pasted Graphic 2.png" alt="Slide 35"></div><div class="slide "><img src="assets/extracted_notes/Plano_de_f_rum_tgbt_Imagen.png" alt="Slide 36"></div><div class="slide "><img src="assets/extracted_notes/Plano_de_f_rum_tgbt_Plano de fórum tgbt.png" alt="Slide 37"></div><div class="slide "><img src="assets/extracted_notes/Que_es_un_Corto_circuito__Imagen.png" alt="Slide 38"></div><div class="slide "><img src="assets/extracted_notes/Resistencia_equivalente__Imagen.png" alt="Slide 39"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.07.37 a.m..png" alt="Slide 40"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.08.02 a.m..png" alt="Slide 41"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.08.25 a.m..png" alt="Slide 42"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.09.07 a.m..png" alt="Slide 43"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.09.26 a.m..png" alt="Slide 44"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.09.49 a.m..png" alt="Slide 45"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.10.08 a.m..png" alt="Slide 46"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.10.42 a.m..png" alt="Slide 47"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.11.42 a.m..png" alt="Slide 48"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.12.13 a.m..png" alt="Slide 49"></div><div class="slide "><img src="assets/extracted_notes/Technique_des_courants_forts_Captura de pantalla 2025-06-04 a la(s) 11.12.41 a.m..png" alt="Slide 50"></div><div class="slide "><img src="assets/extracted_notes/Tipos_de_mantenimiento_el_ctrico_Imagen.png" alt="Slide 51"></div><div class="slide "><img src="assets/extracted_notes/Voltaje_nominal_en_un_capacitor__Imagen.png" alt="Slide 52"></div><div class="slide "><img src="assets/extracted_notes/_En_qu__se_diferencian_un_motor_s_ncrono_y_un_as_ncrono__Imagen.png" alt="Slide 53"></div><div class="slide "><img src="assets/extracted_notes/_Quieres_actualizar_tus_conocimientos_en_Automatizaci_n_Industrial__Imagen.png" alt="Slide 54"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.02.56 a.m..png" alt="Slide 55"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.26.36 a.m..png" alt="Slide 56"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.28.33 a.m..png" alt="Slide 57"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.29.55 a.m..png" alt="Slide 58"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.31.29 a.m..png" alt="Slide 59"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.33.17 a.m..png" alt="Slide 60"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.33.43 a.m..png" alt="Slide 61"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.36.19 a.m..png" alt="Slide 62"></div><div class="slide "><img src="assets/extracted_notes/__Un_condensateur_charg__bloque_le_courant_continu__sa_r_sistance_est_donc__presque__Captura de pantalla 2025-06-04 a la(s) 8.36.58 a.m..png" alt="Slide 63"></div>
+                    
+                    <!-- Navigation Controls -->
+                    <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full">❮</button>
+                    <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full">❯</button>
+                    
+                    <div class="slider-nav">
+                        <div class="nav-dot active" onclick="goToSlide(0)"></div><div class="nav-dot " onclick="goToSlide(1)"></div><div class="nav-dot " onclick="goToSlide(2)"></div><div class="nav-dot " onclick="goToSlide(3)"></div><div class="nav-dot " onclick="goToSlide(4)"></div><div class="nav-dot " onclick="goToSlide(5)"></div><div class="nav-dot " onclick="goToSlide(6)"></div><div class="nav-dot " onclick="goToSlide(7)"></div><div class="nav-dot " onclick="goToSlide(8)"></div><div class="nav-dot " onclick="goToSlide(9)"></div><div class="nav-dot " onclick="goToSlide(10)"></div><div class="nav-dot " onclick="goToSlide(11)"></div><div class="nav-dot " onclick="goToSlide(12)"></div><div class="nav-dot " onclick="goToSlide(13)"></div><div class="nav-dot " onclick="goToSlide(14)"></div><div class="nav-dot " onclick="goToSlide(15)"></div><div class="nav-dot " onclick="goToSlide(16)"></div><div class="nav-dot " onclick="goToSlide(17)"></div><div class="nav-dot " onclick="goToSlide(18)"></div><div class="nav-dot " onclick="goToSlide(19)"></div><div class="nav-dot " onclick="goToSlide(20)"></div><div class="nav-dot " onclick="goToSlide(21)"></div><div class="nav-dot " onclick="goToSlide(22)"></div><div class="nav-dot " onclick="goToSlide(23)"></div><div class="nav-dot " onclick="goToSlide(24)"></div><div class="nav-dot " onclick="goToSlide(25)"></div><div class="nav-dot " onclick="goToSlide(26)"></div><div class="nav-dot " onclick="goToSlide(27)"></div><div class="nav-dot " onclick="goToSlide(28)"></div><div class="nav-dot " onclick="goToSlide(29)"></div><div class="nav-dot " onclick="goToSlide(30)"></div><div class="nav-dot " onclick="goToSlide(31)"></div><div class="nav-dot " onclick="goToSlide(32)"></div><div class="nav-dot " onclick="goToSlide(33)"></div><div class="nav-dot " onclick="goToSlide(34)"></div><div class="nav-dot " onclick="goToSlide(35)"></div><div class="nav-dot " onclick="goToSlide(36)"></div><div class="nav-dot " onclick="goToSlide(37)"></div><div class="nav-dot " onclick="goToSlide(38)"></div><div class="nav-dot " onclick="goToSlide(39)"></div><div class="nav-dot " onclick="goToSlide(40)"></div><div class="nav-dot " onclick="goToSlide(41)"></div><div class="nav-dot " onclick="goToSlide(42)"></div><div class="nav-dot " onclick="goToSlide(43)"></div><div class="nav-dot " onclick="goToSlide(44)"></div><div class="nav-dot " onclick="goToSlide(45)"></div><div class="nav-dot " onclick="goToSlide(46)"></div><div class="nav-dot " onclick="goToSlide(47)"></div><div class="nav-dot " onclick="goToSlide(48)"></div><div class="nav-dot " onclick="goToSlide(49)"></div><div class="nav-dot " onclick="goToSlide(50)"></div><div class="nav-dot " onclick="goToSlide(51)"></div><div class="nav-dot " onclick="goToSlide(52)"></div><div class="nav-dot " onclick="goToSlide(53)"></div><div class="nav-dot " onclick="goToSlide(54)"></div><div class="nav-dot " onclick="goToSlide(55)"></div><div class="nav-dot " onclick="goToSlide(56)"></div><div class="nav-dot " onclick="goToSlide(57)"></div><div class="nav-dot " onclick="goToSlide(58)"></div><div class="nav-dot " onclick="goToSlide(59)"></div><div class="nav-dot " onclick="goToSlide(60)"></div><div class="nav-dot " onclick="goToSlide(61)"></div><div class="nav-dot " onclick="goToSlide(62)"></div><div class="nav-dot " onclick="goToSlide(63)"></div>
+                    </div>
+                </div>
+                <div class="text-center sans">
+                    <button onclick="toggleAutoPlay()" id="playBtn" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-sm">❚❚ Pausar Slide</button>
+                </div>
+            </section>
+
+            <!-- CALCULATOR SECTION -->
+            <section class="mb-12 bg-blue-50 p-8 rounded-xl border border-blue-100">
+                <h2 class="text-2xl font-bold mb-6 border-l-4 border-blue-500 pl-4">Calculadora de Caída de Tensión (ΔU)</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sans">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Longitud del Cable (m)</label>
+                        <input type="number" id="calc_L" class="w-full p-3 border rounded-lg" placeholder="Ej: 50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Corriente (A)</label>
+                        <input type="number" id="calc_I" class="w-full p-3 border rounded-lg" placeholder="Ej: 16">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Sección (mm²)</label>
+                        <select id="calc_S" class="w-full p-3 border rounded-lg bg-white">
+                            <option value="1.5">1.5 mm²</option>
+                            <option value="2.5">2.5 mm²</option>
+                            <option value="4">4 mm²</option>
+                            <option value="6">6 mm²</option>
+                            <option value="10">10 mm²</option>
+                            <option value="16">16 mm²</option>
+                            <option value="25">25 mm²</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Material / Sistema</label>
+                        <select id="calc_Mat" class="w-full p-3 border rounded-lg bg-white">
+                            <option value="mono_cu">Monofásico (Cobre)</option>
+                            <option value="tri_cu">Trifásico (Cobre)</option>
+                            <option value="mono_al">Monofásico (Aluminio)</option>
+                            <option value="tri_al">Trifásico (Aluminio)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex items-center justify-between bg-white p-4 rounded-lg shadow-sm">
+                    <button onclick="calculateDrop()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform transition hover:-translate-y-1">Calcular</button>
+                    <div class="text-right">
+                        <div class="text-sm text-gray-500">Caída de Tensión Resultante</div>
+                        <div class="text-3xl font-bold text-blue-900" id="result_V">0.00 V</div>
+                        <div class="text-sm font-bold text-gray-400" id="result_P">(0.00%)</div>
+                    </div>
+                </div>
+                <div id="calc_warning" class="mt-2 text-red-500 text-sm font-bold hidden">⚠️ Caída de tensión excesiva (>3%)</div>
+                
+                <!-- FIXED UPLOADED TABLES -->
+                <div class="mt-12 border-t pt-8">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800">Tablas de Referencia (Pose & Corrientes)</h3>
+                    <div class="space-y-6">
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                             <p class="text-sm text-gray-500 mb-2 font-bold sans">Tableau 1: Types de pose</p>
+                            <img src="assets/tables/tableau_pose.png" alt="Tabla Tipos de Pose" class="w-full h-auto rounded border border-gray-200">
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <p class="text-sm text-gray-500 mb-2 font-bold sans">Tableau 2: Courants Admissibles</p>
+                            <img src="assets/tables/tableau_courants.png" alt="Tabla Corrientes Admisibles" class="w-full h-auto rounded border border-gray-200">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script>
+            // --- SLIDER LOGIC ---
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            let isPlaying = true;
+            let slideInterval;
+
+            function showSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+            }
+
+            function changeSlide(n) {
+                showSlide(currentSlide + n);
+            }
+
+            function goToSlide(n) {
+                showSlide(n);
+            }
+
+            function toggleAutoPlay() {
+                const btn = document.getElementById('playBtn');
+                if (isPlaying) {
+                    clearInterval(slideInterval);
+                    btn.innerText = "▶ Reanudar Slide";
+                } else {
+                    slideInterval = setInterval(() => changeSlide(1), 4000);
+                    btn.innerText = "❚❚ Pausar Slide";
+                }
+                isPlaying = !isPlaying;
+            }
+
+            // Start Autoplay
+            slideInterval = setInterval(() => changeSlide(1), 4000); // 4 seconds per slide
+
+            // --- CALCULATOR LOGIC ---
+            function calculateDrop() {
+                const L = parseFloat(document.getElementById('calc_L').value) || 0;
+                const I = parseFloat(document.getElementById('calc_I').value) || 0;
+                const S = parseFloat(document.getElementById('calc_S').value) || 1.5;
+                const sys = document.getElementById('calc_Mat').value;
+
+                let K; // Conductivity: Cu=56, Al=35 aprox (or resistivity rho)
+                // Formula: dU = b * (rho * L * I / S) 
+                // b=2 for mono, b=sqrt(3) for tri
+                // rho Cu = 0.0178 (1/56), Al = 0.028 (1/35)
+                
+                let b = (sys.includes('mono')) ? 2 : 1.732;
+                let rho = (sys.includes('cu')) ? 0.0178 : 0.028;
+                
+                // dU = b * rho * L * I / S
+                // Using 0.0178 aprox implies Ohm*mm2/m
+                
+                let dU = (b * rho * L * I) / S;
+                let percent = 0;
+                let baseV = (sys.includes('mono')) ? 230 : 400;
+
+                percent = (dU / baseV) * 100;
+
+                document.getElementById('result_V').innerText = dU.toFixed(2) + " V";
+                document.getElementById('result_P').innerText = "(" + percent.toFixed(2) + "%)";
+                
+                const warn = document.getElementById('calc_warning');
+                if (percent > 3) {
+                    warn.classList.remove('hidden');
+                } else {
+                    warn.classList.add('hidden');
+                }
+            }
+        </script>
+    </body>
+    </html>
+    

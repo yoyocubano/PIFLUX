@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTADO DEL PROYECTO PIF</title>
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --heading: #1f2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar { background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: var(--heading); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+        .navbar a:hover { color: var(--accent); }
+        
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        h1, h2, h3 { color: var(--heading); letter-spacing: -0.02em; font-weight: 700; }
+        h1 { font-size: 2.25rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        pre { background: var(--code-bg); padding: 1.25rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border); }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        
+        blockquote { border-left: 4px solid var(--accent); margin: 1.5rem 0; padding-left: 1rem; color: #4b5563; font-style: italic; background: #eff6ff; padding: 1rem; border-radius: 0 8px 8px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th, td { padding: 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+        th { font-weight: 600; background: var(--code-bg); }
+        
+        /* MathJax */
+        .MathJax { font-size: 1.1em !important; }
+        
+        .footer { text-align: center; padding: 3rem; color: #6b7280; font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    </style>
+    <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\(', '\)']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">← PIF Study Hub</a>
+        <span style="color: #9ca3af; font-size: 0.85rem;">Centro de Estudio</span>
+    </nav>
+    <div class="container">
+        <h1>ESTADO DEL PROYECTO PIF</h1>
+        <h1>📊 ESTADO DEL PROYECTO PIF (Análisis de Exámenes)</h1>
+<p><strong>Misión:</strong> Analizar 1124 documentos PDF de exámenes DAP/DT.
+<strong>Estado Actual:</strong> ⚠️ <strong>PAUSADO POR LÍMITE DE COMBUSTIBLE (API QUOTA)</strong></p>
+<h2>📉 Estadísticas en Tiempo Real</h2>
+<ul>
+<li><strong>Total de Exámenes Detectados:</strong> 1124</li>
+<li><strong>Procesados Exitosamente:</strong> ~63 (Estimado)</li>
+<li><strong>Pendientes:</strong> ~1061</li>
+<li><strong>Velocidad Promedio:</strong> (Detenida temporalmente)</li>
+</ul>
+<h2>🛑 Diagnóstico del Motor IA</h2>
+<p>El sistema de análisis masivo (<code>analyze_exams_master.py</code>) se ha detenido porque hemos alcanzado el límite diario de la licencia gratuita de Google Gemini.</p>
+<p><strong>Error Técnico:</strong></p>
+<blockquote>
+<p><code>GenerateRequestsPerDayPerProjectPerModel-FreeTier</code>
+(Has superado la cantidad de peticiones permitidas por día para el modelo <code>gemini-2.0-flash</code>)</p>
+</blockquote>
+<h2>🛣️ Opciones para Retomar</h2>
+<ol>
+<li><strong>Esperar 24 horas:</strong> El contador se reinicia mañana.</li>
+<li><strong>Cambiar de Modelo:</strong> Intentar usar un modelo más antiguo (<code>gemini-1.0-pro</code>) que puede tener un cupo diferente, aunque tiene menos contexto (no soporta lotes de 10 archivos).</li>
+<li><strong>Nueva Llave:</strong> Si tienes otra API Key de Google, podemos cambiarla y seguir.</li>
+</ol>
+<h2>📂 Archivos Ya Generados</h2>
+<p>Los análisis completados están en:
+<code>/Users/yoyocubano/Library/CloudStorage/GoogleDrive-yucolaguilar@gmail.com/Mi unidad/PIF_ANALYSIS_RESULTS</code></p>
+<p>Puedes revisar los ejemplos ya hechos (como <code>[DE] doc_5858344_ANALYSIS.md</code>) para ver la calidad del trabajo.</p>
+    </div>
+    <div class="footer">
+        Generado para el éxito en el PIFQU • 2026
+    </div>
+</body>
+</html>

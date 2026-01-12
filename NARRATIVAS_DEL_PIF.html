@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NARRATIVAS DEL PIF</title>
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --heading: #1f2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar { background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: var(--heading); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+        .navbar a:hover { color: var(--accent); }
+        
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        h1, h2, h3 { color: var(--heading); letter-spacing: -0.02em; font-weight: 700; }
+        h1 { font-size: 2.25rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        pre { background: var(--code-bg); padding: 1.25rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border); }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        
+        blockquote { border-left: 4px solid var(--accent); margin: 1.5rem 0; padding-left: 1rem; color: #4b5563; font-style: italic; background: #eff6ff; padding: 1rem; border-radius: 0 8px 8px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th, td { padding: 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+        th { font-weight: 600; background: var(--code-bg); }
+        
+        /* MathJax */
+        .MathJax { font-size: 1.1em !important; }
+        
+        .footer { text-align: center; padding: 3rem; color: #6b7280; font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    </style>
+    <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\(', '\)']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">← PIF Study Hub</a>
+        <span style="color: #9ca3af; font-size: 0.85rem;">Centro de Estudio</span>
+    </nav>
+    <div class="container">
+        <h1>NARRATIVAS DEL PIF</h1>
+        <h1>📖 NARRATIVAS DEL PIF: La Aventura del Instalador</h1>
+<p>Bienvenidos, jóvenes aprendices de la Chispa. Hoy no vamos a "cablear un examen", hoy vamos a dar vida a una Cabina. Imaginad que la cabina es un cuerpo humano y vosotros sois los cirujanos que le van a dar venas, nervios y corazón.</p>
+<hr />
+<h2>🏗️ Acto 1: El Esqueleto y las Venas (Infraestructura)</h2>
+<p>Antes de tocar un solo cable, necesitamos carreteras.
+Imagina tu cabina hueca. Tienes que instalar <strong>Canales (Canaletas)</strong>.
+*   <strong>La Analogía:</strong> Son como las arterias principales. Si son pequeñas, los cables se asfixian (y se calientan). Si están torcidas, la energía fluye "fea".
+*   <strong>La Misión:</strong> Fija las canaletas rectas, usando el nivel. Son las autopistas por donde viajarán nuestros electrones. Recuerda: ¡La estética es la primera regla de un buen electricista!</p>
+<hr />
+<h2>💡 Acto 2: Los Ojos de la Cabina (Iluminación Mixta)</h2>
+<p>Aquí vamos a crear un circuito de luz inteligente, pero sin chips. Queremos que la luz se encienda si tú quieres (Interruptor) O si alguien entra (Sensor).</p>
+<p><strong>Los Jugadores:</strong>
+1.  <strong>Va et Vient (Vaivén):</strong> Son dos interruptores que hablan entre sí. Como dos porteros en un pasillo largo; cualquiera puede abrir la puerta.
+2.  <strong>El Detector de Movimiento:</strong> El ojo que todo lo ve.</p>
+<p><strong>La Conexión (El "Challenge"):</strong></p>
+<blockquote>
+<p><em>"Conectado con va y vient y detector de movimiento al mismo tiempo"</em></p>
+</blockquote>
+<p>Aquí está el truco narrativo:
+Imagina que la Bombilla es el Rey. El Rey quiere luz.
+*   Los <strong>Va y Vient</strong> son sus consejeros manuales. Si tú das la orden, la luz se enciende.
+*   El <strong>Detector</strong> es su guardaespaldas. Si ve un intruso, enciende la luz.
+*   <strong>El Cableado:</strong> Normalmente, el detector se conecta en PARALELO al retorno de los interruptores (o controla el circuito independientemente). Si CUALQUIERA de los dos (Interruptores O Detector) deja pasar corriente, ¡Hágase la luz!
+    *   <em>Nota técnica:</em> Fase al detector y a los interruptores comunes. El retorno (vuelta) de ambos va a la lámpara.</p>
+<hr />
+<h2>🤖 Acto 3: El Cerebro Digital (KNX)</h2>
+<p>Ahora nos ponemos modernos. Olvida los cables gruesos de fuerza para controlar.
+Vamos a instalar una <strong>Luz Controlada por KNX</strong>.</p>
+<ul>
+<li><strong>El Músculo (Actuador):</strong> Está escondido en el cuadro. Es un relé, pero con cerebro. Él corta y abre la corriente de la bombilla (230V).</li>
+<li><strong>El Nervio (Cable Verde):</strong> Un cable fino, verde, que recorre la cabina. Por aquí NO pasa electricidad para quemar, solo INFORMACIÓN.</li>
+<li><strong>La Orden:</strong> Cuando pulsas el botón KNX en la pared, envías un "Telegrama" (un SMS) por el cable verde que dice: <em>"Oye Actuador 1, actívate"</em>. Y clac, se hace la luz.</li>
+<li><strong>Analogía:</strong> Antes (convencional) tenías que ir tú a encender la bombilla. Ahora (KNX), le mandas un WhatsApp a tu mayordomo (Actuador) para que lo haga.</li>
+</ul>
+<hr />
+<h2>🔔 Acto 4: La Voz (El Timbre)</h2>
+<p>Un timbre es ruidoso, pero delicado. Funciona a baja tensión (normalmente 8V o 12V), pero nuestra red es de 230V.
+*   <strong>El Mago (Transformador):</strong> Este pequeño aparato vive en el cuadro. Toma los 230V peligrosos (un león) y los convierte en 12V inofensivos (un gatito).
+*   <strong>El Circuito:</strong> Fase y Neutro entran al Mago (Primario). Salen dos hilos finos (Secundario) hacia el pulsador de la puerta y el timbre. ¡Nunca mezcles al león con el gatito en el mismo tubo sin separación!</p>
+<hr />
+<h2>🦾 Acto 5: La Bestia (El Motor)</h2>
+<p>Aquí necesitamos fuerza bruta. Vamos a sacar una línea hacia un <strong>Cuadro Secundario</strong>.
+Allí vive La Bestia: Un Motor Eléctrico.</p>
+<p><strong>Las dos caras de la Bestia:</strong>
+1.  <strong>Circuito de Potencia (Fuerza):</strong> Tres cables gruesos (L1, L2, L3) que alimentan los músculos del motor. Pasan por fusibles, contactor y relé térmico.
+2.  <strong>Circuito de Mando (Control):</strong> Cables finos. Es el cerebro que le dice al contactor "¡Cierra!". Aquí están tus botones de marcha/paro.</p>
+<p><strong>El Control de Potencia:</strong>
+Usaremos un sistema para que no arranque de golpe (quizás Estrella-Triángulo o un Variador). Imagina que despiertas a un gigante; si lo haces de golpe, rompe la cama. Si lo despiertas suave, se levanta tranquilo.</p>
+<hr />
+<h2>🫀 Acto 6: El Corazón (Cuadro Central y Protecciones)</h2>
+<p>Todo llega aquí. Al <strong>Cuadro Eléctrico Central</strong>.
+Aquí viven los guardianes.</p>
+<p><strong>Los Guardianes:</strong>
+1.  <strong>El General (Interruptor de Corte):</strong> El jefe supremo. Si baja la palanca, todo muere. Seguridad total.
+2.  <strong>El Juez (Diferencial):</strong>
+    *   Su trabajo es ver si la corriente se escapa (si alguien se está electrocutando).
+    *   <strong>LA REGLA DE ORO DE ESTA CABINA:</strong> El Juez es estricto con los Enchufes (Circuitos de Tomas). Porque ahí conectas cosas metálicas que tocas.
+    *   <strong>LA EXCEPCIÓN (Tu Misión):</strong> Los circuitos de ILUMINACIÓN son ágiles y vuelan alto. El cliente (el examen) ha dicho: <em>"Los circuitos de iluminación NO pasan por el diferencial"</em>.
+    *   <em>¿Por qué?</em> (Narrativa): Para que si una tostadora defectuosa hace saltar el diferencial, ¡no te quedes a oscuras en la cabina! La luz debe permanecer siempre encendida para ver la salida. (Ojo: Esto es una regla específica de este escenario, en casa normalmente protegemos todo).</p>
+<p><strong>El Mapa del Tesoro (Distribución):</strong>
+*   Barras de Fase y Neutro arriba.
+*   <strong>Fila 1:</strong> Disyuntores de Luz (Directos, sin pasar por el Juez Diferencial).
+*   <strong>Fila 2:</strong> Diferencial 30mA $\to$ Disyuntores de Tomas (Protegidos por el Juez).</p>
+<hr />
+<h2>🌟 Resumen de la Misión</h2>
+<p>Vas a construir un cuerpo vivo:
+1.  <strong>Venas</strong> duras (canales).
+2.  <strong>Ojos</strong> atentos (Vaivén + Detector).
+3.  <strong>Reflejos</strong> digitales (KNX).
+4.  <strong>Voz</strong> suave (Timbre).
+5.  <strong>Músculos</strong> fuertes (Motor en su propia jaula secundaria).
+6.  <strong>Corazón</strong> inteligente (Cuadro Central) que sabe separar la Luz (supervivencia) de la Fuerza (trabajo), protegiendo lo que tocas y manteniendo encendido lo que ves.</p>
+<p>¡A trabajar, chispas! ⚡</p>
+    </div>
+    <div class="footer">
+        Generado para el éxito en el PIFQU • 2026
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA GEMINI CLI</title>
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --heading: #1f2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar { background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: var(--heading); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+        .navbar a:hover { color: var(--accent); }
+        
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        h1, h2, h3 { color: var(--heading); letter-spacing: -0.02em; font-weight: 700; }
+        h1 { font-size: 2.25rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        pre { background: var(--code-bg); padding: 1.25rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border); }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        
+        blockquote { border-left: 4px solid var(--accent); margin: 1.5rem 0; padding-left: 1rem; color: #4b5563; font-style: italic; background: #eff6ff; padding: 1rem; border-radius: 0 8px 8px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th, td { padding: 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+        th { font-weight: 600; background: var(--code-bg); }
+        
+        /* MathJax */
+        .MathJax { font-size: 1.1em !important; }
+        
+        .footer { text-align: center; padding: 3rem; color: #6b7280; font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    </style>
+    <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\(', '\)']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">← PIF Study Hub</a>
+        <span style="color: #9ca3af; font-size: 0.85rem;">Centro de Estudio</span>
+    </nav>
+    <div class="container">
+        <h1>GUIA GEMINI CLI</h1>
+        <h1>🤖 Guía Maestra: Gemini CLI &amp; Hacks de IA</h1>
+<p>Esta guía documenta el uso del <strong>Gemini CLI</strong> instalado en tu sistema para potenciar tu flujo de trabajo en el PIF y desarrollo general.</p>
+<h2>🛠️ Instalación y Acceso</h2>
+<p>El comando principal es <code>gemini</code>. Está disponible en cualquier terminal de tu sistema.</p>
+<h2>🚀 Comandos de Poder (Hacks)</h2>
+<h3>1. El Consultor Instantáneo</h3>
+<p>No necesitas abrir el navegador. Pregunta cualquier cosa técnica del PIF directamente:</p>
+<pre><code class="language-bash">gemini &quot;¿Cuál es la caída de tensión máxima permitida para iluminación según la normativa?&quot;
+</code></pre>
+<h3>2. Modo Chat (Cerebro Persistente)</h3>
+<p>Si quieres una sesión de brainstorming larga:</p>
+<pre><code class="language-bash">gemini chat
+</code></pre>
+<p><em>Escribe <code>exit</code> para salir.</em></p>
+<h3>3. Auditor de Código y Archivos</h3>
+<p>Pasa archivos completos para que Gemini los revise o mejore:</p>
+<pre><code class="language-bash">gemini &quot;Mejora el rendimiento de este script de Python y añade manejo de errores&quot; build_site.py
+</code></pre>
+<h3>4. Flujo de Tubería (Terminal Hacks)</h3>
+<p>Puedes enviar la salida de cualquier comando a Gemini para que la procese:</p>
+<pre><code class="language-bash"># Ejemplo: Analizar errores en los logs
+cat error.log | gemini &quot;¿Qué está causando este error y cómo lo arreglo?&quot;
+
+# Ejemplo: Documentar carpetas
+ls -R | gemini &quot;Explica la estructura de este proyecto a un nuevo desarrollador&quot;
+</code></pre>
+<h2>🔐 Configuración de Identidad</h2>
+<p>Si encuentras errores de permisos, asegúrate de estar autenticado con Google Cloud:</p>
+<pre><code class="language-bash">gcloud auth login
+gcloud auth application-default login
+</code></pre>
+<h2>📂 Integración con el PIF</h2>
+<p>Puedes usar Gemini para generar contenido para tu sitio automáticamente:</p>
+<pre><code class="language-bash">gemini &quot;Crea una narrativa estilo anime sobre el Acto 7: La Puesta a Tierra&quot; &gt; ACTO_7.md
+</code></pre>
+<hr />
+<p><em>Generado por AntiGravity para el Centro de Estudio PIF 2026</em></p>
+    </div>
+    <div class="footer">
+        Generado para el éxito en el PIFQU • 2026
+    </div>
+</body>
+</html>

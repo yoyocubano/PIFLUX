@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOS LOS PIF</title>
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --heading: #1f2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar { background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: var(--heading); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+        .navbar a:hover { color: var(--accent); }
+        
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        h1, h2, h3 { color: var(--heading); letter-spacing: -0.02em; font-weight: 700; }
+        h1 { font-size: 2.25rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        pre { background: var(--code-bg); padding: 1.25rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border); }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        
+        blockquote { border-left: 4px solid var(--accent); margin: 1.5rem 0; padding-left: 1rem; color: #4b5563; font-style: italic; background: #eff6ff; padding: 1rem; border-radius: 0 8px 8px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th, td { padding: 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+        th { font-weight: 600; background: var(--code-bg); }
+        
+        /* MathJax */
+        .MathJax { font-size: 1.1em !important; }
+        
+        .footer { text-align: center; padding: 3rem; color: #6b7280; font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    </style>
+    <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\(', '\)']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">← PIF Study Hub</a>
+        <span style="color: #9ca3af; font-size: 0.85rem;">Centro de Estudio</span>
+    </nav>
+    <div class="container">
+        <h1>TODOS LOS PIF</h1>
+        <h1>📚 TODOS LOS PIF: Recopilación Maestra de Exámenes (2017-2024)</h1>
+<p>Este documento centraliza todas las preguntas y respuestas de los exámenes PIFQU/PIIQU (DAP ELF) recopiladas, resueltas y explicadas para tu estudio. </p>
+<hr />
+<h2>📅 PIFQU 2017-2018</h2>
+<p><strong>1. ¿Cuáles son los colores normalizados de los conductores?</strong>
+*   <strong>Respuesta:</strong>
+    *   Tierra (PE): Verde-Amarillo (¡Sagrado!).
+    *   Neutro (N): Azul claro.
+    *   Fase (L): Marrón (Negro o Gris en trifásico).</p>
+<p><strong>2. Cite 3 medidas de protección contra contactos directos.</strong>
+*   <strong>Respuesta:</strong>
+    1.  Aislamiento (recubrimiento de cables).
+    2.  Barreras o envolventes (Cajas IP XXB).
+    3.  Alejamiento (fuera del alcance de la mano).</p>
+<p><strong>3. En régimen TN-C, ¿cómo se llama el conductor que une Neutro y Protección?</strong>
+*   <strong>Respuesta:</strong> PEN (Protecteur-Neutre).</p>
+<p><strong>4. ¿Tensión de ensayo para aislamiento en 230/400V y mínimo aceptable?</strong>
+*   <strong>Respuesta:</strong> 500 V DC y ≥ 1,0 MΩ.</p>
+<p><strong>5. Defina la función de un disyuntor magnetotérmico.</strong>
+*   <strong>Respuesta:</strong> Protege contra <strong>Sobrecargas</strong> (Térmico - bimetal) y <strong>Cortocircuitos</strong> (Magnético - bobina).</p>
+<p><strong>6. ¿En qué volúmenes del baño están prohibidos enchufes e interruptores 230V?</strong>
+*   <strong>Respuesta:</strong> Volúmenes 0, 1 y 2.</p>
+<p><strong>7. ¿Qué significan las siglas DDR?</strong>
+*   <strong>Respuesta:</strong> Dispositivo Diferencial Residual (El "Salvavidas").</p>
+<p><strong>8. Calcule la intensidad: Radiador 2500W a 230V.</strong>
+*   <strong>Respuesta:</strong> $I = P/V = 2500/230 = 10,87 A$.</p>
+<p><strong>9. ¿Qué cable se usa en instalación fija doméstica seca?</strong>
+*   <strong>Respuesta:</strong> NYM-J.</p>
+<p><strong>10. Finalidad de la conexión equipotencial principal.</strong>
+*   <strong>Respuesta:</strong> Poner todas las masas metálicas (agua, gas, estructura) al mismo potencial de tierra para evitar chispazos.</p>
+<hr />
+<h2>📅 PIFQU 2018-2019</h2>
+<p><strong>11. Diferencia entre contacto directo e indirecto.</strong>
+*   <strong>Respuesta:</strong>
+    *   <strong>Directo:</strong> Tocas el cable pelado (parte activa).
+    *   <strong>Indirecto:</strong> Tocas la carcasa de la lavadora que tiene un fallo (masa en tensión).</p>
+<p><strong>12. Dispositivo obligatorio en cabecera de instalación.</strong>
+*   <strong>Respuesta:</strong> Interruptor Automático General (Corte omnipolar).</p>
+<p><strong>13. En TN-S, ¿dónde se separan N y PE?</strong>
+*   <strong>Respuesta:</strong> En el origen (transformador o acometida). Viajan separados siempre.</p>
+<p><strong>14. Las 5 Reglas de Oro.</strong>
+*   <strong>Respuesta:</strong>
+    1.  Corte efectivo.
+    2.  Bloqueo/Enclavamiento.
+    3.  Verificar Ausencia de Tensión (VAT).
+    4.  Puesta a tierra y en corto.
+    5.  Señalizar y delimitar zona.</p>
+<p><strong>15. Sección mínima cobre en doméstico.</strong>
+*   <strong>Respuesta:</strong> Alumbrado 1,5 mm² / Tomas 2,5 mm².</p>
+<p><strong>16. ¿Qué significa "Tipo A" en un Diferencial?</strong>
+*   <strong>Respuesta:</strong> Detecta corriente alterna AC y pulsante DC (Vital para electrónica moderna).</p>
+<p><strong>17. Tensión Fase-Neutro en red 400V entre fases.</strong>
+*   <strong>Respuesta:</strong> 230 V ($400 / \sqrt{3}$).</p>
+<p><strong>18. ¿Qué es la selectividad?</strong>
+*   <strong>Respuesta:</strong> Que salte solo el disyuntor más cercano al fallo, no el general.</p>
+<p><strong>19. Función de la puesta a tierra de masas.</strong>
+*   <strong>Respuesta:</strong> Derivar fugas para que el Diferencial las vea y dispare.</p>
+<p><strong>20. Medición: F-N=230V, F-T=230V, N-T=0V.</strong>
+*   <strong>Respuesta:</strong> Todo correcto.</p>
+<hr />
+<h2>📅 PIIQU 2019-2020</h2>
+<p><strong>21. En circuito R-L, ¿la corriente adelanta o atrasa?</strong>
+*   <strong>Respuesta:</strong> La corriente se <strong>atrasa</strong> respecto a la tensión (la bobina es "perezosa").</p>
+<p><strong>22. ¿Qué es la impedancia (Z)?</strong>
+*   <strong>Respuesta:</strong> La oposición total en AC (Resistencia + Reactancia). $Z = \sqrt{R^2 + X^2}$.</p>
+<p><strong>23. Corriente en R=50Ω con 100V DC.</strong>
+*   <strong>Respuesta:</strong> $I = 100/50 = 2 A$.</p>
+<p><strong>24. Corriente en R=50Ω con 230V AC.</strong>
+*   <strong>Respuesta:</strong> $I = 230/50 = 4,6 A$.</p>
+<p><strong>25. ¿Qué es un esquema unifilar?</strong>
+*   <strong>Respuesta:</strong> Un dibujo simplificado donde una línea representa todos los cables de un circuito.</p>
+<p><strong>26. Conexión Estrella (Y) en motor.</strong>
+*   <strong>Respuesta:</strong> Unimos finales (W2, U2, V2). Cada bobina recibe 230V (si red 400V). Suave.</p>
+<p><strong>27. Conexión Triángulo (Δ) en motor.</strong>
+*   <strong>Respuesta:</strong> Unimos principio con final (U1-W2, V1-U2, W1-V2). Cada bobina recibe 400V. Fuerte.</p>
+<p><strong>28. ¿Cuándo conectar motor 230/400V en Triángulo?</strong>
+*   <strong>Respuesta:</strong> Solo si la red es de 230V entre fases (Raro hoy día, o con variador mono-tri). Si la red es 400V, ¡BUM!</p>
+<p><strong>29. Función interruptor crepuscular.</strong>
+*   <strong>Respuesta:</strong> Enciende luces cuando cae el sol (sensor de lux).</p>
+<p><strong>30. Caída de tensión máxima permitida.</strong>
+*   <strong>Respuesta:</strong> 3% en alumbrado, 5% en fuerza.</p>
+<hr />
+<h2>📅 PIFQU 2020-2021</h2>
+<p><strong>31. Máxima tensión de contacto seguro (Seco).</strong>
+*   <strong>Respuesta:</strong> 50 V AC.</p>
+<p><strong>32. Régimen con tierras independientes.</strong>
+*   <strong>Respuesta:</strong> TT (Tierra Transformador separada de Tierra Masas).</p>
+<p><strong>33. ¿Para qué probamos continuidad del PE?</strong>
+*   <strong>Respuesta:</strong> Para asegurar que si hay fallo, la corriente llegará a tierra y no se quedará en la carcasa matando a alguien.</p>
+<p><strong>34. Curva de disparo doméstico.</strong>
+*   <strong>Respuesta:</strong> Curva C.</p>
+<p><strong>35. Conmutar luz desde 3 puntos.</strong>
+*   <strong>Respuesta:</strong> 2 Conmutadores (Vaivén) en extremos + 1 Cruzamiento en medio.</p>
+<p><strong>36. Significado Código IP.</strong>
+*   <strong>Respuesta:</strong> Ingress Protection. 1º dígito Sólidos, 2º dígito Agua.</p>
+<p><strong>37. Potencia 3 lámparas paralelo (60+75+100W).</strong>
+*   <strong>Respuesta:</strong> $60+75+100 = 235 W$.</p>
+<p><strong>38. Función conexión equipotencial suplementaria.</strong>
+*   <strong>Respuesta:</strong> Protección extra en baños uniendo tubo agua, gas y tierra eléctrica.</p>
+<p><strong>39. Instrumento medir tierra.</strong>
+*   <strong>Respuesta:</strong> Telurómetro.</p>
+<p><strong>40. ¿Correcto F-N 230, F-T 230, N-T 0?</strong>
+*   <strong>Respuesta:</strong> Sí.</p>
+<hr />
+<h2>📅 PIFQU 2023-2024 (Teoría)</h2>
+<p><strong>41. Disyuntor para tomas 2,5 mm².</strong>
+*   <strong>Respuesta:</strong> 16A o máximo 20A.</p>
+<p><strong>42. Definición de "Masa".</strong>
+*   <strong>Respuesta:</strong> Parte metálica accesible que normalmente no tiene tensión, pero podría tenerla si falla el aislamiento.</p>
+<p><strong>43. En TN-C-S, ¿dónde se divide el PEN?</strong>
+*   <strong>Respuesta:</strong> En la entrada del usuario. A partir de ahí, N y PE no se vuelven a juntar jamás.</p>
+<p><strong>44. Aparato comprobar DDR.</strong>
+*   <strong>Respuesta:</strong> Comprobador de RCD / Multifunción.</p>
+<p><strong>45. Primer dígito IP4X.</strong>
+*   <strong>Respuesta:</strong> Protegido contra objetos &gt; 1mm (ej. un alambre fino).</p>
+<p><strong>46. Resistencias serie 20 y 30 Ω.</strong>
+*   <strong>Respuesta:</strong> $50 \Omega$.</p>
+<p><strong>47. Resistencias paralelo 20 y 30 Ω.</strong>
+*   <strong>Respuesta:</strong> $12 \Omega$.</p>
+<p><strong>48. Seguridad entornos conductores.</strong>
+*   <strong>Respuesta:</strong> MBTS (12V) o Transformador de separación.</p>
+<p><strong>49. Invertir giro motor trifásico.</strong>
+*   <strong>Respuesta:</strong> Cambiar dos fases cualquiera (L1 por L2).</p>
+<p><strong>50. Función circuito de mando.</strong>
+*   <strong>Respuesta:</strong> El cerebro. Maneja la bobina del contactor para arrancar/parar de forma segura sin manejar la potencia directamente.</p>
+    </div>
+    <div class="footer">
+        Generado para el éxito en el PIFQU • 2026
+    </div>
+</body>
+</html>
