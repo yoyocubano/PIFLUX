@@ -14,7 +14,7 @@ OUTPUT_DIR = "/Users/yoyocubano/Library/CloudStorage/GoogleDrive-yucolaguilar@gm
 GEMINI_API_KEY = "AIzaSyB8l0ixA1csv4_VIDRgplMLAIS6TAUIiXw"
 
 # Using Flash for speed and high context window
-MODEL_NAME = "gemini-pro"
+MODEL_NAME = "gemini-2.0-flash"
 
 # --- 2. AI CONNECTION ---
 def get_ai_response(prompt):
