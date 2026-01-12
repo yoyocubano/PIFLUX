@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSIBLES PREGUNTAS NUEVO PIF</title>
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --heading: #1f2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar { background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: var(--heading); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+        .navbar a:hover { color: var(--accent); }
+        
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        h1, h2, h3 { color: var(--heading); letter-spacing: -0.02em; font-weight: 700; }
+        h1 { font-size: 2.25rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        pre { background: var(--code-bg); padding: 1.25rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border); }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        
+        blockquote { border-left: 4px solid var(--accent); margin: 1.5rem 0; padding-left: 1rem; color: #4b5563; font-style: italic; background: #eff6ff; padding: 1rem; border-radius: 0 8px 8px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th, td { padding: 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+        th { font-weight: 600; background: var(--code-bg); }
+        
+        /* MathJax */
+        .MathJax { font-size: 1.1em !important; }
+        
+        .footer { text-align: center; padding: 3rem; color: #6b7280; font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    </style>
+    <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\(', '\)']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">← PIF Study Hub</a>
+        <span style="color: #9ca3af; font-size: 0.85rem;">Centro de Estudio</span>
+    </nav>
+    <div class="container">
+        <h1>POSIBLES PREGUNTAS NUEVO PIF</h1>
+        <h1>🔮 POSIBLES PREGUNTAS PARA EL NUEVO PIF (Predicción)</h1>
+<p>Basado en el análisis de frecuencia de los últimos 7 años, aquí tienes las preguntas más probables para caer en tu próximo examen. ¡Domínalas!</p>
+<hr />
+<h2>🚨 Top Probabilidad: Protecciones y Seguridad (Siempre caen)</h2>
+<p><strong>1. Calculo de Intensidad de Cortocircuito (Icc) vs Poder de Corte</strong>
+*   <em>Pregunta:</em> Tienes un disyuntor de 6kA. La Icc calculada en el punto es de 10kA. ¿Es válido?
+*   <em>Respuesta:</em> No. El poder de corte del disyuntor (6kA) debe ser siempre MAYOR que la Icc posible (10kA), o explotará.</p>
+<p><strong>2. Selectividad Diferencial</strong>
+*   <em>Pregunta:</em> ¿Cómo aseguras que salte el diferencial del baño (30mA) y no el general de la casa (300mA) ante un fallo en el baño?
+*   <em>Respuesta:</em> Usando un diferencial general de tipo "Selectivo" (S) y asegurando que su sensibilidad sea al menos 3 veces mayor (300mA vs 30mA).</p>
+<p><strong>3. Zonas de Baño (La pregunta trampa)</strong>
+*   <em>Pregunta:</em> ¿Puedo poner una toma de corriente a 50cm de la bañera si tiene tapa?
+*   <em>Respuesta:</em> No, sigue siendo Volumen 2 (0-60cm). Solo permitido tomas de afeitadora con transformador de separación.</p>
+<hr />
+<h2>⚡ Top Probabilidad: Motores y Automatismos</h2>
+<p><strong>4. Dimensionamiento de Motor</strong>
+*   <em>Pregunta:</em> Un motor de 10kW, 400V, cos φ 0.85, rendimiento 0.9. Calcule la corriente nominal para ajustar el relé térmico.
+*   <em>Fórmula:</em> $I = P / (\sqrt{3} \cdot V \cdot \cos\varphi \cdot \eta)$.
+*   <em>Cálculo:</em> $10000 / (1.732 \cdot 400 \cdot 0.85 \cdot 0.9) = 18.86 A$. Ajustar relé a 19A aprox.</p>
+<p><strong>5. Lógica de Contactores</strong>
+*   <em>Pregunta:</em> Dibuja el enclavamiento eléctrico para una inversión de giro.
+*   <em>Respuesta:</em> Debes dibujar un contacto NC de K2 en serie con la bobina de K1, y un contacto NC de K1 en serie con la bobina de K2.</p>
+<hr />
+<h2>📐 Top Probabilidad: Cálculos y Cables</h2>
+<p><strong>6. Caída de Tensión (El clásico)</strong>
+*   <em>Pregunta:</em> Tienes una línea de 50 metros, 1.5mm², alimentando 10A a 230V. ¿Cumple la caída de tensión &lt; 3%?
+*   <em>Cálculo:</em> $\Delta U = (2 \cdot L \cdot I) / (56 \cdot S) = (2 \cdot 50 \cdot 10) / (56 \cdot 1.5) = 11.9 V$.
+*   <em>Límite 3%:</em> $230 \cdot 0.03 = 6.9 V$.
+*   <em>Respuesta:</em> <strong>NO cumple</strong> (11.9V &gt; 6.9V). Hay que aumentar sección.</p>
+<p><strong>7. Factor de Corrección de Cables</strong>
+*   <em>Pregunta:</em> Si paso 3 circuitos juntos por un tubo aislante, ¿el cable aguanta los mismos amperios?
+*   <em>Respuesta:</em> No. Debes aplicar un factor de corrección (aprox 0.70) porque se calientan mutuamente. El cable aguanta MENOS corriente.</p>
+<hr />
+<h2>🤖 Top Probabilidad: Tecnología Moderna (KNX/Smart)</h2>
+<p><strong>8. Topología KNX</strong>
+*   <em>Pregunta:</em> ¿Qué pasa si cierro el bucle en una línea de bus KNX?
+*   <em>Respuesta:</em> Error de comunicación. La topología debe ser Árbol, Estrella o Línea, pero NUNCA anillo cerrado.</p>
+<p><strong>9. Variador de Frecuencia</strong>
+*   <em>Pregunta:</em> ¿Cómo reduzco la velocidad de un motor asíncrono a la mitad?
+*   <em>Respuesta:</em> Reduciendo la frecuencia (Hz) a la mitad mediante un variador. (Recuerda $n = 60f / p$).</p>
+<p><strong>10. Diferencial Tipo B</strong>
+*   <em>Pregunta:</em> Vamos a instalar un cargador de coche eléctrico. ¿Qué diferencial necesito?
+*   <em>Respuesta:</em> Tipo B (o Tipo A EV), porque el coche puede inyectar corrientes continuas puras de fallo que dejarían ciego a un diferencial normal AC.</p>
+    </div>
+    <div class="footer">
+        Generado para el éxito en el PIFQU • 2026
+    </div>
+</body>
+</html>

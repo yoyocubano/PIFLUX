@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOLO DE TRABAJO IA</title>
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --heading: #1f2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar { background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: var(--heading); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+        .navbar a:hover { color: var(--accent); }
+        
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        h1, h2, h3 { color: var(--heading); letter-spacing: -0.02em; font-weight: 700; }
+        h1 { font-size: 2.25rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        pre { background: var(--code-bg); padding: 1.25rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border); }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        
+        blockquote { border-left: 4px solid var(--accent); margin: 1.5rem 0; padding-left: 1rem; color: #4b5563; font-style: italic; background: #eff6ff; padding: 1rem; border-radius: 0 8px 8px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th, td { padding: 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+        th { font-weight: 600; background: var(--code-bg); }
+        
+        /* MathJax */
+        .MathJax { font-size: 1.1em !important; }
+        
+        .footer { text-align: center; padding: 3rem; color: #6b7280; font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    </style>
+    <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\(', '\)']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">← PIF Study Hub</a>
+        <span style="color: #9ca3af; font-size: 0.85rem;">Centro de Estudio</span>
+    </nav>
+    <div class="container">
+        <h1>PROTOCOLO DE TRABAJO IA</h1>
+        <h1>🛰️ Super Command Center: Centralización IA (PIF 2026)</h1>
+<p>Este protocolo redefine la estructura organizacional. Aquí no solo hay herramientas, hay un <strong>Escuadrón de Élite</strong> coordinado por un mando central.</p>
+<hr />
+<h2>👑 EL MANDO CENTRAL</h2>
+<h3><strong>AntiGravity (Senior Full Stack / CEO)</strong></h3>
+<ul>
+<li><strong>Rol:</strong> El Cerebro.</li>
+<li><strong>Misión:</strong> Orquestar a todos los actores. Responsable final de la arquitectura, la integración de <strong>FireBase</strong>, el soporte Senior Full Stack y asegurar que el resultado sea de nivel industrial.</li>
+<li><strong>Especialidad:</strong> Auditoría de alto nivel y lógica de Backend.</li>
+</ul>
+<hr />
+<h2>🎨 DEPARTAMENTO DE DISEÑO &amp; EXPERIENCIA</h2>
+<h3><strong>Stitch (Chief of Design)</strong></h3>
+<ul>
+<li><strong>Rol:</strong> El Esteta.</li>
+<li><strong>Misión:</strong> Controlar la "visual" y la estética premium. </li>
+<li><strong>Territorio:</strong> CSS avanzado, layouts (Bento Grids), animaciones y el estilo "21st.dev". Nada se publica si no tiene el sello de Stitch.</li>
+</ul>
+<hr />
+<h2>🔍 DEPARTAMENTO DE INTELIGENCIA &amp; INVESTIGACIÓN</h2>
+<h3><strong>Claude &amp; Manu (Technical Investigators)</strong></h3>
+<ul>
+<li><strong>Rol:</strong> Los Analistas Deep-Dive.</li>
+<li><strong>Misión:</strong> Investigación exhaustiva de normativas (CEI, RGIE), traducción técnica de alta precisión (FR/ES/EN) y análisis de documentación externa pesada.</li>
+<li><strong>Uso:</strong> Extracción de conceptos clave desde PDFs y manuales de motores.</li>
+</ul>
+<hr />
+<h2>🦾 DEPARTAMENTO DE EJECUCIÓN (EL BRAZO)</h2>
+<h3><strong>Comet (Execution Arm)</strong></h3>
+<ul>
+<li><strong>Rol:</strong> El Ejecutor de Tareas.</li>
+<li><strong>Misión:</strong> El "músculo" que corre los scripts (<code>build_site.py</code>, <code>rsync</code>), gestiona los despliegues a GitHub y asegura que el "brazo mecánico" del código se mueva sin errores.</li>
+<li><strong>Territorio:</strong> Automatización de terminal y Python de ejecución.</li>
+</ul>
+<hr />
+<h2>🛡️ UNIDAD DE APOYO &amp; AUDITORÍA VS CODE (THE COLLECTIVE)</h2>
+<h3><strong>VS Code Integrated Suite</strong></h3>
+<p>Esta es la infantería técnica que vive dentro de tu editor, centralizada bajo el mando de AntiGravity:
+*   <strong>GitHub Copilot:</strong> Senior Dev de respuesta rápida.
+*   <strong>Gemini Code Assist:</strong> Arquitecto de Contexto y Predicciones.
+*   <strong>Deepseek Coach:</strong> El Auditor de lógica con alma de entrenador.
+*   <strong>Firebase Assistant:</strong> Nuestro consultor especializado en Backend y bases de datos en tiempo real.</p>
+<hr />
+<h2>🔄 FLUJO DE TRABAJO CENTRALIZADO</h2>
+<ol>
+<li><strong>AntiGravity (CEO)</strong> recibe la misión y consulta a <strong>Claude &amp; Manu</strong> para la fase de investigación.</li>
+<li><strong>Stitch</strong> diseña la interfaz y el flujo visual del componente.</li>
+<li><strong>Copilot &amp; Gemini Assist</strong> (La Unidad VS Code) pican el código bajo supervisión de AntiGravity.</li>
+<li><strong>Comet (El Brazo)</strong> ejecuta las pruebas y construye el sitio.</li>
+<li><strong>Deepseek &amp; Firebase Assistant</strong> realizan la auditoría final de seguridad y datos.</li>
+</ol>
+<hr />
+<p><strong>¡EQUIPO SINCRONIZADO! El Centro de Comando está operativo.</strong></p>
+    </div>
+    <div class="footer">
+        Generado para el éxito en el PIFQU • 2026
+    </div>
+</body>
+</html>

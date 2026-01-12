@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIFQU 2017-2018,2019,2020,2021,2022,2023,2024</title>
+    <style>
+        :root {
+            /* 21st.dev Inspired Light Theme */
+            --bg-color: #f5f5f5;
+            --text-color: #24292f;
+            --card-bg: #ffffff;
+            --accent: #0969da; /* GitHub Blue-ish */
+            --heading: #1f2328;
+            --border: #d0d7de;
+            --code-bg: #f6f8fa;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1, h2, h3, h4 { color: var(--heading); font-weight: 600; letter-spacing: -0.02em; }
+        h1 { border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { background-color: var(--card-bg); padding: 3rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid var(--border); }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 85%; font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace; }
+        pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); }
+        .back-link { display: inline-block; margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem; color: #57606a; }
+        .file-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .file-card { background: #ffffff; padding: 1.5rem; border-radius: 6px; border: 1px solid var(--border); transition: border-color 0.2s, box-shadow 0.2s; }
+        .file-card:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-decoration: none; }
+        .file-card h3 { margin-top: 0; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        
+        /* MathJax Adjustments */
+        .MathJax { font-size: 1.1em !important; }
+    </style>
+    <!-- MathJax for rendering formulas like √ and (x) -->
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\(', '\)']],
+        displayMath: [['$$', '$$'], ['\[', '\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Volver al Índice</a>
+    <div class="container">
+        <h1>PIFQU 2017-2018,2019,2020,2021,2022,2023,2024</h1>
+<p><strong>40 fuentes</strong></p>
+<p>Estas fuentes constituyen una guía técnica integral sobre electricidad industrial, centrada en el funcionamiento y cálculo de sistemas monofásicos y trifásicos. Los textos detallan fórmulas esenciales para determinar la potencia (activa, reactiva y aparente), la intensidad de corriente y la eficiencia en dispositivos como motores, transformadores y hornos. Además, se exploran conceptos avanzados de automatización mediante el software LOGO!, incluyendo el uso de funciones lógicas, temporizadores y esquemas de automantenimiento. El material también aborda normativas de seguridad eléctrica, métodos de conexión en estrella y triángulo, y la importancia de corregir el factor de potencia. Finalmente, se incluyen ejercicios prácticos y analogías pedagógicas para facilitar la comprensión de fenómenos como la impedancia y la caída de tensión.</p>
+<hr />
+<h2>Martes, 23 de diciembre</h2>
+<h3>Explicación de Conexión Estrella-Triángulo</h3>
+<p>La conexión estrella y triángulo son los dos métodos fundamentales para configurar los devanados de un motor trifásico o cualquier receptor de tres fases, permitiendo adaptar el equipo a las tensiones de la red eléctrica.</p>
+<p><strong>1. Conexión Estrella (Y)</strong>
+En esta configuración, un extremo de cada uno de los tres devanados (denominados U2, V2, W2) se une en un punto común, también llamado punto neutro o estrella. Los otros tres extremos libres se conectan a las fases de la red (L1, L2, L3).
+*   <strong>Relación de Tensión:</strong> La tensión que soporta cada bobinado (tensión de fase, $U_{ph}$) es la tensión de la red ($U_L$) dividida por $\sqrt{3} \approx 1,732$. Por ejemplo, en una red de 400 V, cada bobina recibe aproximadamente 230 V.
+*   <strong>Relación de Corriente:</strong> La corriente que circula por la línea ($I_L$) es igual a la corriente que circula por cada fase del motor ($I_{ph}$).
+*   <strong>Uso común:</strong> Se utiliza para arrancar motores en tensiones altas o como el primer paso del arranque estrella-triángulo para reducir la intensidad de arranque.</p>
+<p><strong>2. Conexión Triángulo (Δ)</strong>
+En la conexión en triángulo, el final de un devanado se conecta al principio del siguiente (U2 con V1, V2 con W1, W2 con U1), formando un bucle cerrado. Las fases de la red se conectan a los vértices de este triángulo.
+*   <strong>Relación de Tensión:</strong> Cada bobinado soporta la tensión compuesta total de la red ($U_L = U_{ph}$). Si la red es de 400 V, cada bobina recibe los 400 V completos.
+*   <strong>Relación de Corriente:</strong> La corriente de línea es $\sqrt{3}$ veces mayor que la corriente que circula por cada bobinado ($I_L = \sqrt{3} \cdot I_{ph}$).
+*   <strong>Uso común:</strong> Es la conexión de trabajo normal para motores cuya tensión nominal del bobinado coincide con la tensión entre fases de la red.</p>
+<p><strong>Diferencias clave y Potencia:</strong>
+*   <strong>Potencia Total:</strong> Si se conectan tres resistencias idénticas, la potencia absorbida en configuración triángulo es tres veces superior a la absorbida en estrella ($P_\Delta = 3 \cdot P_Y$).
+*   <strong>Compatibilidad (Placa de características):</strong> Un motor con placa 230/400V debe conectarse en estrella si la red es de 400 V, ya que sus bobinas solo soportan un máximo de 230 V. Si se conectara en triángulo a 400 V, los bobinados recibirían demasiada tensión y se dañarían.
+*   <strong>Arranque Estrella-Triángulo:</strong> Maniobra clásica para evitar picos excesivos de corriente. El motor inicia en estrella (consumiendo menos corriente y entregando menos par) y, tras unos segundos, cambia a triángulo para trabajar a su potencia nominal.</p>
+<blockquote>
+<p><strong>Analogía para consolidar el concepto:</strong>
+Imagina que los bobinados del motor son como personas en una mesa compartiendo comida. En la conexión estrella, las personas comparten las raciones, por lo que cada una recibe una porción pequeña (230V); esto es ideal si las personas tienen poca capacidad. En cambio, en la conexión triángulo, cada persona tiene su propia pizza entera (400V) delante; esto solo funciona si las personas son "gigantes" y tienen capacidad para comerse la pizza completa sin enfermar.</p>
+</blockquote>
+<hr />
+<h2>Sábado, 3 de enero</h2>
+<h3>Explica la fórmula para calcular resistencias</h3>
+<p>Para calcular la resistencia eléctrica (R), que se define como la oposición total que presenta un circuito al paso de la corriente, se utiliza principalmente la Ley de Ohm.</p>
+<p><strong>1. La Ley de Ohm (Fórmula Básica)</strong>
+$$R = \frac{V}{I}$$
+*   R: Resistencia en ohmios (Ω).
+*   V: Voltaje/Tensión en voltios (V).
+*   I: Corriente/Intensidad en amperios (A).</p>
+<p><strong>2. Relación con la Potencia</strong>
+Dependiendo de los datos disponibles:
+*   Con voltaje y potencia: $$R = \frac{V^2}{P}$$
+*   Con potencia y corriente: $$R = \frac{P}{I^2}$$</p>
+<p><strong>3. Resistencias en Serie y Paralelo</strong>
+*   <strong>En Serie:</strong> $R_{eq} = R_1 + R_2$ (Ej: 20 + 30 = 50 Ω).
+*   <strong>En Paralelo:</strong> $R_{eq} = \frac{R_1 \cdot R_2}{R_1 + R_2}$ (Ej: 20 y 30 en paralelo = 12 Ω).</p>
+<p><strong>4. Aplicación en Sistemas Trifásicos</strong>
+*   En conexión estrella equilibrada, tensión de fase $U_{ph} = \frac{U_L}{\sqrt{3}}$.
+*   Resistencia por fase: $R = \frac{U_{ph}}{I_{ph}}$.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+Imagina que la corriente eléctrica es agua fluyendo por una tubería. El voltaje es la presión que empuja el agua y la resistencia es el grosor de la tubería o cualquier obstrucción (como un filtro). Para saber qué tan "estrecha" u obstruida está la tubería (resistencia), solo necesitas observar cuánta presión aplicas (voltaje) y cuánta agua sale finalmente (corriente). Si con mucha presión sale poca agua, la resistencia es muy alta.</p>
+</blockquote>
+<hr />
+<h3>Fórmulas para calcular potencia</h3>
+<p><strong>1. Fórmulas Básicas (Ley de Watt - CC)</strong>
+*   $P = V \cdot I$
+*   Con resistencia: $P = I^2 \cdot R$ o $P = \frac{V^2}{R}$.</p>
+<p><strong>2. Potencia en Corriente Alterna Monofásica</strong>
+*   <strong>Potencia activa:</strong> $P = V \cdot I \cdot \cos\varphi$</p>
+<p><strong>3. Potencia en Sistemas Trifásicos</strong> (Fundamental para industria)
+*   <strong>Potencia Activa (P):</strong> Trabajo útil (W o kW). Fórmula: $P = \sqrt{3} \cdot U_L \cdot I_L \cdot \cos\varphi$.
+*   <strong>Potencia Aparente (S):</strong> Potencia total entregada (VA o kVA). Fórmula: $S = \sqrt{3} \cdot U_L \cdot I_L = \sqrt{P^2 + Q^2}$.
+*   <strong>Potencia Reactiva (Q):</strong> Campos magnéticos (VAr). Fórmula: $Q = \sqrt{S^2 - P^2}$.</p>
+<p><strong>4. Potencia y Rendimiento en Motores</strong>
+*   <strong>Conversión:</strong> 1 HP = 0,746 kW; 1 kW = 1,341 HP.
+*   <strong>Eficiencia ($\eta$):</strong> Si un motor recibe 100 W y tiene $\eta=0.9$, entrega 90 W efectivos.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+Imagina una jarra de cerveza. La <strong>potencia activa (P)</strong> es el líquido real que bebes. La <strong>potencia reactiva (Q)</strong> es la espuma; ocupa espacio pero no te la bebes. La <strong>potencia aparente (S)</strong> es el tamaño total de la jarra necesaria para líquido + espuma. El <strong>factor de potencia ($\cos\varphi$)</strong> es qué tan eficientemente aprovechas el vaso: ¡menos espuma, más cerveza!</p>
+</blockquote>
+<hr />
+<h3>El factor de Eficiencia ($\eta$) y Tipo de Conexión</h3>
+<p>El cálculo preciso de la potencia no es solo teórico, sino necesario para dimensionar protecciones y conductores.</p>
+<p><strong>1. El factor de Eficiencia ($\eta$)</strong>
+Representa la capacidad de transformar energía eléctrica en mecánica.
+*   Si $\eta=0,9$, de 100 W eléctricos salen 90 W mecánicos.
+*   <strong>Fórmula Corriente Motor Trifásico:</strong> $$I = \frac{P}{\sqrt{3} \cdot V \cdot \cos\varphi \cdot \eta}$$</p>
+<p><strong>2. Influencia del Tipo de Conexión</strong>
+*   <strong>Estrella (Y):</strong> Menos tensión ($U_{ph} = U_L / \sqrt{3}$), menor corriente de arranque.
+*   <strong>Triángulo ($\Delta$):</strong> Tensión plena ($U_{ph} = U_L$), 3 veces más potencia que en estrella.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+La eficiencia ($\eta$) es como el metabolismo de un atleta. Si es 80%, necesita comer 1000 calorías para producir 800 calorías de movimiento. El tipo de conexión es la marcha del coche: <strong>Estrella</strong> es primera (arranque suave, ahorro), <strong>Triángulo</strong> es velocidad de crucero (fuerza máxima, mayor consumo).</p>
+</blockquote>
+<hr />
+<h3>Cómo se calcula la eficiencia</h3>
+<p>La eficiencia eléctrica ($\eta$) mide la relación entre la salida útil y la entrada total.
+$$ \eta = \frac{P_{util}}{P_{suministrada}} $$
+*   $P_{util}$ (Salida): Potencia en el eje del motor.
+*   $P_{suministrada}$ (Entrada): Potencia absorbida de la red.
+*   Resultado en % (Ej: 0.9 = 90%).</p>
+<p><strong>Para calcular corriente:</strong>
+Si la eficiencia es baja, el motor consume más corriente para el mismo trabajo.
+$$ I = \frac{P}{\sqrt{3} \cdot V \cdot \cos\varphi \cdot \eta} $$</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+La eficiencia es como un exprimidor de naranjas. Potencia suministrada = total de naranjas. Potencia útil = zumo obtenido. Si el exprimidor es malo (baja eficiencia), desperdicias mucha pulpa y necesitas más naranjas para llenar un vaso.</p>
+</blockquote>
+<hr />
+<h3>Fórmulas para calcular corriente y sus usos</h3>
+<p><strong>1. Fórmulas Fundamentales</strong>
+*   <strong>Ley de Ohm:</strong> $I = V/R$ (Circuitos resistivos).
+*   <strong>Ley de Watt:</strong> $I = P/V$ (Electrodomésticos simples).</p>
+<p><strong>2. Corriente en Motores</strong>
+*   <strong>Monofásico:</strong> $I = P / (V \cdot \eta \cdot \cos\varphi)$
+*   <strong>Trifásico:</strong> $I = P / (\sqrt{3} \cdot V \cdot \eta \cdot \cos\varphi)$</p>
+<p><strong>3. Corriente en Transformadores</strong>
+*   <strong>Trifásico:</strong> $I = kVA / (\sqrt{3} \cdot kV)$</p>
+<p><strong>4. Relación según Conexión</strong>
+*   <strong>Estrella:</strong> $I_{linea} = I_{fase}$
+*   <strong>Triángulo:</strong> $I_{linea} = \sqrt{3} \cdot I_{fase}$</p>
+<p><strong>Usos:</strong> Dimensionamiento de conductores, selección de protecciones, seguridad y detección de fallas.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+La corriente es el caudal de agua. El voltaje es la presión. Las fórmulas son el manual del fontanero para saber qué tan gruesa debe ser la manguera (cable) para que no estalle.</p>
+</blockquote>
+<hr />
+<h3>Cálculo de consumo eléctrico</h3>
+<p>Consumo = Potencia $\times$ Tiempo.
+<strong>1. Sistemas Monofásicos:</strong> $P = V \cdot I \cdot \cos\varphi$.
+<strong>2. Sistemas Trifásicos:</strong> $P = \sqrt{3} \cdot V_L \cdot I_L \cdot \cos\varphi$.
+<strong>3. Factores clave:</strong> Eficiencia ($\eta$) y Valor Eficaz (True RMS) para mediciones reales.
+<strong>4. Conversiones:</strong> 1 HP = 0,746 kW.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+El consumo es el gasto de agua. Potencia es qué tan abierto está el grifo (caudal) y Tiempo es cuánto dura abierto. El factor de potencia es como sarro en la tubería (ineficiencia).</p>
+</blockquote>
+<hr />
+<h3>Cálculos para costes de consumo eléctrico</h3>
+<p>Para facturar, se usa la potencia activa absorbida de la red ($P_{red}$).
+<strong>1. Potencia total de red:</strong> $P_{red} = P_{util} / \eta$. (¡Importante!)
+<strong>2. Fórmula Coste:</strong>
+$$ \text{Coste} = P_{red} \text{ (kW)} \cdot \text{Tiempo (h)} \cdot \text{Precio kWh} $$</p>
+<p><strong>Versión Examen Luxemburgo (ILNAS-EN 60364):</strong>
+$$ \text{Coste} = \left( \frac{\sqrt{3} \cdot U_L \cdot I_L \cdot \cos\varphi}{1000} \right) \cdot t(h) \cdot \text{Precio} $$
+Ó desde potencia eje: Coste = $(P_n / \eta) \cdot t \cdot \text{Precio}$.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+Pagar la cuenta en un restaurante con cocina ineficiente ($\eta$). Pagas por toda la comida que compró el chef ($P_{red}$), no solo la que te comiste ($P_{util}$), porque el desperdicio del chef (pérdidas) corre por tu cuenta.</p>
+</blockquote>
+<hr />
+<h3>Fórmulas y conceptos de Frecuencia y Sinusoide</h3>
+<p><strong>1. La Sinusoide:</strong> Onda de CA. Inicia en 0, sube a pico (+), baja a 0, baja a pico (-), vuelve a 0.
+<strong>2. Amplitudes:</strong>
+*   <strong>Valor Pico ($V_p$):</strong> Máximo valor de la cresta. $V_p = V_{RMS} \cdot \sqrt{2}$.
+*   <strong>Valor RMS ($V_{RMS}$):</strong> Valor eficaz (lo que mide el multímetro). $V_{RMS} = V_p / \sqrt{2}$.
+<strong>3. Frecuencia ($f$):</strong> Ciclos por segundo (Hz).
+<strong>4. Velocidad Síncrona ($n$):</strong>
+$$ n = \frac{60 \cdot f}{p} \quad \Rightarrow \quad f = \frac{n \cdot p}{60} $$
+*   <strong>60:</strong> Factor de conversión seg/min.
+*   <strong>$p$:</strong> Pares de polos (Polos totales / 2).</p>
+<blockquote>
+<p><strong>Analogía Frecuencia:</strong>
+Latidos del corazón de un deportista. 60 Hz = 60 latidos por segundo.
+<strong>Analogía 60:</strong> El segundero del reloj que traduce latidos/segundo a vueltas/minuto.</p>
+</blockquote>
+<hr />
+<h3>Lunes, 5 de enero</h3>
+<h3>Cálculo de Caída de Tensión (3%)</h3>
+<p>Normativa Luxemburgo.
+<strong>1. Valor admisible:</strong> $\Delta U = 3\% \cdot V_{nominal}$. (Ej: $3\% \cdot 230V = 6.9V$).
+<strong>2. Fórmulas reales:</strong>
+*   <strong>Monofásico:</strong> $\Delta U = \frac{2 \cdot L \cdot I \cdot \cos\varphi}{\gamma \cdot S}$
+*   <strong>Trifásico:</strong> $\Delta U = \frac{\sqrt{3} \cdot L \cdot I \cdot \cos\varphi}{\gamma \cdot S}$
+<strong>3. Sección necesaria ($S$):</strong> Despejar S si $\Delta U &gt; 3\%$. $S = \frac{\dots}{\Delta U_{max} \cdot \gamma}$.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+Transportar agua con una manguera muy larga. La fricción roba presión (caída de tensión). Si al final no sale con fuerza (superas el 3%), necesitas una manguera (cable) más ancha.</p>
+</blockquote>
+<h3>Reglas de Coordinación ($I_b, I_n, I_z$)</h3>
+<p>Seguridad fundamental (ILNAS-EN 60364).
+Regla: $$ I_b \le I_n \le I_z $$
+1.  <strong>$I_b$ (Empleo):</strong> Corriente real de carga.
+2.  <strong>$I_n$ (Nominal protección):</strong> Valor del disyuntor.
+3.  <strong>$I_z$ (Capacidad cable):</strong> Límite máximo del cable antes de quemarse.
+Explicación: La protección ($I_n$) debe saltar antes de que el cable se queme ($I_z$), pero no debe saltar con el uso normal ($I_b$).</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+Llenar una piscina con manguera.
+$I_b$: Caudal necesario.
+$I_z$: Presión máxima antes de que la manguera explote.
+$I_n$: Válvula de seguridad. La válvula debe dejar pasar lo necesario ($I_b$) pero cerrar antes de la explosión ($I_z$).</p>
+</blockquote>
+<h3>Esquemas de Potencia y Mando (Paso a Paso)</h3>
+<p><strong>1. Potencia (Fuerza):</strong>
+*   Líneas L1, L2, L3 $\to$ Protección (-Q) $\to$ Contactor (-K1) $\to$ Relé Térmico (-F4) $\to$ Motor (-MA1).
+*   Bornes clave: Contactor (1-2, 3-4, 5-6).</p>
+<p><strong>2. Mando (Control):</strong>
+*   Fase $\to$ Relé Térmico NC (95-96, seguridad) $\to$ Pulsador Parada NC (1-2) $\to$ Pulsador Marcha NO (3-4) $\to$ Bobina (A1-A2).
+*   <strong>Enclavamiento/Auto-mantenimiento:</strong> Paralelo al pulsador de marcha con contacto auxiliar NO (13-14) del contactor.</p>
+<blockquote>
+<p><strong>Analogía:</strong>
+<strong>Potencia:</strong> El caballero y su espada (fuerza bruta). <strong>Mando:</strong> El cerebro que ordena atacar. <strong>Relé Térmico:</strong> El sudor; si hay mucho, el cerebro ordena parar (95-96 abre).</p>
+</blockquote>
+<h3>LECTURA DE TABLA DE RESULTADOS (Examen)</h3>
+<ul>
+<li><strong>$\Delta V &gt; 3\%$:</strong> Cable muy fino o muy largo. Peligro de mal funcionamiento.</li>
+<li><strong>Corrientes:</strong> Verificar $I_b \le I_n \le I_z$. Si $I_{medida}$ es desigual entre fases $\to$ Desequilibrio.</li>
+<li><strong>True RMS:</strong> Necesario si hay variadores, si no, la lectura es falsa.</li>
+</ul>
+<blockquote>
+<p><strong>Analogía:</strong>
+La tabla es el panel de control. $\Delta V$ es pérdida de presión. Corriente es caudal. Si la tabla dice que pierdes mucha presión, necesitas tubo más grueso.</p>
+</blockquote>
+<h3>KNX: Actuadores vs Sensores</h3>
+<ul>
+<li><strong>Actuadores (Salidas):</strong> Ejecutan (Relés, Dimmers). Van en cuadro DIN.</li>
+<li><strong>Sensores (Entradas):</strong> Detectan (Pulsadores, Detectores). Van en pared/techo.</li>
+<li><strong>Direcciones:</strong><ul>
+<li><strong>Física:</strong> DNI del aparato (dónde está, ej: 1.1.5).</li>
+<li><strong>De Grupo:</strong> Idioma/Función (qué hace, ej: "Encender Sala", 0/0/1). Vincula sensor con actuador.</li>
+</ul>
+</li>
+<li><strong>Cableado:</strong> Bus par trenzado (verde) en paralelo, estrella o árbol.</li>
+</ul>
+<blockquote>
+<p><strong>Analogía:</strong>
+<strong>Sensores:</strong> Tus ojos/tacto. <strong>Bus:</strong> Nervios. <strong>Actuadores:</strong> Músculos. <strong>Dir. Física:</strong> Tu nombre. <strong>Dir. Grupo:</strong> Una orden común ("¡Salten!") que entienden varios músculos a la vez.</p>
+</blockquote>
+<h3>Lógica Cableada y Conectores</h3>
+<ul>
+<li><strong>AND (Serie):</strong> Todo debe cumplirse. (Interruptor Y Botón).</li>
+<li><strong>OR (Paralelo):</strong> Basta uno. (Botón O Sensor).</li>
+<li><strong>Enclavamiento (Interlocking):</strong> Vital para inversión de giro. Contacto NC de K2 en bobina K1. K1 y K2 nunca juntos (Cortocircuito).</li>
+<li><strong>Auto-mantenimiento:</strong> Contacto 13-14 en paralelo al marcha. Memoria.</li>
+</ul>
+<blockquote>
+<p><strong>Analogía:</strong>
+<strong>AND:</strong> Portero estricto (Invitación Y Etiqueta). <strong>OR:</strong> Portero relajado (Invitación O Amigo del dueño).</p>
+</blockquote>
+<hr />
+<h2>RESUMEN GENERAL (Todo lo que debes saber)</h2>
+<p><strong>Fórmulas Clave:</strong>
+1.  <strong>Ohm:</strong> $V=I \cdot R$
+2.  <strong>Potencia Trifásica:</strong> $P = \sqrt{3} \cdot U \cdot I \cdot \cos\varphi$
+3.  <strong>Frecuencia:</strong> $f = (n \cdot p) / 60$
+4.  <strong>Caída Tensión:</strong> $\Delta U = (k \cdot L \cdot I)/S$
+5.  <strong>Coordinación:</strong> $I_b \le I_n \le I_z$</p>
+<p><strong>Ejercicios Típicos Examen:</strong>
+1.  <strong>Cálculo de Secciones:</strong> Dado un $\Delta U$ máx, hallar mm².
+2.  <strong>Motor:</strong> Hallar corriente nominal y de arranque (Estrella vs Triángulo).
+3.  <strong>Costes:</strong> Calcular factura considerando eficiencia ($\eta$).
+4.  <strong>Lógica:</strong> Dibujar esquema de mando inversión de giro o automatismo simple.
+5.  <strong>Seguridad:</strong> 5 Reglas de Oro y grados IP.</p>
+<p><strong>Instalación Estrella-Triángulo:</strong>
+*   Arrancar suave (Estrella, K1+K3).
+*   Temporizador cambia a potencia (Triángulo, K1+K2).
+*   <strong>NUNCA K2 y K3 juntos (BUM).</strong></p>
+<p><strong>Motor Monofásico (Steinmetz):</strong>
+*   Lleva condensador para crear "tercera fase" falsa. Pierde 30% potencia.</p>
+<hr />
+<p><em>Este documento resume 40 fuentes de conocimiento eléctrico industrial para la preparación de exámenes oficiales en Luxemburgo.</em></p>
+    </div>
+</body>
+</html>
