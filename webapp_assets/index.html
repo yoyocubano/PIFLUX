@@ -456,7 +456,39 @@
                             </div>
                             <div className="cli-text text-sm space-y-2">
                                 <p className="text-primary"><span className="text-slate-500">&gt;</span> Login: <span className="text-green-400">AUTHORIZED</span></p>
-                                <p className="text-primary"><span className="text-slate-500">&gt;</span> Next Exam: <span className="text-yellow-400">{studyResult ? studyResult.days + ' DAYS' : 'NO DATA'}</span></p>
+                                <p className="text-primary flex items-center gap-2">
+                                    <span className="text-slate-500">&gt;</span> Next Exam:
+                                    <input
+                                        type="date"
+                                        className="bg-transparent border-b border-yellow-500 text-yellow-500 focus:outline-none text-sm uppercase font-mono w-32"
+                                        onChange={(e) => {
+                                            const date = new Date(e.target.value);
+                                            const now = new Date();
+                                            const diffTime = date - now;
+                                            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                                            // Calculate study hours logic directly here for immediate feedback
+                                            let hours = 0;
+                                            let intensity = "";
+                                            if (diffDays <= 3) { hours = 10; intensity = "MAX OVERDRIVE"; }
+                                            else if (diffDays <= 7) { hours = 6; intensity = "HIGH INTENSITY"; }
+                                            else if (diffDays <= 30) { hours = 3; intensity = "CONSISTENT GRIND"; }
+                                            else { hours = 1; intensity = "MAINTENANCE"; }
+
+                                            // Update Study Result State to reflect in the UI (Terminal or nearby)
+                                            setStudyResult({ days: diffDays, hours, intensity });
+                                        }}
+                                    />
+                                </p>
+                                {studyResult ? (
+                                    <div className="mt-2 text-xs border-l-2 border-green-500 pl-2">
+                                        <p className="text-white">TARGET: <span className="text-green-400 font-bold">{studyResult.days} DAYS LEFT</span></p>
+                                        <p className="text-white">REQUIRED: <span className="text-[#00ff2f] font-black">{studyResult.hours}H / DAY</span></p>
+                                        <p className="text-primary italic">Mode: {studyResult.intensity}</p>
+                                    </div>
+                                ) : (
+                                    <p className="text-primary"><span className="text-slate-500">&gt;</span> Status: <span className="text-slate-400">WAITING FOR INPUT...</span></p>
+                                )}
                                 <p className="text-primary"><span className="text-slate-500">&gt;</span> Current Module: <span className="text-blue-400">{status.module}</span></p>
                                 <p className="text-primary"><span className="text-slate-500">&gt;</span> System Msg: <span className="text-slate-400 italic">"{status.advice}"</span></p>
                                 <p className="text-white mt-4 animate-pulse"><span className="text-primary">_</span></p>
