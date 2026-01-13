@@ -588,10 +588,14 @@
         const useTrades = () => {
             const [trades, setTrades] = useState([]);
             useEffect(() => {
-                fetch('trades.json')
-                    .then(res => res.json())
+                // Cache busting added to ensure fresh data
+                fetch('./trades.json?v=2.0')
+                    .then(res => {
+                        if (!res.ok) throw new Error("HTTP " + res.status);
+                        return res.json();
+                    })
                     .then(data => setTrades(data))
-                    .catch(e => console.error("Could not load trades list", e));
+                    .catch(e => console.error("Could not load trades list:", e));
             }, []);
             return trades;
         };
@@ -600,7 +604,7 @@
             const [data, setData] = useState(null);
             useEffect(() => {
                 if (!code) return;
-                fetch(`trades/${code}/${lang.toLowerCase()}.json`)
+                fetch(`./trades/${code}/${lang.toLowerCase()}.json?v=2.0`)
                     .then(res => res.json())
                     .then(d => setData(d))
                     .catch(e => console.error(e));
@@ -619,7 +623,7 @@
                     <header className="flex justify-between items-center mb-16">
                         <div className="flex flex-col">
                             <h1 className="manga-title font-manga text-7xl uppercase tracking-tighter transform -rotate-2">PIF ACADEMY</h1>
-                            <p className="font-marker text-xl ml-2 text-[#1a1a1a]">SHONEN DOJO: LUXEMBOURG EDITION</p>
+                            <p className="font-marker text-xl ml-2 text-[#1a1a1a]">SHONEN DOJO: LUXEMBOURG EDITION v2.0</p>
                         </div>
                         <div className="flex bg-[#1a1a1a] p-1 rounded-lg border-2 border-[#1a1a1a] shadow-[4px_4px_0_rgba(0,0,0,0.2)]">
                             {['FR', 'EN', 'DE', 'LB', 'ES', 'PT'].map(lang => (
