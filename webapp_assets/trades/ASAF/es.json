@@ -1,0 +1,47 @@
+{
+  "title": "AUXILIAR DE ENFERMERÍA (ASAF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Soins d'hygiène",
+          "description": "Aseo respetando la intimidad y observando la piel (prevención de úlceras)."
+        },
+        {
+          "title": "Mobilisation",
+          "description": "Transferencias seguras usando ergonomía y grúas."
+        },
+        {
+          "title": "Alimentation",
+          "description": "Ayuda en la ingesta evitando atragantamientos."
+        },
+        {
+          "title": "Surveillance",
+          "description": "Control de constantes vitales (pulso, tensión, dolor)."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Qué haces si detectas un enrojecimiento en el sacro de un paciente?*",
+          "answer": "Informar a enfermería, realizar cambios posturales frecuentes y aplicar protocolos de hidratación."
+        },
+        {
+          "question": "¿Cómo actúas ante una caída accidental?*",
+          "answer": "No mover al paciente, evaluar consciencia/dolor y pedir ayuda inmediata."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": []
+    }
+  ]
+}

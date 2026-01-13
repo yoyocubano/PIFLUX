@@ -1,0 +1,47 @@
+{
+  "title": "PANADERO (BL)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Pétrissage",
+          "description": "Control de temperatura de la masa y tiempos de amasado."
+        },
+        {
+          "title": "Fermentation",
+          "description": "Gestión de levaduras y masa madre (pointage/apprêt)."
+        },
+        {
+          "title": "Cuisson",
+          "description": "Ajuste de vapor y temperatura del suelo/bóveda."
+        },
+        {
+          "title": "Viennoiserie",
+          "description": "Laminado de masas de hojaldre y brioche."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Qué ocurre si la temperatura de base es demasiado alta?*",
+          "answer": "La fermentación es demasiado rápida, la masa pierde fuerza y el sabor se vuelve ácido."
+        },
+        {
+          "question": "¿Por qué añadimos vapor al inicio de la cocción del pan?*",
+          "answer": "Para permitir que la masa se expanda sin romperse y obtener una corteza brillante y crujiente."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": []
+    }
+  ]
+}

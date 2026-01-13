@@ -588,10 +588,10 @@
         const useTrades = () => {
             const [trades, setTrades] = useState([]);
             useEffect(() => {
-                fetch('http://localhost:8000/trades')
+                fetch('trades.json')
                     .then(res => res.json())
                     .then(data => setTrades(data))
-                    .catch(e => console.error("Backend offline", e));
+                    .catch(e => console.error("Could not load trades list", e));
             }, []);
             return trades;
         };
@@ -600,7 +600,7 @@
             const [data, setData] = useState(null);
             useEffect(() => {
                 if (!code) return;
-                fetch(`http://localhost:8000/trades/${code}/${lang.toLowerCase()}`)
+                fetch(`trades/${code}/${lang.toLowerCase()}.json`)
                     .then(res => res.json())
                     .then(d => setData(d))
                     .catch(e => console.error(e));

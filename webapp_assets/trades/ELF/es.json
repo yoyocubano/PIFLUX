@@ -1,0 +1,62 @@
+{
+  "title": "ELECTRICISTA (ELF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Réalisation d'installations électriques",
+          "description": "Cableado de cuadros, circuitos de iluminación y tomas de corriente siguiendo normas VDE/RGIE."
+        },
+        {
+          "title": "Mesure et contrôle",
+          "description": "Pruebas de continuidad, resistencia de aislamiento y RCD (diferencial)."
+        },
+        {
+          "title": "Dépannage",
+          "description": "Localización de fallos en circuitos de mando y potencia."
+        },
+        {
+          "title": "Domotique/KNX",
+          "description": "Configuración básica de sistemas inteligentes."
+        },
+        {
+          "title": "Sécurité au travail",
+          "description": "Aplicación estricta de las \"5 reglas de seguridad eléctrica\"."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Por qué medimos el aislamiento antes de dar tensión?*",
+          "answer": "Para asegurar que no hay cortocircuitos ni fugas a tierra que pongan en peligro la instalación o las personas."
+        },
+        {
+          "question": "¿Qué sección de cable usarías para un circuito de horno de 3kW?*",
+          "answer": "Mínimo 2.5mm² (dependiendo de la longitud y protecciones)."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": [
+        {
+          "title": "Câblage Tableau électrique NF C 15-100 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=3-1jC_KxM5c",
+          "description": "*Guía completa paso a paso.*"
+        },
+        {
+          "title": "Raccordement Interrupteur Différentiel",
+          "url": "https://www.youtube.com/watch?v=v=Example_ID2",
+          "description": "*Montaje de protecciones.*"
+        }
+      ]
+    }
+  ]
+}

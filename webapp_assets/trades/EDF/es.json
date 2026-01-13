@@ -1,0 +1,47 @@
+{
+  "title": "EDUCADOR (EDF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Activités Pédagogiques",
+          "description": "Planificación SMART (Objetivos, Tiempo, Material, Evaluación)."
+        },
+        {
+          "title": "Observation",
+          "description": "Análisis del desarrollo infantil basado en teorías (Piaget/Vygotsky)."
+        },
+        {
+          "title": "Communication",
+          "description": "Trabajo en equipo y relación con padres."
+        },
+        {
+          "title": "Posture Réflexive",
+          "description": "Capacidad de autocrítica y evolución profesional."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Cómo adaptas una actividad para un niño con TDAH?*",
+          "answer": "Instrucciones cortas, entorno sin distracciones y refuerzo positivo inmediato."
+        },
+        {
+          "question": "¿Cómo manejas un conflicto persistente entre dos adolescentes?*",
+          "answer": "Mediación neutral, escucha activa y búsqueda de soluciones conjuntas (CNV)."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": []
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "title": "MECÁNICO (MAF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Diagnostic OBD",
+          "description": "Lectura y borrado de códigos de error (DTC) con maleta de diagnosis."
+        },
+        {
+          "title": "Mécanique Générale",
+          "description": "Cambio de discos/pastillas de freno y embrague con par de apriete correcto."
+        },
+        {
+          "title": "Entretien",
+          "description": "Mantenimiento preventivo (aceite, filtros) según ficha del fabricante."
+        },
+        {
+          "title": "Électronique",
+          "description": "Uso del osciloscopio para verificar señales (Bus CAN, sensores ABS)."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Cómo verificas si un sensor ABS está defectuoso?*",
+          "answer": "Midiendo su resistencia interna con un multímetro o visualizando la señal de onda cuadrada en el osciloscopio al girar la rueda."
+        },
+        {
+          "question": "¿Qué precaución es vital antes de trabajar en un coche híbrido/eléctrico?*",
+          "answer": "Desconectar el sistema de alta tensión (enchufe de servicio) y verificar la ausencia de voltaje ('Absence de tension')."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": [
+        {
+          "title": "Utiliser une valise de diagnostic OBD (Tuto)",
+          "url": "https://www.youtube.com/results?search_query=tuto+valise+diagnostic+auto",
+          "description": "*Lectura de códigos.*"
+        },
+        {
+          "title": "Contrôle capteur ABS oscilloscope",
+          "url": "https://www.youtube.com/results?search_query=test+capteur+abs+oscilloscope",
+          "description": "*Diagnóstico avanzado.*"
+        }
+      ]
+    }
+  ]
+}

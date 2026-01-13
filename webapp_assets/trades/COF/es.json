@@ -1,0 +1,58 @@
+{
+  "title": "PELUQUERO (COF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Diagnostic Capillaire",
+          "description": "Análisis del cuero cabelludo y morfología del cliente."
+        },
+        {
+          "title": "Technique de Coupe",
+          "description": "Corte estructurado (degradado, capas) usando tijera y navaja."
+        },
+        {
+          "title": "Coloration",
+          "description": "Mezcla de tintes (oxidación), mechas y neutralización de reflejos."
+        },
+        {
+          "title": "Coiffage",
+          "description": "Brushing de acabado y recomendación de productos de reventa."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Cómo neutralizas un reflejo amarillo indeseado tras una decoloración?*",
+          "answer": "Aplicando un matiz con pigmentos violetas/irisados (color complementario del amarillo)."
+        },
+        {
+          "question": "¿Qué PH tiene un producto de permanente y por qué?*",
+          "answer": "Es alcalino (PH 8-9.5) para abrir las escamas del cabello y permitir modificar su estructura."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": [
+        {
+          "title": "Coupe Femme Dégradée (Tuto)",
+          "url": "https://www.youtube.com/results?search_query=coupe+femme+degrade+tuto",
+          "description": "*Técnica paso a paso.*"
+        },
+        {
+          "title": "Coloration et Neutralisation",
+          "url": "https://www.youtube.com/results?search_query=colorimetrie+coiffure+neutralisation",
+          "description": "*Teoría del color aplicada.*"
+        }
+      ]
+    }
+  ]
+}

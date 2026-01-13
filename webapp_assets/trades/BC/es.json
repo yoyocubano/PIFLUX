@@ -1,0 +1,47 @@
+{
+  "title": "CARNICERO (BC)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Désossage et Parage",
+          "description": "Separar el hueso de la carne con mínima pérdida de producto."
+        },
+        {
+          "title": "Transformation",
+          "description": "Elaboración de salchichas, patés y productos curados."
+        },
+        {
+          "title": "HACCP",
+          "description": "Control de cadena de frío y trazabilidad de lotes."
+        },
+        {
+          "title": "Vente et Conseil",
+          "description": "Atención al cliente y técnicas de corte para exposición."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿A qué temperatura debe estar el obrador durante el despiece?*",
+          "answer": "Máximo 12°C."
+        },
+        {
+          "question": "¿Cómo garantizas la trazabilidad de una pieza de buey?*",
+          "answer": "Mediante el número de lote, etiqueta de origen y registro de entrada/salida."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": []
+    }
+  ]
+}

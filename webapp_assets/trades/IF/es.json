@@ -1,0 +1,51 @@
+{
+  "title": "INFORMÁTICO (IF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Poste de travail",
+          "description": "Montaje de hardware, instalación de SO (Windows/Linux) y drivers."
+        },
+        {
+          "title": "Réseau LAN",
+          "description": "Cabledado estructurado, configuración de Switch y direccionamiento IP (DHCP/Estático)."
+        },
+        {
+          "title": "Administration Serveur",
+          "description": "Gestión de Active Directory (usuarios, grupos, GPOs) y DNS."
+        },
+        {
+          "title": "Cybersécurité",
+          "description": "Regla de respaldo 3-2-1, Firewall y políticas de contraseñas."
+        },
+        {
+          "title": "Troubleshooting",
+          "description": "Análisis de logs y resolución de incidencias de conectividad."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Qué es una GPO y para qué sirve?*",
+          "answer": "Es un objeto de directiva de grupo que permite centralizar la seguridad y configuración de los equipos en un dominio."
+        },
+        {
+          "question": "¿Cómo determinas la máscara de subred para 50 máquinas?*",
+          "answer": "Usando una máscara /26 (que permite hasta 62 hosts) para optimizar el espacio de red."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": []
+    }
+  ]
+}

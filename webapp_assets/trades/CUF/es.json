@@ -1,0 +1,47 @@
+{
+  "title": "COCINERO (CUF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Mise en place",
+          "description": "Organización por \"marche en avant\" y cortes técnicos (juliana, brunoise)."
+        },
+        {
+          "title": "Cuissons",
+          "description": "Dominio de puntos (sellado, asado, braisage)."
+        },
+        {
+          "title": "Fonds et Sauces",
+          "description": "Elaboración de bases y ligazones (roux, beurre manié)."
+        },
+        {
+          "title": "Hygiène (HACCP)",
+          "description": "Control de temperaturas y desinfección."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Cuál es la zona de mayor peligro bacteriano?*",
+          "answer": "Entre +10°C y +63°C."
+        },
+        {
+          "question": "¿Cómo recuperas una salsa con grumos?*",
+          "answer": "Pasándola por un chino o usando un túrmix (si la técnica lo permite), ajustando la textura."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "title": "CALEFACTOR (CS)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Installation Chaudière",
+          "description": "Montaje de caldera de condensación y salida de humos."
+        },
+        {
+          "title": "Hydraulique",
+          "description": "Conexión de vaso de expansión y separador hidráulico."
+        },
+        {
+          "title": "Tuyauterie",
+          "description": "Trabajo con cobre, multicapa y acero (soldadura/prensado)."
+        },
+        {
+          "title": "Mise en service",
+          "description": "Llenado, purga de aire y prueba de estanqueidad (gas/agua)."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Por qué es obligatorio instalar un vaso de expansión?*",
+          "answer": "Para absorber la dilatación del agua al calentarse y mantener la presión estable en el circuito cerrado."
+        },
+        {
+          "question": "¿Cómo realizas una prueba de estanqueidad en una tubería de gas?*",
+          "answer": "Usando un manómetro de columna de agua a la presión normativa (ej. 150 mbar) y verificando que no baje durante el tiempo estipulado."
+        },
+        {
+          "question": "¿Cómo realizas una prueba de estanqueidad en una instalación de gas?",
+          "answer": "Se utiliza un manómetro de columna de agua o digital, aplicando la presión normativa (ej. 150 mbar) durante el tiempo estipulado, verificando que no haya caída de presión."
+        },
+        {
+          "question": "Pourquoi est-il nécessaire d'installer un vase d'expansion ?",
+          "answer": "Pour absorber l'augmentation du volume d'eau due à la chaleur et maintenir une pression stable dans le circuit."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": [
+        {
+          "title": "Installation Chaudière Condensation (Tuto)",
+          "url": "https://www.youtube.com/results?search_query=installation+chaudiere+condensation",
+          "description": "*Vista general del proceso.*"
+        },
+        {
+          "title": "Raccordement Hydraulique Simple",
+          "url": "https://www.youtube.com/results?search_query=raccordement+hydraulique+chaudiere",
+          "description": "*Conexiones básicas.*"
+        }
+      ]
+    }
+  ]
+}

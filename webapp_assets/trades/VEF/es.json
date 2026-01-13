@@ -1,0 +1,51 @@
+{
+  "title": "VENDEDOR (VEF)",
+  "language": "es",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tareas Críticas (Puntos Clave)",
+      "content": [
+        {
+          "title": "Réception de marchandise",
+          "description": "Control de albaranes, verificación de averías y registro de stock."
+        },
+        {
+          "title": "Merchandising",
+          "description": "Rotación de stock (FIFO), etiquetado de precios e implantación visual."
+        },
+        {
+          "title": "Entretien de vente",
+          "description": "Detección de necesidades, argumentación y cierre de venta."
+        },
+        {
+          "title": "Gestion de caisse",
+          "description": "Apertura/cierre, gestión de cobros y detección de billetes falsos."
+        },
+        {
+          "title": "Réclamations",
+          "description": "Manejo de clientes difíciles, garantías y fidelización."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Preguntas Trampa del Jurado",
+      "content": [
+        {
+          "question": "¿Qué haces si recibes mercancía dañada pero el transporte tiene prisa?*",
+          "answer": "Anotar las reservas en el albarán detalladamente antes de firmar para poder reclamar al seguro."
+        },
+        {
+          "question": "¿Cómo transformas una objeción de precio en una oportunidad?*",
+          "answer": "Resaltando el valor añadido, la durabilidad o el servicio post-venta en lugar de solo el coste."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriales Recomendados",
+      "content": []
+    }
+  ]
+}
