@@ -394,7 +394,7 @@
                         <div className="md:col-span-2 md:row-span-2 glass rounded-xl overflow-hidden flex flex-col group relative">
                             <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10"></div>
                             <div className="h-[400px] w-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-                                style={{ backgroundImage: 'url("http://localhost:8000/images/academy_hub_hero.png")' }}></div>
+                                style={{ backgroundImage: 'url("images/academy_hub_hero.png")' }}></div>
                             <div className="absolute top-6 left-6 z-20">
                                 <span className="bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Daily Briefing</span>
                             </div>
@@ -673,6 +673,24 @@
                             <span className="material-symbols-outlined text-white">arrow_back</span>
                         </Link>
                         <h1 className="manga-title font-manga text-6xl uppercase tracking-tighter">{data.title}</h1>
+                    </div>
+
+                    {/* PIF INTRO CARD - ADDED BY ANTIGRAVITY */}
+                    <div className="manga-card bg-[#1a1a1a] p-6 border-l-[12px] border-[#ff007a] shadow-[0_10px_20px_rgba(0,0,0,0.5)] relative overflow-hidden group hover:scale-[1.01] transition-transform mb-8">
+                        <div className="absolute -right-10 -top-10 text-[#2a2a2a] transform rotate-12 pointer-events-none">
+                            <span className="material-symbols-outlined text-[150px]">verified</span>
+                        </div>
+                        <div className="relative z-10">
+                            <h2 className="text-[#ff007a] font-black text-3xl uppercase italic mb-2 tracking-wide flex items-center gap-3">
+                                <span className="material-symbols-outlined text-3xl animate-pulse">warning</span>
+                                PROTOCOLO PIF ACTIVADO
+                            </h2>
+                            <p className="text-white text-lg font-medium leading-relaxed">
+                                <strong className="text-[#00ff2f]">OBJETIVO:</strong> Demostrar competencia autónoma total.
+                                Esto es el <span className="text-[#00ff2f] italic">Proyecto Integrado Final</span>.
+                                Ejecuta la instalación sin errores de seguridad para aprobar.
+                            </p>
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
