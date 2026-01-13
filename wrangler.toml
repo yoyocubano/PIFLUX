@@ -1,0 +1,11 @@
+name = "piflux"
+compatibility_date = "2024-01-01"
+
+[pages_build_output_dir]
+directory = "webapp_assets"
+
+[vars]
+# Public Vars (Frontend)
+VITE_APPWRITE_ENDPOINT = "https://cloud.appwrite.io/v1"
+VITE_APPWRITE_PROJECT_ID = "fra-696075130002ba18c0ac"
+VITE_APPWRITE_DATABASE_ID = "piflux_db"
