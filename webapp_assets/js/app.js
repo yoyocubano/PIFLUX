@@ -241,36 +241,61 @@ const LanguageProvider = ({ children }) => {
 const useTranslation = () => useContext(LanguageContext);
 
 // --- API Hooks ---
+// --- API Hooks ---
 const useTrades = () => {
     const [trades, setTrades] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { language } = useTranslation();
 
     useEffect(() => {
+        setLoading(true);
+        setError(null);
         // Fetch dynamic JSON based on language
-        fetch(`locales/trades_${language}.json?v=2.1`)
+        fetch(`locales/trades_${language}.json?v=2.2`)
             .then(res => {
                 if (!res.ok) throw new Error("HTTP " + res.status);
                 return res.json();
             })
-            .then(data => setTrades(data))
-            .catch(e => console.error("Could not load trades list:", e));
-    }, [language]); // Reload when language changes
+            .then(data => {
+                setTrades(data);
+                setLoading(false);
+            })
+            .catch(e => {
+                console.error("Could not load trades list:", e);
+                setError(e);
+                setLoading(false);
+            });
+    }, [language]); 
 
-    return trades;
+    return { trades, loading, error };
 };
 
 const useTradeDetail = (code) => {
     const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { language } = useTranslation();
     
     useEffect(() => {
         if (!code) return;
+        setLoading(true);
         fetch(`./trades/${code}/${language}.json?v=2.0`)
-            .then(res => res.json())
-            .then(d => setData(d))
-            .catch(e => console.error(e));
+            .then(res => {
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                return res.json();
+            })
+            .then(d => {
+                setData(d);
+                setLoading(false);
+            })
+            .catch(e => {
+                console.error(e);
+                setError(e);
+                setLoading(false);
+            });
     }, [code, language]);
-    return data;
+    return { data, loading, error };
 };
 
 // --- Components ---
@@ -514,7 +539,7 @@ const ControlRoomScreen = () => {
 };
 
 const DojoScreen = () => {
-    const trades = useTrades();
+    const { trades, loading, error } = useTrades();
     const navigate = useNavigate();
     const { t } = useTranslation();
 
@@ -525,6 +550,10 @@ const DojoScreen = () => {
                     <h1 className="manga-title font-manga text-7xl uppercase tracking-tighter transform -rotate-2">{t('dojo', 'title')}</h1>
                     <p className="font-marker text-xl ml-2 text-[#1a1a1a]">{t('dojo', 'subtitle')}</p>
                 </div>
+                {/* Language Selector */}
+                <div className="flex bg-[#1a1a1a] p-1 rounded-lg border-2 border-[#1a1a1a] shadow-[4px_4px_0_rgba(0,0,0,0.2)]">
+                    {/* ... kept for future ref ... */}
+                </div>
             </header>
 
             <section>
@@ -533,7 +562,16 @@ const DojoScreen = () => {
                     <div className="h-1 flex-1 bg-[#1a1a1a]"></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    {trades.length === 0 ? <p className="text-xl italic font-black">{t('dojo', 'loading')}</p> :
+                    {loading ? (
+                         <div className="col-span-3 flex justify-center py-20">
+                            <div className="text-3xl font-black italic animate-bounce">{t('dojo', 'loading')}</div>
+                         </div>
+                    ) : error ? (
+                        <div className="col-span-3 bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+                            <p className="font-bold">Error loading classes</p>
+                            <p>{error.message}</p>
+                        </div>
+                    ) : (
                         trades.map(trade => (
                             <MangaClassCard
                                 key={trade.code}
@@ -545,7 +583,8 @@ const DojoScreen = () => {
                                 img={trade.trait.img}
                                 onClick={() => navigate(`/dojo/${trade.code}`)}
                             />
-                        ))}
+                        ))
+                    )}
                 </div>
             </section>
         </div>
@@ -554,9 +593,11 @@ const DojoScreen = () => {
 
 const TradeDetailScreen = () => {
     const { tradeId } = useParams();
-    const data = useTradeDetail(tradeId);
+    const { data, loading, error } = useTradeDetail(tradeId);
 
-    if (!data) return <div className="p-10 font-black text-2xl">LOADING SCROLL DATA...</div>;
+    if (loading) return <div className="p-10 font-black text-2xl animate-pulse">LOADING SCROLL DATA...</div>;
+    if (error) return <div className="p-10 font-black text-2xl text-red-600">ERROR LOADING DATA: {error.message}</div>;
+    if (!data) return null;
 
     return (
         <div className="p-8 max-w-7xl mx-auto space-y-8 animate-fade-in-up">
@@ -612,41 +653,88 @@ const TradeDetailScreen = () => {
 
 // --- App Root ---
 
+
+// --- Error Boundary ---
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false, error: null };
+    }
+
+    static getDerivedStateFromError(error) {
+        return { hasError: true, error };
+    }
+
+    componentDidCatch(error, errorInfo) {
+        console.error("Uncaught error:", error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div className="flex h-screen w-full items-center justify-center bg-black text-red-500 font-mono flex-col p-8 text-center">
+                    <span className="material-symbols-outlined text-6xl mb-4 animate-pulse">warning</span>
+                    <h1 className="text-4xl font-black mb-4">CRITICAL SYSTEM FAILURE</h1>
+                    <p className="text-xl mb-8">The PIF control system has encountered an anomaly.</p>
+                    <div className="bg-red-900/20 p-4 rounded border border-red-500/50 max-w-2xl overflow-auto text-left">
+                        <p className="font-bold">Error Trace:</p>
+                        <pre className="text-sm mt-2">{this.state.error && this.state.error.toString()}</pre>
+                    </div>
+                    <button 
+                        onClick={() => window.location.reload()} 
+                        className="mt-8 px-6 py-3 bg-red-600 text-white font-bold rounded hover:bg-red-500 transition-colors uppercase"
+                    >
+                        Reboot System
+                    </button>
+                    <p className="mt-8 text-slate-500 text-xs">Error Code: ANOMALY_DETECTED_0x99</p>
+                </div>
+            );
+        }
+
+        return this.props.children;
+    }
+}
+
+// --- App Root ---
+
 const App = () => {
     return (
-        <LanguageProvider>
-            <MemoryRouter>
-                <Routes>
-                    <Route path="/" element={
-                        <DashboardLayout>
-                            <ControlRoomScreen />
-                        </DashboardLayout>
-                    } />
-                    <Route path="/dojo" element={
-                        <DojoLayout>
-                            <DojoScreen />
-                        </DojoLayout>
-                    } />
-                    <Route path="/formulas" element={
-                        <DojoLayout>
-                            <FormulasScreen />
-                        </DojoLayout>
-                    } />
-                     <Route path="/games" element={
-                        <DojoLayout>
-                            <GamesScreen />
-                        </DojoLayout>
-                    } />
-                    <Route path="/dojo/:tradeId" element={
-                        <DojoLayout>
-                            <TradeDetailScreen />
-                        </DojoLayout>
-                    } />
-                </Routes>
-            </MemoryRouter>
-        </LanguageProvider>
+        <ErrorBoundary>
+            <LanguageProvider>
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={
+                            <DashboardLayout>
+                                <ControlRoomScreen />
+                            </DashboardLayout>
+                        } />
+                        <Route path="/dojo" element={
+                            <DojoLayout>
+                                <DojoScreen />
+                            </DojoLayout>
+                        } />
+                        <Route path="/formulas" element={
+                            <DojoLayout>
+                                <FormulasScreen />
+                            </DojoLayout>
+                        } />
+                         <Route path="/games" element={
+                            <DojoLayout>
+                                <GamesScreen />
+                            </DojoLayout>
+                        } />
+                        <Route path="/dojo/:tradeId" element={
+                            <DojoLayout>
+                                <TradeDetailScreen />
+                            </DojoLayout>
+                        } />
+                    </Routes>
+                </MemoryRouter>
+            </LanguageProvider>
+        </ErrorBoundary>
     );
 };
+
 
 const container = document.getElementById('root');
 const root = createRoot(container);
