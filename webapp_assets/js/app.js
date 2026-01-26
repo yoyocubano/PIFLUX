@@ -367,7 +367,7 @@ const MangaClassCard = ({ title, role, color, desc, img, icon, onClick, backCont
                                 <div className="mb-3">
                                     <h3 className="text-yellow-400 font-black uppercase text-lg leading-none mb-2 border-b-2 border-yellow-400 inline-block rotate-1">{backContent.title}</h3>
                                     <div className="space-y-2">
-                                        {backContent.tasks?.slice(0, 3).map((task) => (
+                                        {backContent.tasks && backContent.tasks.slice(0, 3).map((task) => (
                                             <div key={task.id} className="flex gap-2 items-start">
                                                 <span className="bg-[#ff007a] text-white text-[10px] font-bold px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5">{task.id}</span>
                                                 <div className="leading-tight">
