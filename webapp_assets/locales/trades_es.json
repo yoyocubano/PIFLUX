@@ -88,17 +88,40 @@
             "back_content": {
                 "title": "TAREAS CRÍTICAS (PUNTOS CLAVE)",
                 "tasks": [
-                    { "id": 1, "title": "REALISATION", "desc": "Cableado de cuadros y circuitos (VDE/RGIE)." },
-                    { "id": 2, "title": "MESURE ET CONTRÔLE", "desc": "Pruebas de continuidad y aislamiento (RCD)." },
-                    { "id": 3, "title": "DÉPANNAGE", "desc": "Localización de fallos en mando y potencia." },
-                    { "id": 4, "title": "DOMOTIQUE/KNX", "desc": "Configuración básica de sistemas inteligentes." },
-                    { "id": 5, "title": "SÉCURITÉ", "desc": "Aplicación estricta de las 5 reglas de oro." }
+                    { "id": 1, "title": "CÁLCULO DE POTENCIA", "desc": "P = √3 · U · I · cosφ. (No olvides la raíz de 3)." },
+                    { "id": 2, "title": "CONEXIÓN MOTOR", "desc": "Estrella (Y) para arranque suave. Triángulo (Δ) para marcha." },
+                    { "id": 3, "title": "SEGURIDAD", "desc": "Medir aislamiento antes de dar tensión (Evitar cortos)." }
                 ],
                 "trap_question": {
-                    "q": "¿Por qué medimos el aislamiento antes de dar tensión?",
-                    "a": "Para asegurar que no hay cortocircuitos ni fugas a tierra que pongan en peligro la instalación."
+                    "q": "¿Puedo poner un enchufe a 50cm de la bañera?",
+                    "a": "¡NO! Es Volumen 2. Riesgo de electrocución. Solo afeitadoras con trafo."
                 }
-            }
+            },
+            "sections": [
+                {
+                    "title": "Fórmulas Sagradas",
+                    "content": [
+                        { "title": "Potencia Trifásica", "description": "La fórmula maestra: <strong>P = √3 · U · I · cosφ</strong>.<br><em>Tip:</em> Si olvidas la raíz de 3 (1.732), el resultado será incorrecto." },
+                        { "title": "Ley de Ohm", "description": "<strong>V = I · R</strong><br>La tensión (Presión) empuja la Corriente (Caudal) a través de la Resistencia (Tubería)." },
+                        { "title": "Eficiencia (η)", "description": "<strong>I = P / (√3 · V · cosφ · η)</strong><br>Eficiencia es cuánto 'zumo' sacas de la energía eléctrica." }
+                    ]
+                },
+                {
+                    "title": "Analogías del Sensei",
+                    "content": [
+                        { "title": "La Jarra de Cerveza", "description": "<strong>Cerveza:</strong> Potencia Activa (kW) - Trabajo útil.<br><strong>Espuma:</strong> Potencia Reactiva (kVAr) - Necesaria pero no alimenta.<br><strong>Vaso:</strong> Potencia Aparente (kVA).<br><em>Objetivo:</em> Minimizar espuma (cosφ alto)." },
+                        { "title": "Estrella vs Triángulo", "description": "<strong>Estrella (Y):</strong> 'Compartir el plato'. Cada bobina recibe 230V (Arranque suave).<br><strong>Triángulo (Δ):</strong> 'Plato entero'. Cada bobina recibe 400V (Potencia total).<br><em>Peligro:</em> Motor 230D/400Y en red 400V conectado en Triángulo = <strong>EXPLOSIÓN</strong>." }
+                    ]
+                },
+                {
+                    "title": "Preguntas Trampa (Examen)",
+                    "content": [
+                        { "question": "¿Disyuntor 6kA con Icc 10kA?", "answer": "<strong>NO</strong>. El poder de corte debe ser MAYOR a la Icc. Si es menor (6 < 10), el disyuntor explotará." },
+                        { "question": "¿Enchufe cerca de la bañera?", "answer": "<strong>PROHIBIDO</strong> en Volumen 0-60cm. Solo tomas de afeitadora aisladas." },
+                        { "question": "¿Por qué medir aislamiento?", "answer": "Para detectar fugas a tierra antes de dar tensión y evitar accidentes fatales." }
+                    ]
+                }
+            ]
         }
     },
     {
