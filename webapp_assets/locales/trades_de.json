@@ -1,0 +1,13 @@
+[
+    { "code": "ASAF", "name": "PFLEGEHELFER", "trait": { "role": "Vitaler Wächter", "color": "bg-emerald-400", "desc": "Mitgefühl an vorderster Front.", "icon": "medical_services", "img": "images/nursing_anime.png" } },
+    { "code": "BC", "name": "METZGER", "trait": { "role": "Klingenmeister", "color": "bg-rose-700", "desc": "Präzision und Anatomie.", "icon": "kitchen", "img": "images/butcher_anime.png" } },
+    { "code": "BL", "name": "BÄCKER", "trait": { "role": "Teig-Dominator", "color": "bg-amber-300", "desc": "Fundament der Ernährung.", "icon": "bakery_dining", "img": "images/baker_anime.png" } },
+    { "code": "COF", "name": "FRISEUR", "trait": { "role": "Stil-Skulpteur", "color": "bg-pink-400", "desc": "Image und Vertrauen.", "icon": "content_cut", "img": "images/hairdresser_anime.png" } },
+    { "code": "CS", "name": "HEIZUNGSINSTALLATEUR", "trait": { "role": "Thermo-Titan", "color": "bg-orange-600", "desc": "Wärme und Druck.", "icon": "hvac", "img": "images/heating_anime.png" } },
+    { "code": "CUF", "name": "KOCH", "trait": { "role": "Flammen-Alchemist", "color": "bg-orange-500", "desc": "Präzision und Geschmack.", "icon": "restaurant", "img": "images/chef_anime.png" } },
+    { "code": "EDF", "name": "ERZIEHER", "trait": { "role": "Geistesformer", "color": "bg-indigo-400", "desc": "Die nächste Generation führen.", "icon": "school", "img": "images/educator_anime.png" } },
+    { "code": "ELF", "name": "ELEKTRIKER", "trait": { "role": "Spannungs-Vorhut", "color": "bg-yellow-400", "desc": "Meister der Schaltkreise.", "icon": "bolt", "img": "images/electrician_anime.png" } },
+    { "code": "IF", "name": "INFORMATIKER", "trait": { "role": "Cyber-Operator", "color": "bg-blue-500", "desc": "Netzwerke und Code.", "icon": "terminal", "img": "images/it_anime.png" } },
+    { "code": "MAF", "name": "MECHANIKER", "trait": { "role": "Motormeister", "color": "bg-red-500", "desc": "Motoren und Diagnose.", "icon": "build", "img": "images/mechanic_anime.png" } },
+    { "code": "VEF", "name": "VERKÄUFER", "trait": { "role": "Markt-Experte", "color": "bg-purple-500", "desc": "Die Kunst der Überzeugung.", "icon": "storefront", "img": "images/sales_anime.png" } }
+]

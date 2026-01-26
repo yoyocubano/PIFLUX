@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" class="dark">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PIF Technical Command Center</title>
@@ -10,12 +9,18 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- React and Dependencies -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -26,817 +31,122 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#833cf6",
-                        "background-light": "#f7f5f8",
-                        "background-dark": "#050505",
-                        "card-dark": "#171022",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk"],
-                        "manga": ["Bangers", "cursive"],
-                        "marker": ["Permanent Marker", "cursive"]
-                    },
-                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
-                },
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#833cf6",
+              "background-light": "#f7f5f8",
+              "background-dark": "#050505",
+              "card-dark": "#171022",
             },
-        }
+            fontFamily: {
+              display: ["Space Grotesk"],
+              manga: ["Bangers", "cursive"],
+              marker: ["Permanent Marker", "cursive"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
     </script>
 
     <style type="text/tailwindcss">
-        @layer utilities {
-            .glass {
-                background: rgba(23, 16, 34, 0.7);
-                backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            .glow-primary {
-                box-shadow: 0 0 20px rgba(131, 60, 246, 0.3);
-            }
-            .cli-text {
-                font-family: 'Courier New', Courier, monospace;
-            }
-            /* Manga specific styles */
-            .manga-card {
-                @apply relative border-[4px] border-[#1a1a1a] bg-white transition-all duration-200;
-                box-shadow: 8px 8px 0px #1a1a1a;
-            }
-            .manga-card:hover {
-                transform: translate(-4px, -4px);
-                box-shadow: 12px 12px 0px #1a1a1a;
-            }
-            .manga-title {
-                -webkit-text-stroke: 2px #1a1a1a;
-                text-shadow: 6px 6px 0px #ff007a;
-            }
-            .halftone {
-                background-image: radial-gradient(#1a1a1a 15%, transparent 16%);
-                background-size: 4px 4px;
-                opacity: 0.1;
-            }
-            .speed-lines {
-                background: repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(0,0,0,0.05) 10px,
-                    rgba(0,0,0,0.05) 11px
-                );
-            }
-            .speech-bubble {
-                @apply relative bg-white border-2 border-[#1a1a1a] p-4 rounded-2xl;
-            }
-            .speech-bubble::after {
-                content: '';
-                @apply absolute -bottom-3 left-8 w-6 h-6 bg-white border-b-2 border-r-2 border-[#1a1a1a] rotate-45;
-            }
-            .health-bar-outer {
-                @apply h-6 border-2 border-[#1a1a1a] bg-gray-200 relative overflow-hidden italic font-black;
-                clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
-            }
-            .health-bar-inner {
-                @apply h-full transition-all duration-500;
-                background: linear-gradient(90deg, #ffde00 0%, #ff0000 100%);
-            }
-            .arcade-btn {
-                @apply w-12 h-12 rounded-full border-4 border-black/20 flex items-center justify-center transition-all active:scale-90 shadow-[0_4px_0_rgba(0,0,0,0.3)];
-            }
-            .glitch-hover:hover {
-                animation: glitch 0.2s infinite;
-            }
+      @layer utilities {
+        .glass {
+          background: rgba(23, 16, 34, 0.7);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        @keyframes glitch {
-            0% { transform: translate(0) }
-            20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) }
-            60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) }
-            100% { transform: translate(0) }
+        .glow-primary {
+          box-shadow: 0 0 20px rgba(131, 60, 246, 0.3);
         }
+        .cli-text {
+          font-family: "Courier New", Courier, monospace;
+        }
+        /* Manga specific styles */
+        .manga-card {
+          @apply relative border-[4px] border-[#1a1a1a] bg-white transition-all duration-200;
+          box-shadow: 8px 8px 0px #1a1a1a;
+        }
+        .manga-card:hover {
+          transform: translate(-4px, -4px);
+          box-shadow: 12px 12px 0px #1a1a1a;
+        }
+        .manga-title {
+          -webkit-text-stroke: 2px #1a1a1a;
+          text-shadow: 6px 6px 0px #ff007a;
+        }
+        .halftone {
+          background-image: radial-gradient(#1a1a1a 15%, transparent 16%);
+          background-size: 4px 4px;
+          opacity: 0.1;
+        }
+        .speed-lines {
+          background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 0, 0, 0.05) 10px,
+            rgba(0, 0, 0, 0.05) 11px
+          );
+        }
+        .speech-bubble {
+          @apply relative bg-white border-2 border-[#1a1a1a] p-4 rounded-2xl;
+        }
+        .speech-bubble::after {
+          content: "";
+          @apply absolute -bottom-3 left-8 w-6 h-6 bg-white border-b-2 border-r-2 border-[#1a1a1a] rotate-45;
+        }
+        .health-bar-outer {
+          @apply h-6 border-2 border-[#1a1a1a] bg-gray-200 relative overflow-hidden italic font-black;
+          clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+        }
+        .health-bar-inner {
+          @apply h-full transition-all duration-500;
+          background: linear-gradient(90deg, #ffde00 0%, #ff0000 100%);
+        }
+        .arcade-btn {
+          @apply w-12 h-12 rounded-full border-4 border-black/20 flex items-center justify-center transition-all active:scale-90 shadow-[0_4px_0_rgba(0,0,0,0.3)];
+        }
+        .glitch-hover:hover {
+          animation: glitch 0.2s infinite;
+        }
+      }
+      @keyframes glitch {
+        0% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen">
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen"
+  >
     <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { createRoot } = ReactDOM;
-        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
-
-        // --- Layout Wrappers ---
-
-        const DashboardLayout = ({ children }) => {
-            return (
-                <div className="flex h-full grow flex-col dark">
-                    <header className="flex items-center justify-between border-b border-solid border-white/10 px-6 py-4 glass sticky top-0 z-50">
-                        <div className="flex items-center gap-4 text-white">
-                            <div className="size-6 text-primary">
-                                <span className="material-symbols-outlined text-3xl">bolt</span>
-                            </div>
-                            <h2 className="text-white text-lg font-bold leading-tight tracking-tight">PIF MASTER CONTROL ROOM</h2>
-                        </div>
-                        <div className="flex flex-1 justify-end gap-6 items-center">
-                            <nav className="hidden md:flex items-center gap-8">
-
-                                <Link className="text-white/60 text-sm font-medium hover:text-white transition-colors" to="/dojo">Training Academy</Link>
-                                <Link className="text-white/60 text-sm font-medium hover:text-white transition-colors" to="/formulas">Smart Formulas</Link>
-                                <Link className="text-white/60 text-sm font-medium hover:text-white transition-colors" to="/games">Card Games</Link>
-                            </nav>
-                            <div className="flex items-center gap-4">
-                                <button onClick={() => document.getElementById('priority-alert-card').scrollIntoView({ behavior: 'smooth' })} className="flex min-w-[160px] items-center justify-center rounded-full h-10 px-4 bg-primary text-white text-sm font-bold shadow-[0_0_15px_rgba(131,60,246,0.5)] hover:shadow-[0_0_20px_#00ff2f] hover:scale-105 transition-all relative overflow-hidden group border border-primary/50">
-                                    <span className="absolute inset-0 bg-[#00ff2f]/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></span>
-                                    <span className="flex items-center gap-2 relative z-10">
-                                        <span className="material-symbols-outlined text-lg">upload_file</span>
-                                        REGISTER ACCESS
-                                        <span className="size-2 bg-[#00ff2f] rounded-full animate-pulse shadow-[0_0_10px_#00ff2f]"></span>
-                                    </span>
-                                </button>
-                                <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/50" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7Uwc11E2B9_bJQ8yG3czGHsBLS1r57FlD26-OlilD3ll0do2_SY_fccrrjfPcnk_n960zqaEUu5bf6Spi-GnPhuMmChxAg6EHQeLvGseJURCCI7o5B2kdrTz_ZkVkTegom07S8EC4skLy5in94tzHh-4p2g3V09eYsQyR6c4JNyaIt5thr0tqXpAemXaEdCFhBtfyvI9gNNjmm1KeJwlYqoOgF2nYFrAqFqzDynAuKMnbddYC6DOJdrWpgt2pie8T97X3qN2IcLY")' }}></div>
-                            </div>
-                        </div>
-                    </header>
-                    <main className="max-w-[1400px] mx-auto w-full p-6 space-y-6 flex-grow">
-                        {children}
-                    </main>
-                    <footer className="mt-auto py-8 px-10 border-t border-white/5 flex justify-between items-center text-slate-500 text-xs">
-                        <div className="flex gap-6">
-                            <p>© 2024 PIF Technical Command</p>
-                            <a className="hover:text-white" href="#">Legal Information</a>
-                            <a className="hover:text-white" href="#">Technical Documentation</a>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <span className="flex items-center gap-1"><span className="size-1.5 bg-green-500 rounded-full"></span> Firebase Sync OK</span>
-                            <span className="flex items-center gap-1"><span className="size-1.5 bg-green-500 rounded-full"></span> Audit Active</span>
-                        </div>
-                    </footer>
-                </div>
-            );
-        };
-
-        const DojoLayout = ({ children }) => {
-            return (
-                <div className="min-h-screen flex bg-[#f0f0f0] text-[#1a1a1a]">
-                    <aside className="w-24 bg-[#fdfdfd] border-r-[4px] border-[#1a1a1a] flex flex-col items-center py-8 gap-8 sticky top-0 h-screen z-50">
-                        <Link to="/" className="arcade-btn bg-purple-500 hover:bg-purple-400" title="Dashboard">
-                            <span className="material-symbols-outlined text-white">dashboard</span>
-                        </Link>
-                        <Link to="/dojo" className="arcade-btn bg-red-500 hover:bg-red-400" title="Dojo">
-                            <span className="material-symbols-outlined text-white">home</span>
-                        </Link>
-                        <Link to="/formulas" className="arcade-btn bg-blue-500 hover:bg-blue-400 cursor-pointer" title="Formulas">
-                            <span className="material-symbols-outlined text-white">functions</span>
-                        </Link>
-                        <Link to="/games" className="arcade-btn bg-yellow-500 hover:bg-yellow-400 cursor-pointer" title="Games">
-                            <span className="material-symbols-outlined text-white">swords</span>
-                        </Link>
-                        <div className="mt-auto arcade-btn bg-[#1a1a1a] cursor-pointer" title="Settings">
-                            <span className="material-symbols-outlined text-white">settings</span>
-                        </div>
-                    </aside>
-                    <div className="flex-1 speed-lines bg-[radial-gradient(#1a1a1a_0.5px,transparent_0.5px),linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[length:20px_20px,40px_40px,40px_40px]">
-                        {children}
-                    </div>
-                </div>
-            );
-        };
-
-        // --- Screens ---
-
-        const FormulasScreen = () => (
-            <div className="p-8 max-w-7xl mx-auto space-y-8 animate-fade-in-up">
-                <h1 className="manga-title font-manga text-6xl uppercase tracking-tighter mb-8">TRADE FORMULAS & ANALOGIES</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="manga-card p-8 bg-blue-50">
-                        <h3 className="font-black text-2xl mb-4 flex items-center gap-2"><span className="material-symbols-outlined">water_drop</span> HYDRAULIC PRESSURE</h3>
-                        <p className="font-bold italic mb-2">Technical: P = F / A</p>
-                        <div className="speech-bubble">
-                            <p className="text-sm">"Imagine a crowded dance floor (Container). If you push everyone into a smaller corner (Area), the stress (Pressure) goes way up! Same with water pipes."</p>
-                        </div>
-                    </div>
-                    <div className="manga-card p-8 bg-yellow-50">
-                        <h3 className="font-black text-2xl mb-4 flex items-center gap-2"><span className="material-symbols-outlined">bolt</span> OHM'S LAW</h3>
-                        <p className="font-bold italic mb-2">Technical: V = I * R</p>
-                        <div className="speech-bubble">
-                            <p className="text-sm">"Voltage is the push (like gravity on a slide). Current is the speed of the kid sliding. Resistance is how sticky the slide is!"</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-
-        const GamesScreen = () => (
-            <div className="p-8 max-w-7xl mx-auto space-y-8 animate-fade-in-up">
-                <h1 className="manga-title font-manga text-6xl uppercase tracking-tighter mb-8 bg-red-500 text-white inline-block px-4 rotate-1">CARD BATTLE ARENA</h1>
-                <p className="font-marker text-xl">Didactic Training Battles coming soon!</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {['Electrician Deck', 'Mechanic Deck', 'Culinary Deck'].map((deck, i) => (
-                        <div key={i} className="manga-card h-96 bg-black flex items-center justify-center relative group cursor-pointer hover:scale-105 transition-transform">
-                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-20"></div>
-                            <h3 className="text-white font-black text-3xl uppercase text-center relative z-10">{deck}</h3>
-                            <div className="absolute bottom-4 left-4 bg-white px-2 font-bold text-xs uppercase">LOCKED</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
-        const ControlRoomScreen = () => {
-            const [selectedYear, setSelectedYear] = useState(1);
-            const [showPriorityForm, setShowPriorityForm] = useState(false);
-            const [showExamCalc, setShowExamCalc] = useState(false);
-            const [studyResult, setStudyResult] = useState(null);
-            const [currentTime, setCurrentTime] = useState(new Date());
-            const [examWeeks, setExamWeeks] = useState({});
-            const navigate = useNavigate();
-
-            useEffect(() => {
-                const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-                return () => clearInterval(timer);
-            }, []);
-
-            // Calculation of Academic Context
-            const getAcademicStatus = () => {
-                const now = new Date();
-                const month = now.getMonth(); // 0-11
-
-                let module = "PRE-SESSION";
-                let advice = "Prepare for the intake.";
-
-                if (month >= 8 && month <= 10) { module = "MODULE 1"; advice = "Focus: Fundamental Safety & Basic Tools."; } // Sept-Nov
-                else if (month === 11 || month <= 1) { module = "MODULE 2"; advice = "Focus: Technical Theory & Circuits."; } // Dec-Feb
-                else if (month >= 2 && month <= 4) { module = "MODULE 3"; advice = "Focus: Complex Diagnostics."; } // Mar-May
-                else if (month >= 5 && month <= 6) { module = "MODULE 4"; advice = "Focus: PIF Submission & Final Jury."; } // Jun-Jul
-                else { module = "SUMMER OPS"; advice = "Review materials. Rest & Recover."; }
-
-                return { module, advice };
-            };
-
-            const status = getAcademicStatus();
-
-            const yearAdvice = {
-                1: "Year 1 Objective: Master the basics. Safety first. Build your toolkit.",
-                2: "Year 2 Objective: Deep technical mastery. Solve complex faults.",
-                3: "Year 3 Objective: JURY READY. Perfect your PIF. Lead the team."
-            };
-
-            return (
-                <React.Fragment>
-                    {/* Modals */}
-                    {showPriorityForm && (
-                        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center backdrop-blur-sm animate-fade-in-up">
-                            <div className="bg-[#1a1a1a] border-2 border-[#00ff2f] p-8 rounded-xl w-full max-w-md shadow-[0_0_50px_rgba(0,255,47,0.2)]">
-                                <h3 className="text-[#00ff2f] text-2xl font-black uppercase mb-6 flex items-center gap-2">
-                                    <span className="material-symbols-outlined">description</span> Priority Registration
-                                </h3>
-                                <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Data Sent to CLI Assistant!"); setShowPriorityForm(false); }}>
-                                    <div>
-                                        <label className="text-white text-xs font-bold uppercase ml-1">Cadet Name</label>
-                                        <input type="text" className="w-full bg-white/10 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-[#00ff2f]" placeholder="John Doe" />
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label className="text-white text-xs font-bold uppercase ml-1">Class Code</label>
-                                            <input type="text" className="w-full bg-white/10 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-[#00ff2f]" placeholder="2TP" />
-                                        </div>
-                                        <div>
-                                            <label className="text-white text-xs font-bold uppercase ml-1">School</label>
-                                            <input type="text" className="w-full bg-white/10 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-[#00ff2f]" placeholder="LGT" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label className="text-white text-xs font-bold uppercase ml-1">Bulletin de Notes (PDF)</label>
-                                        <div className="border-2 border-dashed border-white/20 rounded-lg p-6 text-center text-slate-400 hover:border-[#00ff2f] hover:text-[#00ff2f] transition-colors cursor-pointer">
-                                            <span className="material-symbols-outlined text-3xl mb-2">cloud_upload</span>
-                                            <p className="text-xs">Drag & Drop or Click to Upload</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex justify-end gap-2 mt-6">
-                                        <button type="button" onClick={() => setShowPriorityForm(false)} className="px-4 py-2 text-slate-400 hover:text-white font-bold text-sm">CANCEL</button>
-                                        <button type="submit" className="px-6 py-2 bg-[#00ff2f] text-black font-black rounded shadow-[0_0_15px_rgba(0,255,47,0.4)] hover:shadow-[0_0_25px_rgba(0,255,47,0.6)] transition-all">SUBMIT DATA</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    )}
-
-                    {showExamCalc && (
-                        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center backdrop-blur-sm animate-fade-in-up">
-                            <div className="bg-[#1a1a1a] border-2 border-primary p-8 rounded-xl w-full max-w-md shadow-[0_0_50px_rgba(124,58,237,0.3)]">
-                                <h3 className="text-primary text-2xl font-black uppercase mb-2 flex items-center gap-2">
-                                    <span className="material-symbols-outlined">timer</span> Exam Strategy Calculator
-                                </h3>
-                                <p className="text-slate-400 text-sm mb-6">Input your target date. We will calculate the required grind.</p>
-
-                                <div className="space-y-4">
-                                    <div>
-                                        <label className="text-white text-xs font-bold uppercase ml-1">Next Exam Date</label>
-                                        <input
-                                            type="date"
-                                            className="w-full bg-white/10 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-primary text-lg"
-                                            onChange={(e) => {
-                                                const date = new Date(e.target.value);
-                                                const now = new Date();
-                                                const diffTime = date - now;
-                                                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                                                let hours = 0;
-                                                let intensity = "";
-
-                                                if (diffDays <= 3) { hours = 10; intensity = "MAXIMUM OVERDRIVE"; }
-                                                else if (diffDays <= 7) { hours = 6; intensity = "HIGH INTENSITY"; }
-                                                else if (diffDays <= 30) { hours = 3; intensity = "CONSISTENT GRIND"; }
-                                                else { hours = 1; intensity = "MAINTENANCE MODE"; }
-
-                                                setStudyResult({ days: diffDays, hours, intensity });
-                                            }}
-                                        />
-                                    </div>
-
-                                    {studyResult && (
-                                        <div className="bg-white/5 rounded-xl p-4 border border-white/10 mt-4 animate-pulse">
-                                            <div className="flex justify-between items-center mb-2">
-                                                <span className="text-slate-400 text-xs uppercase font-bold">Time Remaining</span>
-                                                <span className="text-white font-mono">{studyResult.days} DAYS</span>
-                                            </div>
-                                            <div className="flex justify-between items-center mb-2">
-                                                <span className="text-slate-400 text-xs uppercase font-bold">Required Study</span>
-                                                <span className="text-[#00ff2f] font-black text-xl">{studyResult.hours} HOURS / DAY</span>
-                                            </div>
-                                            <div className="mt-2 text-center">
-                                                <span className="bg-primary text-white text-xs font-black px-2 py-1 rounded">{studyResult.intensity}</span>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    <div className="flex justify-end gap-2 mt-6">
-                                        <button type="button" onClick={() => setShowExamCalc(false)} className="px-4 py-2 text-slate-400 hover:text-white font-bold text-sm">CLOSE</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                    <div className="flex flex-wrap justify-between items-end gap-3 pb-4">
-                        <div className="flex flex-col gap-1">
-                            <p className="text-white text-4xl font-black tracking-tight">Academy Central Hub</p>
-                            <p className="text-slate-400 text-lg">Student Nexus & Operations Center</p>
-                        </div>
-                        <div className="flex gap-2 text-sm text-slate-400 bg-white/5 p-2 rounded-lg border border-white/10">
-                            <span className="material-symbols-outlined text-sm">schedule</span>
-                            <span>System Time: {new Date().toLocaleTimeString()}</span>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-auto gap-6">
-                        {/* Hero Block */}
-                        <div className="md:col-span-2 md:row-span-2 glass rounded-xl overflow-hidden flex flex-col group relative">
-                            <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10"></div>
-                            <div className="h-[400px] w-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-                                style={{ backgroundImage: 'url("images/academy_hub_hero.png")' }}></div>
-                            <div className="absolute top-6 left-6 z-20">
-                                <span className="bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Daily Briefing</span>
-                            </div>
-                            <div className="p-8 relative z-20 flex-1 flex flex-col justify-end gap-4">
-                                <div>
-                                    <p className="text-primary text-sm font-bold tracking-widest uppercase mb-2">Semester 1 • {status.module}</p>
-                                    <h3 className="text-white text-3xl font-bold leading-tight">Welcome back, Cadet.</h3>
-                                </div>
-                                <div className="flex h-12 items-center justify-center rounded-xl bg-white/5 p-1 border border-white/10 w-full max-w-md">
-                                    {[1, 2, 3].map(num => (
-                                        <label key={num} onClick={() => setSelectedYear(num)} className={`flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 text-sm font-bold transition-all ${selectedYear === num ? 'bg-primary text-white' : 'text-slate-400 hover:text-white'}`}>
-                                            <span>{num}{num === 1 ? 'st' : num === 2 ? 'nd' : 'rd'} Year</span>
-                                        </label>
-                                    ))}
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <p className="text-slate-300 max-w-xs italic text-sm">"{yearAdvice[selectedYear]}"</p>
-                                    <button onClick={() => navigate('/dojo')} className="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-primary text-white font-bold hover:scale-105 transition-transform glow-primary">
-                                        Enter Dojo
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* General Stats / Technical Mastery Evolution Clickable */}
-                        <div onClick={() => setShowExamCalc(true)} className="glass rounded-xl p-6 flex flex-col gap-4 cursor-pointer hover:bg-white/5 transition-colors group relative">
-                            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <span className="material-symbols-outlined text-sm text-primary">edit</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <h4 className="text-white font-bold flex items-center gap-2">
-                                    <span className="material-symbols-outlined text-primary">bar_chart</span>
-                                    Academic Status
-                                </h4>
-                                <span className="text-[10px] text-green-400 font-mono">ONLINE</span>
-                            </div>
-                            <div className="space-y-4 pointer-events-none">
-                                <MetricBar label="Semester Completion" value={65} trend="+1.2%" />
-                                <MetricBar label="Assignments Submitted" value={88} trend="14/16" />
-                                <MetricBar label="Jury Readiness" value={45} trend="Requires Focus" />
-                            </div>
-                            {studyResult && (
-                                <div className="mt-2 pt-2 border-t border-white/10">
-                                    <p className="text-xs text-slate-400 uppercase font-bold">Study Goal</p>
-                                    <p className="text-lg font-black text-[#00ff2f]">{studyResult.hours}H / DAY</p>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Terminal */}
-                        <div className="glass rounded-xl p-6 bg-black/40 border-primary/20">
-                            <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-2">
-                                <div className="flex gap-1.5">
-                                    <div className="size-2 bg-red-500/50 rounded-full"></div>
-                                    <div className="size-2 bg-yellow-500/50 rounded-full"></div>
-                                    <div className="size-2 bg-green-500/50 rounded-full"></div>
-                                </div>
-                                <span className="text-[10px] text-slate-500 font-mono ml-2">ACADEMY_NET.SYS</span>
-                            </div>
-                            <div className="cli-text text-sm space-y-2">
-                                <p className="text-primary"><span className="text-slate-500">&gt;</span> Login: <span className="text-green-400">AUTHORIZED</span></p>
-                                <p className="text-primary flex items-center gap-2">
-                                    <span className="text-slate-500">&gt;</span> Next Exam:
-                                    <input
-                                        type="date"
-                                        className="bg-transparent border-b border-yellow-500 text-yellow-500 focus:outline-none text-sm uppercase font-mono w-32"
-                                        onChange={(e) => {
-                                            const date = new Date(e.target.value);
-                                            const now = new Date();
-                                            const diffTime = date - now;
-                                            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-                                            // Calculate study hours logic directly here for immediate feedback
-                                            let hours = 0;
-                                            let intensity = "";
-                                            if (diffDays <= 3) { hours = 10; intensity = "MAX OVERDRIVE"; }
-                                            else if (diffDays <= 7) { hours = 6; intensity = "HIGH INTENSITY"; }
-                                            else if (diffDays <= 30) { hours = 3; intensity = "CONSISTENT GRIND"; }
-                                            else { hours = 1; intensity = "MAINTENANCE"; }
-
-                                            // Update Study Result State to reflect in the UI (Terminal or nearby)
-                                            setStudyResult({ days: diffDays, hours, intensity });
-                                        }}
-                                    />
-                                </p>
-                                {studyResult ? (
-                                    <div className="mt-2 text-xs border-l-2 border-green-500 pl-2">
-                                        <p className="text-white">TARGET: <span className="text-green-400 font-bold">{studyResult.days} DAYS LEFT</span></p>
-                                        <p className="text-white">REQUIRED: <span className="text-[#00ff2f] font-black">{studyResult.hours}H / DAY</span></p>
-                                        <p className="text-primary italic">Mode: {studyResult.intensity}</p>
-                                    </div>
-                                ) : (
-                                    <p className="text-primary"><span className="text-slate-500">&gt;</span> Status: <span className="text-slate-400">WAITING FOR INPUT...</span></p>
-                                )}
-                                <p className="text-primary"><span className="text-slate-500">&gt;</span> Current Module: <span className="text-blue-400">{status.module}</span></p>
-                                <p className="text-primary"><span className="text-slate-500">&gt;</span> System Msg: <span className="text-slate-400 italic">"{status.advice}"</span></p>
-                                <p className="text-white mt-4 animate-pulse"><span className="text-primary">_</span></p>
-                            </div>
-                        </div>
-
-                        {/* Notifications / Priority Alert Clickable */}
-                        <div id="priority-alert-card" onClick={() => setShowPriorityForm(true)} className="md:col-span-1 glass rounded-xl overflow-hidden flex flex-col group cursor-pointer hover:bg-white/5 transition-colors">
-                            <div className="p-6">
-                                <h4 className="text-white font-bold flex items-center gap-2 mb-4">
-                                    <span className="material-symbols-outlined text-primary">notifications_active</span>
-                                    Priority Alert
-                                </h4>
-                                <div className="relative bg-primary/10 aspect-square rounded-lg border border-primary/20 p-4 flex flex-col items-center justify-center text-center group-hover:bg-primary/20 transition-colors">
-                                    <span className="material-symbols-outlined text-5xl text-primary mb-2 animate-bounce">assignment_late</span>
-                                    <p className="text-white font-bold text-lg">PIF Submission</p>
-                                    <p className="text-slate-400 text-xs mt-1">Due Date Approaching</p>
-                                    <div className="mt-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-bold">
-                                        T-MINUS 48H
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="px-6 pb-6 mt-auto">
-                                <div className="flex justify-between items-center">
-                                    <div>
-                                        <p className="text-white text-sm font-bold">Action Required</p>
-                                        <p className="text-slate-400 text-xs">Review requirements</p>
-                                    </div>
-                                    <span className="material-symbols-outlined text-slate-500 hover:text-white cursor-pointer">arrow_forward</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Calendar / Technical Mastery Evolution Clickable */}
-                        {/* Calendar / Academy Timeline (Horizontal Line Style) */}
-                        <div className="md:col-span-3 glass rounded-xl p-8 flex flex-col gap-8 relative overflow-hidden">
-                            <div className="flex items-center justify-between z-10">
-                                <div>
-                                    <h4 className="text-white font-bold text-xl flex items-center gap-2">
-                                        <span className="material-symbols-outlined text-primary">timeline</span>
-                                        Semester Timeline
-                                    </h4>
-                                    <p className="text-slate-400 text-sm">Track your progress. <span className="text-[#00ff2f]">Click points to set Exam Dates.</span></p>
-                                </div>
-                                <div className="flex gap-4">
-                                    <span className="flex items-center gap-1 text-xs text-slate-400">
-                                        <span className="text-[#00ff2f]">▲</span> You are here
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Scrollable Line Container */}
-                            <div className="custom-scrollbar flex-1 overflow-x-auto overflow-y-visible pb-4 px-4" ref={(el) => { if (el) el.scrollLeft = el.scrollWidth / 2 - el.clientWidth / 2; }}>
-                                <div className="relative h-32 flex items-center min-w-max mx-auto px-12">
-                                    {/* The Line */}
-                                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-
-                                    <div className="flex justify-between gap-12 relative z-10">
-                                        {Array.from({ length: 16 }).map((_, i) => {
-                                            const weekOffset = i - 6;
-                                            const now = new Date();
-                                            const startOfYear = new Date(now.getFullYear(), 8, 1);
-                                            if (now < startOfYear) startOfYear.setFullYear(now.getFullYear() - 1);
-                                            const currentWeekNum = Math.ceil((now - startOfYear) / (1000 * 60 * 60 * 24 * 7));
-                                            const displayWeek = currentWeekNum + weekOffset;
-                                            const displayWeekString = `WK ${displayWeek}`;
-                                            const isCurrent = weekOffset === 0;
-                                            const isExam = examWeeks[displayWeekString];
-
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    onClick={() => setExamWeeks(prev => ({ ...prev, [displayWeekString]: !prev[displayWeekString] }))}
-                                                    className="group relative flex flex-col items-center justify-center cursor-pointer"
-                                                >
-                                                    {/* Week Node */}
-                                                    <div className={`
-                                                        size-4 rounded-full border-2 transition-all duration-300 relative z-20
-                                                        ${isExam ? 'bg-red-500 border-red-500 shadow-[0_0_15px_red] scale-125'
-                                                            : isCurrent ? 'bg-[#1a1a1a] border-[#00ff2f] shadow-[0_0_15px_#00ff2f] scale-125'
-                                                                : 'bg-[#1a1a1a] border-slate-600 group-hover:border-white group-hover:scale-110'}
-                                                    `}>
-                                                        {isCurrent && <div className="absolute inset-0 bg-[#00ff2f] rounded-full animate-ping opacity-75"></div>}
-                                                    </div>
-
-                                                    {/* Triangle Marker (Pointing UP from Bottom - "Inversa") */}
-                                                    {isCurrent && (
-                                                        <div className="absolute top-8 flex flex-col items-center animate-bounce z-30">
-                                                            <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[10px] border-b-[#00ff2f] drop-shadow-[0_0_10px_rgba(0,255,47,0.8)]"></div>
-                                                            <span className="text-[#00ff2f] text-[10px] font-black tracking-widest uppercase mt-1">YOU</span>
-                                                        </div>
-                                                    )}
-
-                                                    {/* Week Label */}
-                                                    <div className={`absolute -top-8 text-[10px] font-bold tracking-widest whitespace-nowrap transition-colors ${isCurrent ? 'text-[#00ff2f]' : isExam ? 'text-red-500' : 'text-slate-500'}`}>
-                                                        {displayWeekString}
-                                                    </div>
-
-                                                    {/* Exam Label */}
-                                                    {isExam && (
-                                                        <div className="absolute -bottom-8 text-red-500 text-[9px] font-black uppercase tracking-wider bg-red-500/10 px-2 py-0.5 rounded border border-red-500/20">EXAM</div>
-                                                    )}
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </React.Fragment>
-            );
-        };
-
-        const MetricBar = ({ label, value, trend }) => (
-            <div className="p-3 bg-white/5 border border-white/5 rounded-lg">
-                <div className="flex justify-between mb-1">
-                    <span className="text-xs text-slate-400">{label}</span>
-                    <span className={`text-xs ${trend.includes('+') ? 'text-green-400' : 'text-slate-500'}`}>{trend}</span>
-                </div>
-                <div className="text-xl font-bold">{value}%</div>
-                <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
-                    <div className="bg-primary h-full" style={{ width: `${value}%` }}></div>
-                </div>
-            </div>
-        );
-
-        // --- API Hooks ---
-        const useTrades = () => {
-            const [trades, setTrades] = useState([]);
-            useEffect(() => {
-                // Cache busting added to ensure fresh data
-                fetch('./trades.json?v=2.0')
-                    .then(res => {
-                        if (!res.ok) throw new Error("HTTP " + res.status);
-                        return res.json();
-                    })
-                    .then(data => setTrades(data))
-                    .catch(e => console.error("Could not load trades list:", e));
-            }, []);
-            return trades;
-        };
-
-        const useTradeDetail = (code, lang) => {
-            const [data, setData] = useState(null);
-            useEffect(() => {
-                if (!code) return;
-                fetch(`./trades/${code}/${lang.toLowerCase()}.json?v=2.0`)
-                    .then(res => res.json())
-                    .then(d => setData(d))
-                    .catch(e => console.error(e));
-            }, [code, lang]);
-            return data;
-        };
-
-        // --- Screens ---
-
-        const DojoScreen = () => {
-            const trades = useTrades();
-            const navigate = useNavigate();
-
-            return (
-                <div className="p-8 max-w-7xl mx-auto space-y-16">
-                    <header className="flex justify-between items-center mb-16">
-                        <div className="flex flex-col">
-                            <h1 className="manga-title font-manga text-7xl uppercase tracking-tighter transform -rotate-2">PIF ACADEMY</h1>
-                            <p className="font-marker text-xl ml-2 text-[#1a1a1a]">SHONEN DOJO: LUXEMBOURG EDITION v2.0</p>
-                        </div>
-                        <div className="flex bg-[#1a1a1a] p-1 rounded-lg border-2 border-[#1a1a1a] shadow-[4px_4px_0_rgba(0,0,0,0.2)]">
-                            {['FR', 'EN', 'DE', 'LB', 'ES', 'PT'].map(lang => (
-                                <button key={lang} className={`px-4 py-2 text-white font-bold text-sm glitch-hover ${lang === 'EN' ? 'bg-[#00d2ff]' : 'hover:bg-[#ff007a]'}`}>
-                                    {lang}
-                                </button>
-                            ))}
-                        </div>
-                    </header>
-
-                    <section>
-                        <div className="flex items-center gap-4 mb-8">
-                            <h2 className="text-4xl font-black italic uppercase">Choose Your Class!</h2>
-                            <div className="h-1 flex-1 bg-[#1a1a1a]"></div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                            {trades.length === 0 ? <p className="text-xl italic font-black">Connecting to PIF Backend...</p> :
-                                trades.map(trade => (
-                                    <MangaClassCard
-                                        key={trade.code}
-                                        title={trade.name.split('(')[0]}
-                                        role={trade.trait.role}
-                                        color={trade.trait.color}
-                                        desc={trade.trait.desc}
-                                        icon={trade.trait.icon}
-                                        img={trade.trait.img}
-                                        onClick={() => navigate(`/dojo/${trade.code}`)}
-                                    />
-                                ))}
-                        </div>
-                    </section>
-                </div>
-            );
-        };
-
-        const TradeDetailScreen = () => {
-            const { tradeId } = ReactRouterDOM.useParams();
-            const [lang, setLang] = useState('es'); // Default ES for now
-            const data = useTradeDetail(tradeId, lang);
-
-            if (!data) return <div className="p-10 font-black text-2xl">LOADING SCROLL DATA...</div>;
-
-            return (
-                <div className="p-8 max-w-7xl mx-auto space-y-8 animate-fade-in-up">
-                    <div className="flex items-center gap-4">
-                        <Link to="/dojo" className="arcade-btn bg-[#1a1a1a] cursor-pointer hover:bg-red-500">
-                            <span className="material-symbols-outlined text-white">arrow_back</span>
-                        </Link>
-                        <h1 className="manga-title font-manga text-6xl uppercase tracking-tighter">{data.title}</h1>
-                    </div>
-
-                    {/* PIF INTRO CARD - ADDED BY ANTIGRAVITY */}
-                    <div className="manga-card bg-[#1a1a1a] p-6 border-l-[12px] border-[#ff007a] shadow-[0_10px_20px_rgba(0,0,0,0.5)] relative overflow-hidden group hover:scale-[1.01] transition-transform mb-8">
-                        <div className="absolute -right-10 -top-10 text-[#2a2a2a] transform rotate-12 pointer-events-none">
-                            <span className="material-symbols-outlined text-[150px]">verified</span>
-                        </div>
-                        <div className="relative z-10">
-                            <h2 className="text-[#ff007a] font-black text-3xl uppercase italic mb-2 tracking-wide flex items-center gap-3">
-                                <span className="material-symbols-outlined text-3xl animate-pulse">warning</span>
-                                PROTOCOLO PIF ACTIVADO
-                            </h2>
-                            <p className="text-white text-lg font-medium leading-relaxed">
-                                <strong className="text-[#00ff2f]">OBJETIVO:</strong> Demostrar competencia autónoma total.
-                                Esto es el <span className="text-[#00ff2f] italic">Proyecto Integrado Final</span>.
-                                Ejecuta la instalación sin errores de seguridad para aprobar.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Sections List */}
-                        <div className="space-y-6">
-                            {data.sections.map((sec, idx) => (
-                                <div key={idx} className="manga-card p-6 hover:bg-[#f0f0f0] cursor-pointer">
-                                    <h3 className="font-black text-xl italic uppercase mb-2 border-b-2 border-black">{sec.title}</h3>
-                                    <p className="text-sm font-medium">{sec.content.length} items logged.</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Content Viewer (Scroll) */}
-                        <div className="md:col-span-2 manga-card p-8 min-h-[500px] bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]">
-                            {data.sections.map((sec, idx) => (
-                                <div key={idx} className="mb-12">
-                                    <h2 className="text-4xl font-black italic uppercase mb-6 bg-yellow-300 inline-block px-2 transform -rotate-1 border-2 border-black shadow-[4px_4px_0_black]">{sec.title}</h2>
-
-                                    <div className="space-y-4">
-                                        {sec.content.map((item, i) => (
-                                            <div key={i} className="flex gap-4 items-start group">
-                                                <div className="w-8 h-8 bg-black text-white flex items-center justify-center font-black rounded-md group-hover:bg-[#ff007a] transition-colors flex-shrink-0">
-                                                    {i + 1}
-                                                </div>
-                                                <div className="speech-bubble flex-1 shadow-md group-hover:shadow-[8px_8px_0_rgba(0,0,0,0.1)] transition-all">
-                                                    {item.title ? (
-                                                        <React.Fragment>
-                                                            <p className="font-black text-lg uppercase italic">{item.title}</p>
-                                                            <p className="text-sm">{item.description || item.url}</p>
-                                                        </React.Fragment>
-                                                    ) : (
-                                                        <React.Fragment>
-                                                            <p className="font-bold italic text-red-500 mb-1">Q: {item.question}</p>
-                                                            <p className="text-sm border-l-4 border-green-400 pl-2">A: {item.answer}</p>
-                                                        </React.Fragment>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-        const MangaClassCard = ({ title, role, color, desc, img, icon, onClick }) => (
-            <div className="manga-card group overflow-hidden cursor-pointer" onClick={onClick}>
-                <div className={`${color} h-64 relative overflow-hidden border-b-[4px] border-[#1a1a1a]`}>
-                    <div className="halftone absolute inset-0"></div>
-                    {img ? (
-                        <img alt={role} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80" src={img} />
-                    ) : (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="material-symbols-outlined text-[120px] text-black/20">{icon}</span>
-                        </div>
-                    )}
-                    <div className="absolute bottom-4 right-4 bg-white px-4 py-1 border-2 border-black font-black italic transform -rotate-3 group-hover:rotate-0 transition-transform text-black">
-                        {role}
-                    </div>
-                </div>
-                <div className="p-6">
-                    <h3 className="text-3xl font-black mb-2 uppercase italic text-black">{title}</h3>
-                    <p className="text-sm font-medium mb-6 text-black">{desc}</p>
-                    <button className="w-full py-3 bg-[#1a1a1a] text-white font-black italic uppercase hover:bg-opacity-80 transition-colors border-2 border-[#1a1a1a]">
-                        ENTER CLASS
-                    </button>
-                </div>
-            </div>
-        );
-
-        // --- Router Setup ---
-
-        const App = () => {
-            return (
-                <MemoryRouter>
-                    <Routes>
-                        <Route path="/" element={
-                            <DashboardLayout>
-                                <ControlRoomScreen />
-                            </DashboardLayout>
-                        } />
-                        <Route path="/dojo" element={
-                            <DojoLayout>
-                                <DojoScreen />
-                            </DojoLayout>
-                        } />
-                        <Route path="/formulas" element={
-                            <DojoLayout>
-                                <FormulasScreen />
-                            </DojoLayout>
-                        } />
-                        <Route path="/games" element={
-                            <DojoLayout>
-                                <GamesScreen />
-                            </DojoLayout>
-                        } />
-                        <Route path="/dojo/:tradeId" element={
-                            <DojoLayout>
-                                <TradeDetailScreen />
-                            </DojoLayout>
-                        } />
-                    </Routes>
-                </MemoryRouter>
-            );
-        };
-
-        const container = document.getElementById('root');
-        const root = createRoot(container);
-        root.render(<App />);
-    </script>
-</body>
-
+    <script type="text/babel" src="js/app.js"></script>
+  </body>
 </html>

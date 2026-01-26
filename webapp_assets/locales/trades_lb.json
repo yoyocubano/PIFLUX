@@ -1,0 +1,13 @@
+[
+    { "code": "ASAF", "name": "FLEEGHELLEFER", "trait": { "role": "Vitalen Hitter", "color": "bg-emerald-400", "desc": "Matgefill an der éischter Linn.", "icon": "medical_services", "img": "images/nursing_anime.png" } },
+    { "code": "BC", "name": "METZLER", "trait": { "role": "Meeschter Metzler", "color": "bg-rose-700", "desc": "Präzisioun an Anatomie.", "icon": "kitchen", "img": "images/butcher_anime.png" } },
+    { "code": "BL", "name": "BÉCKER", "trait": { "role": "Brout Meeschter", "color": "bg-amber-300", "desc": "D'Basis vun eisem Iessen.", "icon": "bakery_dining", "img": "images/baker_anime.png" } },
+    { "code": "COF", "name": "COIFFEUR", "trait": { "role": "Stil Kënschtler", "color": "bg-pink-400", "desc": "Image a Vertrauen.", "icon": "content_cut", "img": "images/hairdresser_anime.png" } },
+    { "code": "CS", "name": "HEIZUNGSINSTALLATEUR", "trait": { "role": "Thermo Titan", "color": "bg-orange-600", "desc": "Wäermt an Drock.", "icon": "hvac", "img": "images/heating_anime.png" } },
+    { "code": "CUF", "name": "KACH", "trait": { "role": "Flamen Alchemist", "color": "bg-orange-500", "desc": "Goût a Präzisioun.", "icon": "restaurant", "img": "images/chef_anime.png" } },
+    { "code": "EDF", "name": "ERZÉIER", "trait": { "role": "Guide", "color": "bg-indigo-400", "desc": "Déi nächst Generatioun guidéieren.", "icon": "school", "img": "images/educator_anime.png" } },
+    { "code": "ELF", "name": "ELEKTRIKER", "trait": { "role": "Volt Meeschter", "color": "bg-yellow-400", "desc": "Meeschter vun de Circuiten.", "icon": "bolt", "img": "images/electrician_anime.png" } },
+    { "code": "IF", "name": "INFORMATIKER", "trait": { "role": "Cyber Operator", "color": "bg-blue-500", "desc": "Codes a Netzwierker.", "icon": "terminal", "img": "images/it_anime.png" } },
+    { "code": "MAF", "name": "MECHANIKER", "trait": { "role": "Motor Meeschter", "color": "bg-red-500", "desc": "Motoren an Diagnos.", "icon": "build", "img": "images/mechanic_anime.png" } },
+    { "code": "VEF", "name": "VERKLEEFER", "trait": { "role": "Verkaufs Expert", "color": "bg-purple-500", "desc": "D'Konscht vum Verkafen.", "icon": "storefront", "img": "images/sales_anime.png" } }
+]

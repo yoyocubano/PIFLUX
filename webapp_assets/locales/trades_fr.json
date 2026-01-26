@@ -1,0 +1,13 @@
+[
+    { "code": "ASAF", "name": "AIDE-SOIGNANT", "trait": { "role": "Gardien Vital", "color": "bg-emerald-400", "desc": "Compassion et résilience en première ligne.", "icon": "medical_services", "img": "images/nursing_anime.png" } },
+    { "code": "BC", "name": "BOUCHER", "trait": { "role": "Maître Boucher", "color": "bg-rose-700", "desc": "Coupes précises et anatomie.", "icon": "kitchen", "img": "images/butcher_anime.png" } },
+    { "code": "BL", "name": "BOULANGER", "trait": { "role": "Maître du Pain", "color": "bg-amber-300", "desc": "Le fondement de notre alimentation.", "icon": "bakery_dining", "img": "images/baker_anime.png" } },
+    { "code": "COF", "name": "COIFFEUR", "trait": { "role": "Sculpteur de Style", "color": "bg-pink-400", "desc": "Sculpter l'image et la confiance.", "icon": "content_cut", "img": "images/hairdresser_anime.png" } },
+    { "code": "CS", "name": "INSTALLATEUR CHAUFFAGE", "trait": { "role": "Titan Thermique", "color": "bg-orange-600", "desc": "Gestion de la chaleur et de la pression.", "icon": "hvac", "img": "images/heating_anime.png" } },
+    { "code": "CUF", "name": "CUISINIER", "trait": { "role": "Alchimiste du Feu", "color": "bg-orange-500", "desc": "Précision et saveur.", "icon": "restaurant", "img": "images/chef_anime.png" } },
+    { "code": "EDF", "name": "ÉDUCATEUR", "trait": { "role": "Guide", "color": "bg-indigo-400", "desc": "Guider la prochaine génération.", "icon": "school", "img": "images/educator_anime.png" } },
+    { "code": "ELF", "name": "ÉLECTRICIEN", "trait": { "role": "Avant-Garde Voltaire", "color": "bg-yellow-400", "desc": "Maître des circuits et de la sécurité.", "icon": "bolt", "img": "images/electrician_anime.png" } },
+    { "code": "IF", "name": "INFORMATICIEN", "trait": { "role": "Opérateur Cyber", "color": "bg-blue-500", "desc": "Réseaux et code.", "icon": "terminal", "img": "images/it_anime.png" } },
+    { "code": "MAF", "name": "MÉCANICIEN", "trait": { "role": "Moteur Maître", "color": "bg-red-500", "desc": "Moteurs et diagnostics.", "icon": "build", "img": "images/mechanic_anime.png" } },
+    { "code": "VEF", "name": "VENDEUR", "trait": { "role": "Expert Marché", "color": "bg-purple-500", "desc": "L'art de la persuasion.", "icon": "storefront", "img": "images/sales_anime.png" } }
+]
