@@ -789,7 +789,7 @@ const TradeDetailScreen = () => {
 
     // Auto-select first category on load
     useEffect(() => {
-        if (data?.sections?.length > 0 && !selectedCategory) {
+        if (data && data.sections && data.sections.length > 0 && !selectedCategory) {
             setSelectedCategory(data.sections[0]);
         }
     }, [data]);
