@@ -344,7 +344,7 @@ const MangaClassCard = ({ title, role, color, desc, img, icon, onClick }) => {
 // --- Layouts ---
 
 const DashboardLayout = ({ children }) => {
-    const { t } = useTranslation();
+    const { t, language, setLanguage } = useTranslation();
     return (
         <div className="flex h-full grow flex-col dark">
             <header className="flex items-center justify-between border-b border-solid border-white/10 px-6 py-4 glass sticky top-0 z-50">
@@ -360,6 +360,18 @@ const DashboardLayout = ({ children }) => {
                         <Link className="text-white/60 text-sm font-medium hover:text-white transition-colors" to="/formulas">{t('nav', 'formulas')}</Link>
                         <Link className="text-white/60 text-sm font-medium hover:text-white transition-colors" to="/games">{t('nav', 'games')}</Link>
                     </nav>
+                     {/* Language Selector (Compact) */}
+                    <div className="flex bg-[#1a1a1a] p-1 rounded-lg border border-white/10 hidden lg:flex">
+                        {['FR', 'EN', 'DE', 'LB', 'ES', 'PT'].map(lang => (
+                             <button 
+                                key={lang} 
+                                onClick={() => setLanguage(lang.toLowerCase())}
+                                className={`px-3 py-1 text-white font-bold text-xs rounded transition-all ${language === lang.toLowerCase() ? 'bg-primary shadow-[0_0_10px_#833cf6]' : 'hover:bg-white/10'}`}
+                            >
+                                {lang}
+                            </button>
+                        ))}
+                    </div>
                     <div className="flex items-center gap-4">
                         <button className="flex min-w-[120px] items-center justify-center rounded-full h-10 px-4 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20">
                             <span className="flex items-center gap-2">
@@ -456,6 +468,10 @@ const GamesScreen = () => (
 const ControlRoomScreen = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [selectedYear, setSelectedYear] = useState(1);
+    const [showPriorityForm, setShowPriorityForm] = useState(false);
+    const [showExamCalc, setShowExamCalc] = useState(false);
+    const [studyResult, setStudyResult] = useState(null);
+    const [examWeeks, setExamWeeks] = useState({});
     const { t } = useTranslation();
     const navigate = useNavigate();
 
@@ -464,9 +480,89 @@ const ControlRoomScreen = () => {
         return () => clearInterval(timer);
     }, []);
 
+    // Calculation of Academic Context
+    const getAcademicStatus = () => {
+        const now = new Date();
+        const month = now.getMonth(); // 0-11
+        let module = "PRE-SESSION";
+        let advice = "Prepare for the intake.";
+
+        if (month >= 8 && month <= 10) { module = "MODULE 1"; advice = "Focus: Fundamental Safety & Basic Tools."; } // Sept-Nov
+        else if (month === 11 || month <= 1) { module = "MODULE 2"; advice = "Focus: Technical Theory & Circuits."; } // Dec-Feb
+        else if (month >= 2 && month <= 4) { module = "MODULE 3"; advice = "Focus: Complex Diagnostics."; } // Mar-May
+        else if (month >= 5 && month <= 6) { module = "MODULE 4"; advice = "Focus: PIF Submission & Final Jury."; } // Jun-Jul
+        else { module = "SUMMER OPS"; advice = "Review materials. Rest & Recover."; }
+
+        return { module, advice };
+    };
+
+    const status = getAcademicStatus();
+    const yearAdvice = {
+        1: "Year 1 Objective: Master the basics. Safety first. Build your toolkit.",
+        2: "Year 2 Objective: Deep technical mastery. Solve complex faults.",
+        3: "Year 3 Objective: JURY READY. Perfect your PIF. Lead the team."
+    };
+
     return (
         <React.Fragment>
-             <div className="flex flex-wrap justify-between items-end gap-3 pb-4">
+            {/* Exam Calculator Modal */}
+            {showExamCalc && (
+                <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center backdrop-blur-sm animate-fade-in-up">
+                    <div className="bg-[#1a1a1a] border-2 border-primary p-8 rounded-xl w-full max-w-md shadow-[0_0_50px_rgba(124,58,237,0.3)]">
+                        <h3 className="text-primary text-2xl font-black uppercase mb-2 flex items-center gap-2">
+                            <span className="material-symbols-outlined">timer</span> Exam Strategy Calculator
+                        </h3>
+                        <p className="text-slate-400 text-sm mb-6">Input your target date. We will calculate the required grind.</p>
+
+                        <div className="space-y-4">
+                            <div>
+                                <label className="text-white text-xs font-bold uppercase ml-1">Next Exam Date</label>
+                                <input
+                                    type="date"
+                                    className="w-full bg-white/10 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-primary text-lg"
+                                    onChange={(e) => {
+                                        const date = new Date(e.target.value);
+                                        const now = new Date();
+                                        const diffTime = date - now;
+                                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                                        let hours = 0;
+                                        let intensity = "";
+
+                                        if (diffDays <= 3) { hours = 10; intensity = "MAXIMUM OVERDRIVE"; }
+                                        else if (diffDays <= 7) { hours = 6; intensity = "HIGH INTENSITY"; }
+                                        else if (diffDays <= 30) { hours = 3; intensity = "CONSISTENT GRIND"; }
+                                        else { hours = 1; intensity = "MAINTENANCE MODE"; }
+
+                                        setStudyResult({ days: diffDays, hours, intensity });
+                                    }}
+                                />
+                            </div>
+
+                            {studyResult && (
+                                <div className="bg-white/5 rounded-xl p-4 border border-white/10 mt-4 animate-pulse">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <span className="text-slate-400 text-xs uppercase font-bold">Time Remaining</span>
+                                        <span className="text-white font-mono">{studyResult.days} DAYS</span>
+                                    </div>
+                                    <div className="flex justify-between items-center mb-2">
+                                        <span className="text-slate-400 text-xs uppercase font-bold">Required Study</span>
+                                        <span className="text-[#00ff2f] font-black text-xl">{studyResult.hours} HOURS / DAY</span>
+                                    </div>
+                                    <div className="mt-2 text-center">
+                                        <span className="bg-primary text-white text-xs font-black px-2 py-1 rounded">{studyResult.intensity}</span>
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="flex justify-end gap-2 mt-6">
+                                <button type="button" onClick={() => setShowExamCalc(false)} className="px-4 py-2 text-slate-400 hover:text-white font-bold text-sm">CLOSE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            <div className="flex flex-wrap justify-between items-end gap-3 pb-4">
                 <div className="flex flex-col gap-1">
                     <p className="text-white text-4xl font-black tracking-tight">{t('dashboard', 'hero_title')}</p>
                     <p className="text-slate-400 text-lg">{t('dashboard', 'hero_subtitle')}</p>
@@ -488,9 +584,18 @@ const ControlRoomScreen = () => {
                     </div>
                     <div className="p-8 relative z-20 flex-1 flex flex-col justify-end gap-4">
                          <div>
+                             <p className="text-primary text-sm font-bold tracking-widest uppercase mb-2">Semester 1 • {status.module}</p>
                             <h3 className="text-white text-3xl font-bold leading-tight">{t('dashboard', 'welcome')}</h3>
                         </div>
+                         <div className="flex h-12 items-center justify-center rounded-xl bg-white/5 p-1 border border-white/10 w-full max-w-md">
+                            {[1, 2, 3].map(num => (
+                                <label key={num} onClick={() => setSelectedYear(num)} className={`flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 text-sm font-bold transition-all ${selectedYear === num ? 'bg-primary text-white' : 'text-slate-400 hover:text-white'}`}>
+                                    <span>{num}{num === 1 ? 'st' : num === 2 ? 'nd' : 'rd'} Year</span>
+                                </label>
+                            ))}
+                        </div>
                         <div className="flex items-center justify-between">
+                             <p className="text-slate-300 max-w-xs italic text-sm">"{yearAdvice[selectedYear]}"</p>
                             <button onClick={() => navigate('/dojo')} className="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-primary text-white font-bold hover:scale-105 transition-transform glow-primary">
                                 {t('dojo', 'enter_class')}
                             </button>
@@ -498,30 +603,50 @@ const ControlRoomScreen = () => {
                     </div>
                 </div>
 
-                {/* Stats */}
-                 <div className="glass rounded-xl p-6 flex flex-col gap-4">
+                {/* Stats Clickable -> Opens Calculator */}
+                 <div onClick={() => setShowExamCalc(true)} className="glass rounded-xl p-6 flex flex-col gap-4 cursor-pointer hover:bg-white/5 transition-colors group relative">
+                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                         <span className="material-symbols-outlined text-sm text-primary">edit</span>
+                    </div>
                     <div className="flex items-center justify-between">
                         <h4 className="text-white font-bold flex items-center gap-2">
                             <span className="material-symbols-outlined text-primary">bar_chart</span>
                             {t('dashboard', 'academic_status')}
                         </h4>
+                         <span className="text-[10px] text-green-400 font-mono">ONLINE</span>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-4 pointer-events-none">
                         <MetricBar label="Semester" value={65} trend="+1.2%" />
                         <MetricBar label="Assignments" value={88} trend="14/16" />
                     </div>
+                     {studyResult && (
+                        <div className="mt-2 pt-2 border-t border-white/10">
+                            <p className="text-xs text-slate-400 uppercase font-bold">Study Goal</p>
+                            <p className="text-lg font-black text-[#00ff2f]">{studyResult.hours}H / DAY</p>
+                        </div>
+                    )}
                 </div>
                 
                  {/* Terminal */}
                  <div className="glass rounded-xl p-6 bg-black/40 border-primary/20">
                      <div className="cli-text text-sm space-y-2">
                         <p className="text-primary"><span className="text-slate-500">&gt;</span> {t('dashboard', 'terminal_title')}</p>
+                         <p className="text-primary"><span className="text-slate-500">&gt;</span> Current Module: <span className="text-blue-400">{status.module}</span></p>
+                        <p className="text-primary"><span className="text-slate-500">&gt;</span> System Msg: <span className="text-slate-400 italic">"{status.advice}"</span></p>
+                         {studyResult ? (
+                            <div className="mt-2 text-xs border-l-2 border-green-500 pl-2">
+                                <p className="text-white">TARGET: <span className="text-green-400 font-bold">{studyResult.days} DAYS LEFT</span></p>
+                                <p className="text-white">REQUIRED: <span className="text-[#00ff2f] font-black">{studyResult.hours}H / DAY</span></p>
+                            </div>
+                        ) : (
+                            <p className="text-primary"><span className="text-slate-500">&gt;</span> Status: <span className="text-slate-400">WAITING FOR INPUT...</span></p>
+                        )}
                         <p className="text-white mt-4 animate-pulse"><span className="text-primary">_</span></p>
                     </div>
                  </div>
                  
                  {/* Priority Alert */}
-                 <div className="md:col-span-1 glass rounded-xl overflow-hidden flex flex-col group hover:bg-white/5 transition-colors">
+                 <div id="priority-alert-card" className="md:col-span-1 glass rounded-xl overflow-hidden flex flex-col group hover:bg-white/5 transition-colors">
                      <div className="p-6">
                         <h4 className="text-white font-bold flex items-center gap-2 mb-4">
                             <span className="material-symbols-outlined text-primary">notifications_active</span>
@@ -533,6 +658,70 @@ const ControlRoomScreen = () => {
                         </div>
                      </div>
                  </div>
+
+                 {/* Timeline with Click Events */}
+                <div className="md:col-span-3 glass rounded-xl p-8 flex flex-col gap-8 relative overflow-hidden">
+                    <div className="flex items-center justify-between z-10">
+                        <div>
+                            <h4 className="text-white font-bold text-xl flex items-center gap-2">
+                                <span className="material-symbols-outlined text-primary">timeline</span>
+                                {t('dashboard', 'timeline')}
+                            </h4>
+                            <p className="text-slate-400 text-sm">Track your progress. <span className="text-[#00ff2f]">Click points to set Exam Dates.</span></p>
+                        </div>
+                    </div>
+
+                    <div className="custom-scrollbar flex-1 overflow-x-auto overflow-y-visible pb-4 px-4" ref={(el) => { if (el) el.scrollLeft = el.scrollWidth / 2 - el.clientWidth / 2; }}>
+                        <div className="relative h-32 flex items-center min-w-max mx-auto px-12">
+                            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                            <div className="flex justify-between gap-12 relative z-10">
+                                {Array.from({ length: 16 }).map((_, i) => {
+                                    const weekOffset = i - 6;
+                                    const now = new Date();
+                                    const startOfYear = new Date(now.getFullYear(), 8, 1);
+                                    if (now < startOfYear) startOfYear.setFullYear(now.getFullYear() - 1);
+                                    const currentWeekNum = Math.ceil((now - startOfYear) / (1000 * 60 * 60 * 24 * 7));
+                                    const displayWeek = currentWeekNum + weekOffset;
+                                    const displayWeekString = `WK ${displayWeek}`;
+                                    const isCurrent = weekOffset === 0;
+                                    const isExam = examWeeks[displayWeekString];
+
+                                    return (
+                                        <div
+                                            key={i}
+                                            onClick={() => {
+                                                setExamWeeks(prev => ({ ...prev, [displayWeekString]: !prev[displayWeekString] }));
+                                                if(!isExam) setShowExamCalc(true); // Open calculator when marking an exam
+                                            }}
+                                            className="group relative flex flex-col items-center justify-center cursor-pointer"
+                                        >
+                                            <div className={`
+                                                size-4 rounded-full border-2 transition-all duration-300 relative z-20
+                                                ${isExam ? 'bg-red-500 border-red-500 shadow-[0_0_15px_red] scale-125'
+                                                    : isCurrent ? 'bg-[#1a1a1a] border-[#00ff2f] shadow-[0_0_15px_#00ff2f] scale-125'
+                                                        : 'bg-[#1a1a1a] border-slate-600 group-hover:border-white group-hover:scale-110'}
+                                            `}>
+                                                {isCurrent && <div className="absolute inset-0 bg-[#00ff2f] rounded-full animate-ping opacity-75"></div>}
+                                            </div>
+                                            {isCurrent && (
+                                                <div className="absolute top-8 flex flex-col items-center animate-bounce z-30">
+                                                    <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[10px] border-b-[#00ff2f] drop-shadow-[0_0_10px_rgba(0,255,47,0.8)]"></div>
+                                                    <span className="text-[#00ff2f] text-[10px] font-black tracking-widest uppercase mt-1">YOU</span>
+                                                </div>
+                                            )}
+                                            <div className={`absolute -top-8 text-[10px] font-bold tracking-widest whitespace-nowrap transition-colors ${isCurrent ? 'text-[#00ff2f]' : isExam ? 'text-red-500' : 'text-slate-500'}`}>
+                                                {displayWeekString}
+                                            </div>
+                                            {isExam && (
+                                                <div className="absolute -bottom-8 text-red-500 text-[9px] font-black uppercase tracking-wider bg-red-500/10 px-2 py-0.5 rounded border border-red-500/20">EXAM</div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
              </div>
         </React.Fragment>
     );
