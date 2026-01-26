@@ -2,7 +2,8 @@ import subprocess
 import os
 
 # Destination on Desktop
-DEST_DIR = "/Users/yoyocubano/Desktop/Imagenes_Notas_Exportadas"
+# SECURITY FIX: Path moved to env var
+DEST_DIR = os.getenv("PIFLUX_IMAGE_EXPORT_DIR", "./exports/images")
 
 def run_applescript(script):
     try:

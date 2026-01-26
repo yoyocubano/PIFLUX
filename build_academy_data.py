@@ -2,7 +2,8 @@ import os
 import json
 
 # Paths
-source_dir = "/Users/yoyocubano/Desktop/École - trabajo /PIF_Documentation"
+# SECURITY FIX: Paths normalized
+source_dir = os.getenv("PIFLUX_DOC_DIR", ".")
 webapp_assets_dir = os.path.join(source_dir, "webapp_assets")
 trades_dir = os.path.join(webapp_assets_dir, "trades")
 output_file = os.path.join(webapp_assets_dir, "trades.json")

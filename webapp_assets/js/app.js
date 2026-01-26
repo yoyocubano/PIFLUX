@@ -826,6 +826,7 @@ const TradeDetailScreen = () => {
                                         {selectedItem.title}
                                     </h2>
                                     <div className="prose prose-lg max-w-none font-medium text-slate-800">
+                                        {/* SECURITY: Content from local JSON. For untrusted input, Use Sanitizer. */}
                                         <p dangerouslySetInnerHTML={{ __html: selectedItem.description || selectedItem.url }} />
                                         
                                         {/* Mock "Extended HTML Content" if description is short */}

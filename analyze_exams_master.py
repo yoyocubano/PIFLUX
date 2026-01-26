@@ -7,11 +7,20 @@ from pypdf import PdfReader
 import re
 
 # --- 1. CONFIGURATION ---
-SOURCE_LIBRARY = "/Users/yoyocubano/Library/CloudStorage/GoogleDrive-yucolaguilar@gmail.com/Mi unidad/PIF_MASTER_LIBRARY"
-OUTPUT_DIR = "/Users/yoyocubano/Library/CloudStorage/GoogleDrive-yucolaguilar@gmail.com/Mi unidad/PIF_ANALYSIS_RESULTS"
+# SECURITY FIX: Paths moved to environment variables
+SOURCE_LIBRARY = os.getenv("PIFLUX_SOURCE_LIBRARY", "./library/PIF_MASTER_LIBRARY")
+OUTPUT_DIR = os.getenv("PIFLUX_OUTPUT_RESULTS", "./results/PIF_ANALYSIS_RESULTS")
 
 # API Key
-GEMINI_API_KEY = "AIzaSyB8l0ixA1csv4_VIDRgplMLAIS6TAUIiXw"
+# SECURITY FIX: Loaded from environment variable
+from dotenv import load_dotenv
+load_dotenv()
+GEMINI_API_KEY = os.getenv("PIFLUX_GEMINI_API_KEY")
+
+if not GEMINI_API_KEY:
+    print("❌ ERROR: PIFLUX_GEMINI_API_KEY not found in environment variables.")
+    print("   Please create a .env file with this key.")
+    sys.exit(1)
 
 # Using Flash for speed and high context window
 MODEL_NAME = "gemini-2.0-flash"

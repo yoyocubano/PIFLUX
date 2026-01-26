@@ -4,11 +4,20 @@ import os
 
 def run_gemini_task(prompt, file_path=None):
     """Executes a task using the local Gemini CLI."""
-    cmd = ["gemini", prompt]
+    # SECURITY FIX: Input validation
+    if not prompt or not isinstance(prompt, str):
+        return "Error: Invalid prompt."
+    
+    # Sanitize prompt to prevent potential CLI injection if gemini uses shell internally
+    clean_prompt = prompt.replace(";", "").replace("&", "").replace("|", "")
+
+    cmd = ["gemini", clean_prompt]
     if file_path:
-        if not os.path.exists(file_path):
-            return f"Error: File {file_path} not found."
-        cmd.append(file_path)
+        # Prevent Path Traversal
+        abs_path = os.path.abspath(file_path)
+        if not os.path.isfile(abs_path):
+            return f"Error: File {file_path} not found or is not a file."
+        cmd.append(abs_path)
     
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)

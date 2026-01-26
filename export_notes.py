@@ -20,7 +20,8 @@ TARGET_TITLES = [
     "PIF"
 ]
 
-OUTPUT_ROOT = "/Users/yoyocubano/Desktop/École - trabajo /PIF_Documentation/Notas_Mac"
+# SECURITY FIX: Path moved to env var
+OUTPUT_ROOT = os.getenv("PIFLUX_NOTES_EXPORT_DIR", "./exports/notes")
 
 def run_applescript(script):
     try:
