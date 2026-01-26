@@ -313,113 +313,28 @@ const MetricBar = ({ label, value, trend }) => (
     </div>
 );
 
-const MangaClassCard = ({ title, role, color, desc, img, icon, onClick, backContent }) => {
+const MangaClassCard = ({ title, role, color, desc, img, icon, onClick }) => {
     const { t } = useTranslation();
-    const [isFlipped, setIsFlipped] = useState(false);
-
-    const handleFlip = (e) => {
-        e.stopPropagation();
-        setIsFlipped(!isFlipped);
-    };
-
-    const handleAction = (e) => {
-        e.stopPropagation();
-        onClick();
-    };
-
     return (
-        <div className="group perspective-1000 h-[420px] cursor-pointer" onClick={handleFlip}>
-            <div className={`relative w-full h-full duration-700 preserve-3d transition-transform ${isFlipped ? 'rotate-y-180' : ''}`}>
-                {/* FRONT FACE */}
-                <div className="absolute inset-0 backface-hidden flex flex-col bg-white border-[4px] border-[#1a1a1a] shadow-[8px_8px_0_#1a1a1a] group-hover:translate-x-[-4px] group-hover:translate-y-[-4px] group-hover:shadow-[12px_12px_0_#1a1a1a]">
-                    <div className={`${color} h-64 relative overflow-hidden border-b-[4px] border-[#1a1a1a]`}>
-                        <div className="halftone absolute inset-0"></div>
-                        {img ? (
-                            <img alt={role} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80" src={img} />
-                        ) : (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="material-symbols-outlined text-[120px] text-black/20">{icon}</span>
-                            </div>
-                        )}
-                        <div className="absolute bottom-4 right-4 bg-white px-4 py-1 border-2 border-black font-black italic transform -rotate-3 transition-transform text-black z-20">
-                            {role}
-                        </div>
-                        {/* Tap to Flip Hint */}
-                        <div className="absolute top-4 right-4 bg-black text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span className="material-symbols-outlined text-sm">360</span>
-                        </div>
+        <div className="manga-card group overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform duration-300" onClick={onClick}>
+            <div className={`${color} h-64 relative overflow-hidden border-b-[4px] border-[#1a1a1a]`}>
+                <div className="halftone absolute inset-0"></div>
+                {img ? (
+                    <img alt={role} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80" src={img} />
+                ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="material-symbols-outlined text-[120px] text-black/20">{icon}</span>
                     </div>
-                    <div className="p-6 flex flex-col grow">
-                        <h3 className="text-3xl font-black mb-2 uppercase italic text-black leading-none">{title}</h3>
-                        <p className="text-sm font-medium mb-auto text-black line-clamp-2">{desc}</p>
-                        <div className="w-full py-3 bg-[#1a1a1a] text-white flex items-center justify-center font-black italic uppercase border-2 border-[#1a1a1a]">
-                            <span className="material-symbols-outlined mr-2">touch_app</span> TAP TO FLIP
-                        </div>
-                    </div>
+                )}
+                <div className="absolute bottom-4 right-4 bg-white px-4 py-1 border-2 border-black font-black italic transform -rotate-3 group-hover:rotate-0 transition-transform text-black">
+                    {role}
                 </div>
-
-                {/* BACK FACE */}
-                <div className="absolute inset-0 backface-hidden rotate-y-180 bg-[#1a1a1a] border-[4px] border-white text-white p-5 flex flex-col shadow-[8px_8px_0_rgba(255,255,255,0.2)] overflow-hidden">
-                    {backContent ? (
-                        <React.Fragment>
-                            {/* Critical Tasks Section */}
-                            {backContent.title && (
-                                <div className="mb-3">
-                                    <h3 className="text-yellow-400 font-black uppercase text-lg leading-none mb-2 border-b-2 border-yellow-400 inline-block rotate-1">{backContent.title}</h3>
-                                    <div className="space-y-2">
-                                        {backContent.tasks && backContent.tasks.slice(0, 3).map((task) => (
-                                            <div key={task.id} className="flex gap-2 items-start">
-                                                <span className="bg-[#ff007a] text-white text-[10px] font-bold px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5">{task.id}</span>
-                                                <div className="leading-tight">
-                                                    <p className="font-bold text-xs uppercase text-white/90">{task.title}</p>
-                                                    <p className="text-[10px] text-slate-400 leading-tight">{task.desc}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Trap Question Section */}
-                            {backContent.trap_question && (
-                                <div className="bg-white/10 p-2 rounded border-l-4 border-[#ff007a] mb-auto">
-                                    <p className="text-[#ff007a] text-[10px] font-black uppercase mb-1">🔥 PREGUNTA TRAMPA:</p>
-                                    <p className="text-xs font-bold italic mb-1">"{backContent.trap_question.q}"</p>
-                                    <p className="text-[10px] text-green-400 border-t border-white/10 pt-1">R: {backContent.trap_question.a}</p>
-                                </div>
-                            )}
-                            
-                            {/* Fallback for old stats format */}
-                            {!backContent.tasks && backContent.stats && (
-                                <div className="space-y-3 mb-6">
-                                    {Object.entries(backContent.stats).map(([key, val]) => (
-                                        <div key={key}>
-                                            <div className="flex justify-between text-xs uppercase font-bold mb-1">
-                                                <span>{key}</span>
-                                                <span>{val}%</span>
-                                            </div>
-                                            <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                                                <div className="bg-primary h-full" style={{ width: `${val}%` }}></div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </React.Fragment>
-                    ) : (
-                         <div className="flex-1 flex items-center justify-center flex-col text-center opacity-50">
-                            <span className="material-symbols-outlined text-6xl mb-2">lock</span>
-                            <p className="font-black uppercase">DATA ENCRYPTED</p>
-                            <p className="text-xs">Access Level too low to view specifics.</p>
-                        </div>
-                    )}
-
-                    <button 
-                        onClick={handleAction}
-                        className="w-full py-2 bg-white text-black font-black italic uppercase hover:scale-105 transition-transform border-2 border-white mt-2"
-                    >
-                        {t('dojo', 'enter_class')}
-                    </button>
+            </div>
+            <div className="p-6">
+                <h3 className="text-3xl font-black mb-2 uppercase italic text-black leading-none">{title}</h3>
+                <p className="text-sm font-medium mb-6 text-black line-clamp-2">{desc}</p>
+                <div className="w-full py-3 bg-[#1a1a1a] text-white flex items-center justify-center font-black italic uppercase border-2 border-[#1a1a1a] group-hover:bg-[#ff007a] transition-colors">
+                    {t('dojo', 'enter_class')} <span className="material-symbols-outlined ml-2">arrow_forward</span>
                 </div>
             </div>
         </div>
@@ -869,49 +784,52 @@ const DojoScreen = () => {
 const TradeDetailScreen = () => {
     const { tradeId } = useParams();
     const { data, loading, error } = useTradeDetail(tradeId);
+    const [selectedSection, setSelectedSection] = useState(null);
 
     if (loading) return <div className="p-10 font-black text-2xl animate-pulse">LOADING SCROLL DATA...</div>;
     if (error) return <div className="p-10 font-black text-2xl text-red-600">ERROR LOADING DATA: {error.message}</div>;
     if (!data) return null;
 
     return (
-        <div className="p-8 max-w-7xl mx-auto space-y-8 animate-fade-in-up">
-            <div className="flex items-center gap-4">
-                <Link to="/dojo" className="arcade-btn bg-[#1a1a1a] cursor-pointer hover:bg-red-500">
-                    <span className="material-symbols-outlined text-white">arrow_back</span>
-                </Link>
-                <h1 className="manga-title font-manga text-6xl uppercase tracking-tighter">{data.title}</h1>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="space-y-6">
-                    {data.sections.map((sec, idx) => (
-                        <div key={idx} className="manga-card p-6 hover:bg-[#f0f0f0] cursor-pointer">
-                            <h3 className="font-black text-xl italic uppercase mb-2 border-b-2 border-black">{sec.title}</h3>
-                            <p className="text-sm font-medium">{sec.content.length} items logged.</p>
-                        </div>
-                    ))}
-                </div>
-                <div className="md:col-span-2 manga-card p-8 min-h-[500px] bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]">
-                    {data.sections.map((sec, idx) => (
-                        <div key={idx} className="mb-12">
-                            <h2 className="text-4xl font-black italic uppercase mb-6 bg-yellow-300 inline-block px-2 transform -rotate-1 border-2 border-black shadow-[4px_4px_0_black]">{sec.title}</h2>
-                            <div className="space-y-4">
-                                {sec.content.map((item, i) => (
-                                    <div key={i} className="flex gap-4 items-start group">
-                                         <div className="w-8 h-8 bg-black text-white flex items-center justify-center font-black rounded-md group-hover:bg-[#ff007a] transition-colors flex-shrink-0">
+        <React.Fragment>
+            {/* Modal Popup */}
+            {selectedSection && (
+                <div className="fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4 backdrop-blur-sm animate-fade-in-up" onClick={() => setSelectedSection(null)}>
+                    <div className="bg-[#1a1a1a] border-[4px] border-white w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-[15px_15px_0_rgba(0,0,0,0.5)] relative" onClick={e => e.stopPropagation()}>
+                        <button 
+                            onClick={() => setSelectedSection(null)}
+                            className="absolute top-4 right-4 bg-red-600 text-white w-10 h-10 rounded-full font-black flex items-center justify-center hover:scale-110 transition-transform z-50 border-2 border-white"
+                        >
+                            X
+                        </button>
+                        
+                        <div className="p-8 bg-grid-pattern">
+                            <h2 className="text-4xl md:text-5xl font-black italic uppercase mb-8 bg-yellow-400 text-black inline-block px-4 py-2 transform -rotate-1 border-[3px] border-black shadow-[6px_6px_0_black]">
+                                {selectedSection.title}
+                            </h2>
+                            
+                            <div className="space-y-6">
+                                {selectedSection.content.map((item, i) => (
+                                    <div key={i} className="flex gap-6 items-start group">
+                                         <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-black text-xl rounded-lg group-hover:bg-[#ff007a] transition-colors flex-shrink-0 shadow-[4px_4px_0_rgba(255,255,255,0.2)]">
                                             {i + 1}
                                         </div>
-                                        <div className="speech-bubble flex-1 shadow-md group-hover:shadow-[8px_8px_0_rgba(0,0,0,0.1)] transition-all">
+                                        <div className="bg-white p-6 border-[3px] border-black flex-1 shadow-[8px_8px_0_rgba(0,0,0,0.2)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform relative">
+                                            {/* Speech Bubble Triangle */}
+                                            <div className="absolute top-6 -left-4 w-0 h-0 border-t-[10px] border-t-transparent border-r-[16px] border-r-black border-b-[10px] border-b-transparent"></div>
+                                            <div className="absolute top-6 -left-[11px] w-0 h-0 border-t-[7px] border-t-transparent border-r-[14px] border-r-white border-b-[7px] border-b-transparent"></div>
+
                                             {item.title ? (
                                                 <React.Fragment>
-                                                    <p className="font-black text-lg uppercase italic">{item.title}</p>
-                                                    <p className="text-sm">{item.description || item.url}</p>
+                                                    <p className="font-black text-xl uppercase italic text-[#1a1a1a] mb-2">{item.title}</p>
+                                                    <p className="text-base text-gray-800 font-medium" dangerouslySetInnerHTML={{ __html: item.description || item.url }}></p>
                                                 </React.Fragment>
                                             ) : (
                                                 <React.Fragment>
-                                                    <p className="font-bold italic text-red-500 mb-1">Q: {item.question}</p>
-                                                    <p className="text-sm border-l-4 border-green-400 pl-2">A: {item.answer}</p>
+                                                    <p className="font-bold italic text-red-600 mb-2 text-lg">Q: {item.question}</p>
+                                                    <div className="bg-green-100 p-3 border-l-4 border-green-500 text-green-900 font-medium">
+                                                        <span className="font-black">R:</span> {item.answer}
+                                                    </div>
                                                 </React.Fragment>
                                             )}
                                         </div>
@@ -919,10 +837,58 @@ const TradeDetailScreen = () => {
                                 ))}
                             </div>
                         </div>
-                    ))}
+                    </div>
+                </div>
+            )}
+
+            <div className="p-8 max-w-7xl mx-auto space-y-8 animate-fade-in-up">
+                <div className="flex items-center gap-4">
+                    <Link to="/dojo" className="arcade-btn bg-[#1a1a1a] cursor-pointer hover:bg-red-500">
+                        <span className="material-symbols-outlined text-white">arrow_back</span>
+                    </Link>
+                    <h1 className="manga-title font-manga text-6xl uppercase tracking-tighter">{data.title}</h1>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {/* Left Column: Topic Selectors (Clickable) */}
+                    <div className="space-y-6">
+                        <div className="bg-yellow-100 p-4 border-2 border-black mb-4">
+                            <p className="font-black text-sm uppercase flex items-center gap-2">
+                                <span className="material-symbols-outlined">info</span>
+                                Select a Topic to Open Info
+                            </p>
+                        </div>
+                        {data.sections.map((sec, idx) => (
+                            <div 
+                                key={idx} 
+                                onClick={() => setSelectedSection(sec)}
+                                className={`manga-card p-6 cursor-pointer transform hover:scale-105 transition-all text-left group
+                                    ${selectedSection === sec ? 'bg-[#ff007a] text-white border-white scale-105 shadow-[10px_10px_0_white]' : 'bg-white hover:bg-yellow-300'}
+                                `}
+                            >
+                                <h3 className={`font-black text-2xl italic uppercase mb-2 border-b-4 ${selectedSection === sec ? 'border-white' : 'border-black'} pb-2`}>{sec.title}</h3>
+                                <p className={`text-sm font-bold ${selectedSection === sec ? 'text-white' : 'text-slate-600'}`}>{sec.content.length} items available.</p>
+                                <div className="flex justify-end mt-4">
+                                     <span className={`material-symbols-outlined ${selectedSection === sec ? 'animate-bounce' : ''}`}>open_in_new</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Right Column: Placeholder / Manga Decoration */}
+                    <div className="md:col-span-2 manga-card p-0 overflow-hidden relative min-h-[600px] bg-[#1a1a1a] flex items-center justify-center">
+                         <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]"></div>
+                         <div className="text-center p-12">
+                            <span className="material-symbols-outlined text-9xl text-[#00ff2f] mb-4 animate-pulse">terminal</span>
+                            <h2 className="text-4xl font-black text-white italic uppercase mb-4">Secure Data Terminal</h2>
+                            <p className="text-slate-400 font-mono text-lg max-w-md mx-auto">
+                                Select a data cartridge from the left to load operational knowledge into the visual interface.
+                            </p>
+                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </React.Fragment>
     );
 };
 
