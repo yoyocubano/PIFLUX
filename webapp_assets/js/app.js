@@ -784,7 +784,15 @@ const DojoScreen = () => {
 const TradeDetailScreen = () => {
     const { tradeId } = useParams();
     const { data, loading, error } = useTradeDetail(tradeId);
-    const [selectedSection, setSelectedSection] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    // Auto-select first category on load
+    useEffect(() => {
+        if (data?.sections?.length > 0 && !selectedCategory) {
+            setSelectedCategory(data.sections[0]);
+        }
+    }, [data]);
 
     if (loading) return <div className="p-10 font-black text-2xl animate-pulse">LOADING SCROLL DATA...</div>;
     if (error) return <div className="p-10 font-black text-2xl text-red-600">ERROR LOADING DATA: {error.message}</div>;
@@ -792,99 +800,163 @@ const TradeDetailScreen = () => {
 
     return (
         <React.Fragment>
-            {/* Modal Popup */}
-            {selectedSection && (
-                <div className="fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4 backdrop-blur-sm animate-fade-in-up" onClick={() => setSelectedSection(null)}>
-                    <div className="bg-[#1a1a1a] border-[4px] border-white w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-[15px_15px_0_rgba(0,0,0,0.5)] relative" onClick={e => e.stopPropagation()}>
-                        <button 
-                            onClick={() => setSelectedSection(null)}
-                            className="absolute top-4 right-4 bg-red-600 text-white w-10 h-10 rounded-full font-black flex items-center justify-center hover:scale-110 transition-transform z-50 border-2 border-white"
-                        >
-                            X
-                        </button>
+            {/* ITEM DETAIL MODAL (HTML VIEWER) */}
+            {selectedItem && (
+                <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 backdrop-blur-md animate-fade-in-up" onClick={() => setSelectedItem(null)}>
+                    <div className="bg-white border-[4px] border-[#1a1a1a] w-full max-w-2xl shadow-[0_0_50px_rgba(255,255,255,0.2)] relative flex flex-col max-h-[90vh]" onClick={e => e.stopPropagation()}>
                         
-                        <div className="p-8 bg-grid-pattern">
-                            <h2 className="text-4xl md:text-5xl font-black italic uppercase mb-8 bg-yellow-400 text-black inline-block px-4 py-2 transform -rotate-1 border-[3px] border-black shadow-[6px_6px_0_black]">
-                                {selectedSection.title}
-                            </h2>
-                            
-                            <div className="space-y-6">
-                                {selectedSection.content.map((item, i) => (
-                                    <div key={i} className="flex gap-6 items-start group">
-                                         <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-black text-xl rounded-lg group-hover:bg-[#ff007a] transition-colors flex-shrink-0 shadow-[4px_4px_0_rgba(255,255,255,0.2)]">
-                                            {i + 1}
-                                        </div>
-                                        <div className="bg-white p-6 border-[3px] border-black flex-1 shadow-[8px_8px_0_rgba(0,0,0,0.2)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform relative">
-                                            {/* Speech Bubble Triangle */}
-                                            <div className="absolute top-6 -left-4 w-0 h-0 border-t-[10px] border-t-transparent border-r-[16px] border-r-black border-b-[10px] border-b-transparent"></div>
-                                            <div className="absolute top-6 -left-[11px] w-0 h-0 border-t-[7px] border-t-transparent border-r-[14px] border-r-white border-b-[7px] border-b-transparent"></div>
+                        {/* Modal Header */}
+                        <div className="bg-[#1a1a1a] text-white p-4 flex justify-between items-center border-b-4 border-black">
+                            <h3 className="font-manga text-3xl uppercase tracking-wider text-yellow-400">
+                                {selectedItem.title ? 'OPERATIONAL DATA' : 'EXAM QUERY'}
+                            </h3>
+                            <button 
+                                onClick={() => setSelectedItem(null)}
+                                className="text-white hover:text-red-500 transition-colors"
+                            >
+                                <span className="material-symbols-outlined text-3xl">close</span>
+                            </button>
+                        </div>
 
-                                            {item.title ? (
-                                                <React.Fragment>
-                                                    <p className="font-black text-xl uppercase italic text-[#1a1a1a] mb-2">{item.title}</p>
-                                                    <p className="text-base text-gray-800 font-medium" dangerouslySetInnerHTML={{ __html: item.description || item.url }}></p>
-                                                </React.Fragment>
-                                            ) : (
-                                                <React.Fragment>
-                                                    <p className="font-bold italic text-red-600 mb-2 text-lg">Q: {item.question}</p>
-                                                    <div className="bg-green-100 p-3 border-l-4 border-green-500 text-green-900 font-medium">
-                                                        <span className="font-black">R:</span> {item.answer}
-                                                    </div>
-                                                </React.Fragment>
-                                            )}
+                        {/* Modal Content */}
+                        <div className="p-8 overflow-y-auto bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]">
+                            {selectedItem.title ? (
+                                <React.Fragment>
+                                    <h2 className="text-3xl font-black italic uppercase mb-6 leading-none border-b-2 border-black pb-4">
+                                        {selectedItem.title}
+                                    </h2>
+                                    <div className="prose prose-lg max-w-none font-medium text-slate-800">
+                                        <p dangerouslySetInnerHTML={{ __html: selectedItem.description || selectedItem.url }} />
+                                        
+                                        {/* Mock "Extended HTML Content" if description is short */}
+                                        <div className="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-sm font-mono text-yellow-800">
+                                            <strong>System Note:</strong> Full technical documentation for this protocol is currently compiled in the secure archive.
                                         </div>
                                     </div>
-                                ))}
-                            </div>
+                                </React.Fragment>
+                            ) : (
+                                <div className="space-y-6">
+                                    <div className="bg-red-50 p-6 border-l-8 border-red-500 rounded-r-lg">
+                                        <p className="text-xs font-black uppercase text-red-400 mb-2">THE QUESTION</p>
+                                        <p className="font-black text-2xl italic text-[#1a1a1a]">"{selectedItem.question}"</p>
+                                    </div>
+                                    
+                                    <div className="flex justify-center">
+                                        <span className="material-symbols-outlined text-4xl text-slate-300">arrow_downward</span>
+                                    </div>
+
+                                    <div className="bg-green-50 p-6 border-l-8 border-green-500 rounded-r-lg shadow-lg">
+                                         <p className="text-xs font-black uppercase text-green-600 mb-2">THE ANSWER</p>
+                                        <p className="text-xl font-bold text-green-900">{selectedItem.answer}</p>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Modal Footer */}
+                        <div className="p-4 bg-gray-100 border-t-2 border-black flex justify-end">
+                            <button 
+                                onClick={() => setSelectedItem(null)}
+                                className="px-6 py-2 bg-[#1a1a1a] text-white font-black italic uppercase hover:bg-[#ff007a] transition-colors border-2 border-black shadow-[4px_4px_0_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_black]"
+                            >
+                                CLOSE TERMINAL
+                            </button>
                         </div>
                     </div>
                 </div>
             )}
 
-            <div className="p-8 max-w-7xl mx-auto space-y-8 animate-fade-in-up">
-                <div className="flex items-center gap-4">
-                    <Link to="/dojo" className="arcade-btn bg-[#1a1a1a] cursor-pointer hover:bg-red-500">
+            <div className="p-4 md:p-8 max-w-[1600px] mx-auto space-y-6 h-[calc(100vh-80px)] flex flex-col animate-fade-in-up">
+                
+                {/* Header */}
+                <div className="flex items-center gap-4 flex-shrink-0">
+                    <Link to="/dojo" className="bg-[#1a1a1a] w-12 h-12 flex items-center justify-center border-2 border-white hover:bg-red-600 transition-colors shadow-[4px_4px_0_rgba(255,255,255,0.3)]">
                         <span className="material-symbols-outlined text-white">arrow_back</span>
                     </Link>
-                    <h1 className="manga-title font-manga text-6xl uppercase tracking-tighter">{data.title}</h1>
+                    <div>
+                         <h1 className="manga-title font-manga text-4xl md:text-6xl uppercase tracking-tighter leading-none">{data.title}</h1>
+                         <div className="flex items-center gap-2 text-[#ff007a] font-mono text-xs uppercase font-bold">
+                            <span className="w-2 h-2 bg-[#ff007a] inline-block animate-pulse"></span>
+                            Secure Connection Established
+                         </div>
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Left Column: Topic Selectors (Clickable) */}
-                    <div className="space-y-6">
-                        <div className="bg-yellow-100 p-4 border-2 border-black mb-4">
-                            <p className="font-black text-sm uppercase flex items-center gap-2">
-                                <span className="material-symbols-outlined">info</span>
-                                Select a Topic to Open Info
-                            </p>
+                {/* Main Split Layout */}
+                <div className="flex flex-col md:flex-row gap-8 grow overflow-hidden">
+                    
+                    {/* LEFT COL: CATEGORIES */}
+                    <div className="w-full md:w-1/3 lg:w-1/4 flex flex-col gap-4 overflow-y-auto pr-2 pb-10">
+                         <div className="bg-yellow-100 p-3 border-2 border-black text-xs font-bold uppercase tracking-wide mb-2 sticky top-0 z-10 shadow-sm">
+                            Directory
                         </div>
                         {data.sections.map((sec, idx) => (
-                            <div 
+                            <button 
                                 key={idx} 
-                                onClick={() => setSelectedSection(sec)}
-                                className={`manga-card p-6 cursor-pointer transform hover:scale-105 transition-all text-left group
-                                    ${selectedSection === sec ? 'bg-[#ff007a] text-white border-white scale-105 shadow-[10px_10px_0_white]' : 'bg-white hover:bg-yellow-300'}
+                                onClick={() => setSelectedCategory(sec)}
+                                className={`p-6 text-left border-[3px] transition-all relative group
+                                    ${selectedCategory === sec 
+                                        ? 'bg-[#1a1a1a] text-white border-white shadow-[8px_8px_0_rgba(255,255,255,0.3)] translate-x-2' 
+                                        : 'bg-white text-black border-black hover:bg-yellow-300 hover:shadow-[8px_8px_0_black]'}
                                 `}
                             >
-                                <h3 className={`font-black text-2xl italic uppercase mb-2 border-b-4 ${selectedSection === sec ? 'border-white' : 'border-black'} pb-2`}>{sec.title}</h3>
-                                <p className={`text-sm font-bold ${selectedSection === sec ? 'text-white' : 'text-slate-600'}`}>{sec.content.length} items available.</p>
-                                <div className="flex justify-end mt-4">
-                                     <span className={`material-symbols-outlined ${selectedSection === sec ? 'animate-bounce' : ''}`}>open_in_new</span>
+                                <h3 className="font-black text-2xl italic uppercase leading-none mb-1">{sec.title}</h3>
+                                <div className="flex justify-between items-end">
+                                    <span className="text-xs font-mono opacity-80">{sec.content.length} FILES</span>
+                                    {selectedCategory === sec && <span className="material-symbols-outlined animate-bounce">arrow_right_alt</span>}
                                 </div>
-                            </div>
+                            </button>
                         ))}
                     </div>
 
-                    {/* Right Column: Placeholder / Manga Decoration */}
-                    <div className="md:col-span-2 manga-card p-0 overflow-hidden relative min-h-[600px] bg-[#1a1a1a] flex items-center justify-center">
-                         <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]"></div>
-                         <div className="text-center p-12">
-                            <span className="material-symbols-outlined text-9xl text-[#00ff2f] mb-4 animate-pulse">terminal</span>
-                            <h2 className="text-4xl font-black text-white italic uppercase mb-4">Secure Data Terminal</h2>
-                            <p className="text-slate-400 font-mono text-lg max-w-md mx-auto">
-                                Select a data cartridge from the left to load operational knowledge into the visual interface.
-                            </p>
+                    {/* RIGHT COL: ITEMS BOARD */}
+                    <div className="flex-1 bg-[#f0f0f0] border-[4px] border-[#1a1a1a] p-6 md:p-8 relative shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col">
+                        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/graphy.png')] pointer-events-none"></div>
+                        
+                        {/* Header for Right Board */}
+                         <div className="flex justify-between items-end mb-8 border-b-4 border-black pb-4 bg-white/50 p-4 backdrop-blur-sm z-10">
+                            <h2 className="text-4xl font-black italic uppercase bg-yellow-400 inline-block px-3 py-1 transform -rotate-1 border-2 border-black shadow-[4px_4px_0_black]">
+                                {selectedCategory ? selectedCategory.title : 'SELECT DIRECTORY'}
+                            </h2>
+                            <div className="text-right hidden md:block">
+                                <p className="font-mono text-xs text-slate-500">ACCESS LEVEL: UNLIMITED</p>
+                                <p className="font-mono text-xs text-slate-500">DECRYPTION: ENABLED</p>
+                            </div>
                          </div>
+
+                        {/* Items Grid */}
+                        <div className="overflow-y-auto pr-4 pb-20 custom-scrollbar grid grid-cols-1 gap-4 content-start">
+                            {selectedCategory ? (
+                                selectedCategory.content.map((item, i) => (
+                                    <div 
+                                        key={i} 
+                                        onClick={() => setSelectedItem(item)}
+                                        className="bg-white p-6 border-[3px] border-black shadow-[6px_6px_0_rgba(0,0,0,0.15)] hover:shadow-[10px_10px_0_rgba(255,0,122,1)] hover:-translate-y-1 hover:-translate-x-1 transition-all cursor-pointer group flex items-start gap-4"
+                                    >
+                                        <div className="w-10 h-10 bg-[#1a1a1a] text-white flex items-center justify-center font-black text-lg rounded group-hover:bg-[#ff007a] transition-colors flex-shrink-0">
+                                            {i + 1}
+                                        </div>
+                                        <div className="flex-1">
+                                            {item.title ? (
+                                                <h4 className="font-black text-xl uppercase italic text-[#1a1a1a] group-hover:text-[#ff007a] transition-colors mb-1">{item.title}</h4>
+                                            ) : (
+                                                 <h4 className="font-black text-lg italic text-[#1a1a1a] group-hover:text-red-600 transition-colors mb-1">"{item.question}"</h4>
+                                            )}
+                                            
+                                            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest group-hover:text-black">
+                                                CLICK TO OPEN FILE
+                                            </p>
+                                        </div>
+                                        <span className="material-symbols-outlined text-slate-300 group-hover:text-black">folder_open</span>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="h-full flex items-center justify-center flex-col opacity-50">
+                                    <span className="material-symbols-outlined text-8xl mb-4">move_to_inbox</span>
+                                    <p className="font-black text-xl">WAITING FOR INPUT...</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
