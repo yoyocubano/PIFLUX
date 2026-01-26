@@ -359,39 +359,52 @@ const MangaClassCard = ({ title, role, color, desc, img, icon, onClick, backCont
                 </div>
 
                 {/* BACK FACE */}
-                <div className="absolute inset-0 backface-hidden rotate-y-180 bg-[#1a1a1a] border-[4px] border-white text-white p-6 flex flex-col shadow-[8px_8px_0_rgba(255,255,255,0.2)]">
+                <div className="absolute inset-0 backface-hidden rotate-y-180 bg-[#1a1a1a] border-[4px] border-white text-white p-5 flex flex-col shadow-[8px_8px_0_rgba(255,255,255,0.2)] overflow-hidden">
                     {backContent ? (
                         <React.Fragment>
-                            <div className="flex justify-between items-start mb-4 border-b border-white/20 pb-2">
-                                <h3 className="text-xl font-black italic text-[#00ff2f]">{backContent.summary}</h3>
-                                <div className="text-xs text-slate-400 font-mono">STATS SYSTEM</div>
-                            </div>
-                            
-                            {/* Stats Chart (Mock) */}
-                            <div className="space-y-3 mb-6">
-                                {backContent.stats && Object.entries(backContent.stats).map(([key, val]) => (
-                                    <div key={key}>
-                                        <div className="flex justify-between text-xs uppercase font-bold mb-1">
-                                            <span>{key}</span>
-                                            <span>{val}%</span>
-                                        </div>
-                                        <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                                            <div className="bg-primary h-full" style={{ width: `${val}%` }}></div>
-                                        </div>
+                            {/* Critical Tasks Section */}
+                            {backContent.title && (
+                                <div className="mb-3">
+                                    <h3 className="text-yellow-400 font-black uppercase text-lg leading-none mb-2 border-b-2 border-yellow-400 inline-block rotate-1">{backContent.title}</h3>
+                                    <div className="space-y-2">
+                                        {backContent.tasks?.slice(0, 3).map((task) => (
+                                            <div key={task.id} className="flex gap-2 items-start">
+                                                <span className="bg-[#ff007a] text-white text-[10px] font-bold px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5">{task.id}</span>
+                                                <div className="leading-tight">
+                                                    <p className="font-bold text-xs uppercase text-white/90">{task.title}</p>
+                                                    <p className="text-[10px] text-slate-400 leading-tight">{task.desc}</p>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            )}
 
-                            {/* Wisdom Nugget */}
-                            <div className="bg-white/10 p-3 rounded border-l-4 border-yellow-400 mb-auto">
-                                <p className="text-yellow-400 text-xs font-black uppercase mb-1">SENSEI'S TIP:</p>
-                                <p className="text-sm italic">"{backContent.analogy}"</p>
-                            </div>
+                            {/* Trap Question Section */}
+                            {backContent.trap_question && (
+                                <div className="bg-white/10 p-2 rounded border-l-4 border-[#ff007a] mb-auto">
+                                    <p className="text-[#ff007a] text-[10px] font-black uppercase mb-1">🔥 PREGUNTA TRAMPA:</p>
+                                    <p className="text-xs font-bold italic mb-1">"{backContent.trap_question.q}"</p>
+                                    <p className="text-[10px] text-green-400 border-t border-white/10 pt-1">R: {backContent.trap_question.a}</p>
+                                </div>
+                            )}
                             
-                            {/* Formula */}
-                            <div className="text-center my-4 font-mono text-[#00ff2f] text-sm border border-[#00ff2f]/30 p-2 rounded bg-[#00ff2f]/5">
-                                {backContent.f1}
-                            </div>
+                            {/* Fallback for old stats format */}
+                            {!backContent.tasks && backContent.stats && (
+                                <div className="space-y-3 mb-6">
+                                    {Object.entries(backContent.stats).map(([key, val]) => (
+                                        <div key={key}>
+                                            <div className="flex justify-between text-xs uppercase font-bold mb-1">
+                                                <span>{key}</span>
+                                                <span>{val}%</span>
+                                            </div>
+                                            <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                                                <div className="bg-primary h-full" style={{ width: `${val}%` }}></div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </React.Fragment>
                     ) : (
                          <div className="flex-1 flex items-center justify-center flex-col text-center opacity-50">
@@ -403,7 +416,7 @@ const MangaClassCard = ({ title, role, color, desc, img, icon, onClick, backCont
 
                     <button 
                         onClick={handleAction}
-                        className="w-full py-3 bg-white text-black font-black italic uppercase hover:bg-primary hover:text-white transition-colors border-2 border-white"
+                        className="w-full py-2 bg-white text-black font-black italic uppercase hover:scale-105 transition-transform border-2 border-white mt-2"
                     >
                         {t('dojo', 'enter_class')}
                     </button>
@@ -432,13 +445,13 @@ const DashboardLayout = ({ children }) => {
                         <Link className="text-white/60 text-sm font-medium hover:text-white transition-colors" to="/formulas">{t('nav', 'formulas')}</Link>
                         <Link className="text-white/60 text-sm font-medium hover:text-white transition-colors" to="/games">{t('nav', 'games')}</Link>
                     </nav>
-                     {/* Language Selector (Compact) */}
-                    <div className="flex bg-[#1a1a1a] p-1 rounded-lg border border-white/10 hidden lg:flex">
+                     {/* Language Selector (ALWAYS VISIBLE) */}
+                    <div className="flex bg-[#1a1a1a] p-1 rounded-lg border border-white/10">
                         {['FR', 'EN', 'DE', 'LB', 'ES', 'PT'].map(lang => (
                              <button 
                                 key={lang} 
                                 onClick={() => setLanguage(lang.toLowerCase())}
-                                className={`px-3 py-1 text-white font-bold text-xs rounded transition-all ${language === lang.toLowerCase() ? 'bg-primary shadow-[0_0_10px_#833cf6]' : 'hover:bg-white/10'}`}
+                                className={`px-2 md:px-3 py-1 text-white font-bold text-xs rounded transition-all ${language === lang.toLowerCase() ? 'bg-primary shadow-[0_0_10px_#833cf6]' : 'hover:bg-white/10'}`}
                             >
                                 {lang}
                             </button>
