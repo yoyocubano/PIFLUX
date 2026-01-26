@@ -313,29 +313,101 @@ const MetricBar = ({ label, value, trend }) => (
     </div>
 );
 
-const MangaClassCard = ({ title, role, color, desc, img, icon, onClick }) => {
+const MangaClassCard = ({ title, role, color, desc, img, icon, onClick, backContent }) => {
     const { t } = useTranslation();
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    const handleFlip = (e) => {
+        e.stopPropagation();
+        setIsFlipped(!isFlipped);
+    };
+
+    const handleAction = (e) => {
+        e.stopPropagation();
+        onClick();
+    };
+
     return (
-        <div className="manga-card group overflow-hidden cursor-pointer" onClick={onClick}>
-            <div className={`${color} h-64 relative overflow-hidden border-b-[4px] border-[#1a1a1a]`}>
-                <div className="halftone absolute inset-0"></div>
-                {img ? (
-                    <img alt={role} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80" src={img} />
-                ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="material-symbols-outlined text-[120px] text-black/20">{icon}</span>
+        <div className="group perspective-1000 h-[420px] cursor-pointer" onClick={handleFlip}>
+            <div className={`relative w-full h-full duration-700 preserve-3d transition-transform ${isFlipped ? 'rotate-y-180' : ''}`}>
+                {/* FRONT FACE */}
+                <div className="absolute inset-0 backface-hidden flex flex-col bg-white border-[4px] border-[#1a1a1a] shadow-[8px_8px_0_#1a1a1a] group-hover:translate-x-[-4px] group-hover:translate-y-[-4px] group-hover:shadow-[12px_12px_0_#1a1a1a]">
+                    <div className={`${color} h-64 relative overflow-hidden border-b-[4px] border-[#1a1a1a]`}>
+                        <div className="halftone absolute inset-0"></div>
+                        {img ? (
+                            <img alt={role} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80" src={img} />
+                        ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="material-symbols-outlined text-[120px] text-black/20">{icon}</span>
+                            </div>
+                        )}
+                        <div className="absolute bottom-4 right-4 bg-white px-4 py-1 border-2 border-black font-black italic transform -rotate-3 transition-transform text-black z-20">
+                            {role}
+                        </div>
+                        {/* Tap to Flip Hint */}
+                        <div className="absolute top-4 right-4 bg-black text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="material-symbols-outlined text-sm">360</span>
+                        </div>
                     </div>
-                )}
-                <div className="absolute bottom-4 right-4 bg-white px-4 py-1 border-2 border-black font-black italic transform -rotate-3 group-hover:rotate-0 transition-transform text-black">
-                    {role}
+                    <div className="p-6 flex flex-col grow">
+                        <h3 className="text-3xl font-black mb-2 uppercase italic text-black leading-none">{title}</h3>
+                        <p className="text-sm font-medium mb-auto text-black line-clamp-2">{desc}</p>
+                        <div className="w-full py-3 bg-[#1a1a1a] text-white flex items-center justify-center font-black italic uppercase border-2 border-[#1a1a1a]">
+                            <span className="material-symbols-outlined mr-2">touch_app</span> TAP TO FLIP
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="p-6">
-                <h3 className="text-3xl font-black mb-2 uppercase italic text-black">{title}</h3>
-                <p className="text-sm font-medium mb-6 text-black">{desc}</p>
-                <button className="w-full py-3 bg-[#1a1a1a] text-white font-black italic uppercase hover:bg-opacity-80 transition-colors border-2 border-[#1a1a1a]">
-                    {t('dojo', 'enter_class')}
-                </button>
+
+                {/* BACK FACE */}
+                <div className="absolute inset-0 backface-hidden rotate-y-180 bg-[#1a1a1a] border-[4px] border-white text-white p-6 flex flex-col shadow-[8px_8px_0_rgba(255,255,255,0.2)]">
+                    {backContent ? (
+                        <React.Fragment>
+                            <div className="flex justify-between items-start mb-4 border-b border-white/20 pb-2">
+                                <h3 className="text-xl font-black italic text-[#00ff2f]">{backContent.summary}</h3>
+                                <div className="text-xs text-slate-400 font-mono">STATS SYSTEM</div>
+                            </div>
+                            
+                            {/* Stats Chart (Mock) */}
+                            <div className="space-y-3 mb-6">
+                                {backContent.stats && Object.entries(backContent.stats).map(([key, val]) => (
+                                    <div key={key}>
+                                        <div className="flex justify-between text-xs uppercase font-bold mb-1">
+                                            <span>{key}</span>
+                                            <span>{val}%</span>
+                                        </div>
+                                        <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                                            <div className="bg-primary h-full" style={{ width: `${val}%` }}></div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Wisdom Nugget */}
+                            <div className="bg-white/10 p-3 rounded border-l-4 border-yellow-400 mb-auto">
+                                <p className="text-yellow-400 text-xs font-black uppercase mb-1">SENSEI'S TIP:</p>
+                                <p className="text-sm italic">"{backContent.analogy}"</p>
+                            </div>
+                            
+                            {/* Formula */}
+                            <div className="text-center my-4 font-mono text-[#00ff2f] text-sm border border-[#00ff2f]/30 p-2 rounded bg-[#00ff2f]/5">
+                                {backContent.f1}
+                            </div>
+                        </React.Fragment>
+                    ) : (
+                         <div className="flex-1 flex items-center justify-center flex-col text-center opacity-50">
+                            <span className="material-symbols-outlined text-6xl mb-2">lock</span>
+                            <p className="font-black uppercase">DATA ENCRYPTED</p>
+                            <p className="text-xs">Access Level too low to view specifics.</p>
+                        </div>
+                    )}
+
+                    <button 
+                        onClick={handleAction}
+                        className="w-full py-3 bg-white text-black font-black italic uppercase hover:bg-primary hover:text-white transition-colors border-2 border-white"
+                    >
+                        {t('dojo', 'enter_class')}
+                    </button>
+                </div>
             </div>
         </div>
     );
@@ -770,6 +842,7 @@ const DojoScreen = () => {
                                 desc={trade.trait.desc}
                                 icon={trade.trait.icon}
                                 img={trade.trait.img}
+                                backContent={trade.back_content}
                                 onClick={() => navigate(`/dojo/${trade.code}`)}
                             />
                         ))

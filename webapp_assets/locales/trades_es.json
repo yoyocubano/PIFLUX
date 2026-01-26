@@ -84,7 +84,17 @@
             "color": "bg-yellow-400",
             "desc": "Maestro de circuitos, corrientes y seguridad. La chispa de la obra.",
             "icon": "bolt",
-            "img": "images/electrician_anime.png"
+            "img": "images/electrician_anime.png",
+            "back_content": {
+                "summary": "Maestro de Circuitos",
+                "f1": "P = √3 · U · I · cosφ",
+                "analogy": "Voltaje = Presión de Agua. Corriente = Caudal. Resistencia = Grosor de Tubería.",
+                "stats": {
+                    "Seguridad": 98,
+                    "Matemáticas": 85,
+                    "Precisión": 92
+                }
+            }
         }
     },
     {
