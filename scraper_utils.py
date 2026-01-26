@@ -7,12 +7,14 @@ import time
 # Configuración Global
 BASE_URL = "https://ssl.education.lu/eSchoolBooks/Web/FP"
 CURRENT_YEAR_ID = 20
-TARGET_ROOT = "/Users/yoyocubano/Library/CloudStorage/GoogleDrive-yucolaguilar@gmail.com/Mi unidad/PROYECTO_EDUCATIVO_LUXEMBURGO_2026"
+# SECURITY FIX: Path normalized
+TARGET_ROOT = os.getenv("PIFLUX_TARGET_ROOT", "./downloads/PROYECTO_EDUCATIVO_LUXEMBURGO_2026")
 
-# Contexto SSL
+# SECURE SSL Context (Enforced)
 ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+# SECURITY FIX: Enforced strict SSL verification
+ctx.check_hostname = True
+ctx.verify_mode = ssl.CERT_REQUIRED
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -28,7 +30,7 @@ def fetch_json(url):
             if response.status == 200:
                 return json.loads(response.read().decode('utf-8'))
     except Exception as e:
-        pass
+        print(f"⚠️ Error fetching JSON from {url}: {e}")
     return None
 
 def download_file(url, filepath):
