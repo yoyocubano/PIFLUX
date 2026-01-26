@@ -99,15 +99,6 @@
             },
             "sections": [
                 {
-                    "title": "Fórmulas Sagradas",
-                    "content": [
-                        { "title": "Potencia Trifásica", "description": "La fórmula maestra: <strong>P = √3 · U · I · cosφ</strong>.<br><em>Tip:</em> Si olvidas la raíz de 3 (1.732), el resultado será incorrecto." },
-                        { "title": "Ley de Ohm", "description": "<strong>V = I · R</strong><br>La tensión (Presión) empuja la Corriente (Caudal) a través de la Resistencia (Tubería)." },
-                        { "title": "Eficiencia (η)", "description": "<strong>I = P / (√3 · V · cosφ · η)</strong><br>Eficiencia es cuánto 'zumo' sacas de la energía eléctrica." }
-                    ]
-                },
-                {
-                    "title": "Analogías del Sensei",
                     "content": [
                         { "title": "La Jarra de Cerveza", "description": "<strong>Cerveza:</strong> Potencia Activa (kW) - Trabajo útil.<br><strong>Espuma:</strong> Potencia Reactiva (kVAr) - Necesaria pero no alimenta.<br><strong>Vaso:</strong> Potencia Aparente (kVA).<br><em>Objetivo:</em> Minimizar espuma (cosφ alto)." },
                         { "title": "Estrella vs Triángulo", "description": "<strong>Estrella (Y):</strong> 'Compartir el plato'. Cada bobina recibe 230V (Arranque suave).<br><strong>Triángulo (Δ):</strong> 'Plato entero'. Cada bobina recibe 400V (Potencia total).<br><em>Peligro:</em> Motor 230D/400Y en red 400V conectado en Triángulo = <strong>EXPLOSIÓN</strong>." }
