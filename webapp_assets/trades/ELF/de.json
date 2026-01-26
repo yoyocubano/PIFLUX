@@ -1,0 +1,62 @@
+{
+  "title": "ELEKTRIKER (ELF)",
+  "language": "de",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Kritische Aufgaben (Schlüsselpunkte)",
+      "content": [
+        {
+          "title": "Réalisation d'installations électriques",
+          "description": "Verdrahtung von Schalttafeln, Beleuchtungskreisen und Steckdosen gemäß VDE/RGIE-Normen."
+        },
+        {
+          "title": "Mesure et contrôle",
+          "description": "Durchgangsprüfungen, Isolationswiderstand und RCD- (FI-Schalter) Messung."
+        },
+        {
+          "title": "Dépannage",
+          "description": "Fehlersuche in Steuer- und Leistungskreisen."
+        },
+        {
+          "title": "Domotique/KNX",
+          "description": "Grundkonfiguration von Smart-Home-Systemen."
+        },
+        {
+          "title": "Sécurité au travail",
+          "description": "Strikte Anwendung der \"5 Sicherheitsregeln\"."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Fangfragen der Jury",
+      "content": [
+        {
+          "question": "Warum messen wir die Isolation vor dem Einschalten?*",
+          "answer": "Um sicherzustellen, dass keine Kurzschlüsse oder Erdschlüsse vorliegen, die die Anlage oder Personen gefährden."
+        },
+        {
+          "question": "Welchen Kabelquerschnitt würdest du für einen 3kW-Ofenstromkreis verwenden?*",
+          "answer": "Mindestens 2,5mm² (abhängig von Länge und Absicherung)."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Empfohlene Tutorials",
+      "content": [
+        {
+          "title": "Câblage Tableau électrique NF C 15-100 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=3-1jC_KxM5c",
+          "description": "*Vollständige Schritt-für-Schritt-Anleitung.*"
+        },
+        {
+          "title": "Raccordement Interrupteur Différentiel",
+          "url": "https://www.youtube.com/watch?v=v=Example_ID2",
+          "description": "*Montage von Schutzgeräten.*"
+        }
+      ]
+    }
+  ]
+}

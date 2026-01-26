@@ -1,0 +1,62 @@
+{
+  "title": "ELETRICISTA (ELF)",
+  "language": "pt",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Tarefas Críticas (Pontos Chave)",
+      "content": [
+        {
+          "title": "Réalisation d'installations électriques",
+          "description": "Cablagem de quadros, circuitos de iluminação e tomadas seguindo normas VDE/RGIE."
+        },
+        {
+          "title": "Mesure et contrôle",
+          "description": "Testes de continuidade, resistência de isolamento e RCD (diferencial)."
+        },
+        {
+          "title": "Dépannage",
+          "description": "Localização de avarias em circuitos de comando e potência."
+        },
+        {
+          "title": "Domotique/KNX",
+          "description": "Configuração básica de sistemas inteligentes."
+        },
+        {
+          "title": "Sécurité au travail",
+          "description": "Aplicação estrita das \"5 regras de segurança elétrica\"."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Perguntas Rasteira do Júri",
+      "content": [
+        {
+          "question": "Por que medimos o isolamento antes de ligar a tensão?*",
+          "answer": "Para garantir que não há curtos-circuitos ou fugas para a terra que ponham em perigo a instalação ou as pessoas."
+        },
+        {
+          "question": "Que secção de cabo usarias para um circuito de forno de 3kW?*",
+          "answer": "Mínimo 2.5mm² (dependendo do comprimento e proteções)."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriais Recomendados",
+      "content": [
+        {
+          "title": "Câblage Tableau électrique NF C 15-100 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=3-1jC_KxM5c",
+          "description": "*Guia passo a passo completo.*"
+        },
+        {
+          "title": "Raccordement Interrupteur Différentiel",
+          "url": "https://www.youtube.com/watch?v=v=Example_ID2",
+          "description": "*Montagem de proteções.*"
+        }
+      ]
+    }
+  ]
+}

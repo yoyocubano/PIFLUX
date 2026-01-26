@@ -1,0 +1,62 @@
+{
+  "title": "ELECTRICIAN (ELF)",
+  "language": "en",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Critical Tasks (Key Points)",
+      "content": [
+        {
+          "title": "Réalisation d'installations électriques",
+          "description": "Wiring of panels, lighting circuits, and sockets following VDE/RGIE standards."
+        },
+        {
+          "title": "Mesure et contrôle",
+          "description": "Continuity tests, insulation resistance, and RCD (differential) testing."
+        },
+        {
+          "title": "Dépannage",
+          "description": "Fault finding in control and power circuits."
+        },
+        {
+          "title": "Domotique/KNX",
+          "description": "Basic configuration of smart home systems."
+        },
+        {
+          "title": "Sécurité au travail",
+          "description": "Strict application of the \"5 rules of electrical safety\"."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Jury Trap Questions",
+      "content": [
+        {
+          "question": "Why do we measure insulation before applying voltage?*",
+          "answer": "To ensure there are no short circuits or earth leakages that endanger the installation or people."
+        },
+        {
+          "question": "What cable section would you use for a 3kW oven circuit?*",
+          "answer": "Minimum 2.5mm² (depending on length and protections)."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Recommended Tutorials",
+      "content": [
+        {
+          "title": "Câblage Tableau électrique NF C 15-100 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=3-1jC_KxM5c",
+          "description": "*Step-by-step complete guide.*"
+        },
+        {
+          "title": "Raccordement Interrupteur Différentiel",
+          "url": "https://www.youtube.com/watch?v=v=Example_ID2",
+          "description": "*Mounting protections.*"
+        }
+      ]
+    }
+  ]
+}

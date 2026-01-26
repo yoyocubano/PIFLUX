@@ -1,0 +1,62 @@
+{
+  "title": "ELEKTRIKER (ELF)",
+  "language": "lb",
+  "sections": [
+    {
+      "id": "critical_tasks",
+      "title": "Kritesch Aufgaben (Schlësselpunkten)",
+      "content": [
+        {
+          "title": "Réalisation d'installations électriques",
+          "description": "Verdroung vu Schalttafelen, Beliichtungskreesser an Steckdousen no VDE/RGIE Normen."
+        },
+        {
+          "title": "Mesure et contrôle",
+          "description": "Duerchgangs-Tester, Isolatiounswidderstand an RCD (FI) Miessung."
+        },
+        {
+          "title": "Dépannage",
+          "description": "Feelersich an Steier- an Leeschtungskreesser."
+        },
+        {
+          "title": "Domotique/KNX",
+          "description": "Basis-Konfiguratioun vun Smart-Home Systemer."
+        },
+        {
+          "title": "Sécurité au travail",
+          "description": "Strikt Uwendung vun de \"5 Sécherheetsreegelen\"."
+        }
+      ]
+    },
+    {
+      "id": "jury_questions",
+      "title": "Jury Falefroe",
+      "content": [
+        {
+          "question": "Firwat miesse mir d'Isolatioun virum Aschalten?*",
+          "answer": "Fir sécherzestellen, datt keng Kuerzschlëss oder Äerdschläss do sinn, déi d'Installatioun oder Leit a Gefor bréngen."
+        },
+        {
+          "question": "Wéi en Kabelquerschnitt géifs du fir e 3kW Uewen-Circuit huelen?*",
+          "answer": "Minimum 2.5mm² (ofhängeg vun Längt an Ofsécherung)."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Recommandéiert Tutorials",
+      "content": [
+        {
+          "title": "Câblage Tableau électrique NF C 15-100 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=3-1jC_KxM5c",
+          "description": "*Komplett Schratt-fir-Schratt Uleedung.*"
+        },
+        {
+          "title": "Raccordement Interrupteur Différentiel",
+          "url": "https://www.youtube.com/watch?v=v=Example_ID2",
+          "description": "*Montage vu Schutzschalteren.*"
+        }
+      ]
+    }
+  ]
+}

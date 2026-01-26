@@ -4,13 +4,59 @@
   "sections": [
     {
       "id": "critical_tasks",
-      "title": "Tâches Critiques",
-      "content": []
+      "title": "Tâches Critiques (Points Clés)",
+      "content": [
+        {
+          "title": "Réalisation d'installations électriques",
+          "description": "Câblage de tableaux, circuits d'éclairage et prises selon les normes VDE/RGIE."
+        },
+        {
+          "title": "Mesure et contrôle",
+          "description": "Tests de continuité, résistance d'isolement et RCD (différentiel)."
+        },
+        {
+          "title": "Dépannage",
+          "description": "Localisation de pannes sur circuits de commande et de puissance."
+        },
+        {
+          "title": "Domotique/KNX",
+          "description": "Configuration de base des systèmes intelligents."
+        },
+        {
+          "title": "Sécurité au travail",
+          "description": "Application stricte des \"5 règles de sécurité électrique\"."
+        }
+      ]
     },
     {
       "id": "jury_questions",
-      "title": "Questions du Jury",
-      "content": []
+      "title": "Questions Pièges du Jury",
+      "content": [
+        {
+          "question": "Pourquoi mesure-t-on l'isolement avant de mettre sous tension ?*",
+          "answer": "Pour s'assurer qu'il n'y a pas de courts-circuits ou de fuites à la terre mettant en danger l'installation ou les personnes."
+        },
+        {
+          "question": "Quelle section de câble utiliseriez-vous pour un circuit four de 3kW ?*",
+          "answer": "Minimum 2.5mm² (selon la longueur et les protections)."
+        }
+      ]
+    },
+    {
+      "id": "recommended_videos",
+      "title": "Tutoriels Recommandés",
+      "content": [
+        {
+          "title": "Câblage Tableau électrique NF C 15-100 (YouTube)",
+          "url": "https://www.youtube.com/watch?v=3-1jC_KxM5c",
+          "description": "*Guide complet étape par étape.*"
+        },
+        {
+          "title": "Raccordement Interrupteur Différentiel",
+          "url": "https://www.youtube.com/watch?v=v=Example_ID2",
+          "description": "*Montage des protections.*"
+        }
+      ]
     }
   ]
 }
